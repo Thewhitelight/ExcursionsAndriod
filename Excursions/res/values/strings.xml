@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Excursions</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="add_user">添加好友</string>
+    <string name="loaction">附近的人</string>
+    <string name="bill">账单</string>
+    <string name="menu">菜单</string>
+    <string name="all">所有人</string>
+    <string name="friend">好友</string>
+    <string name="market">交易</string>
+    <string name="notice">通知</string>
+
+</resources>

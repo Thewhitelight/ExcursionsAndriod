@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.excursions.MainActivity" >
+
+    <item
+        android:id="@+id/add_user"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/add_user"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/location"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/loaction"
+        app:showAsAction="always"/>
+
+</menu>
