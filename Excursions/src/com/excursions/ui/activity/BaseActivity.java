@@ -18,12 +18,13 @@ public abstract class BaseActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		overridePendingTransition(android.R.anim.fade_in,
+				android.R.anim.fade_out);
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.tab_bg));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(true);
-
 	}
 
 	@Override

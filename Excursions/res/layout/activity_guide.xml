@@ -4,11 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <GridView
-        android:id="@+id/gv_main"
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/guide_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="2" >
-    </GridView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -6,10 +6,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.ui.fragment.AttractionsInfoMainFragment;
@@ -35,11 +37,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	private ImageView img_tou;
 	private ImageView img_per;
 	private FragmentManager fragmentMangager;
+	private long firstime = 0;
 
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		overridePendingTransition(android.R.anim.fade_in,
+				android.R.anim.fade_out);
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.tab_bg));
@@ -173,5 +178,22 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		img_tou.setImageResource(R.drawable.news_unselected);
 		tv_per.setTextColor(text_unselectcolor);
 		img_per.setImageResource(R.drawable.setting_unselected);
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			long secondtime = System.currentTimeMillis();
+			if (secondtime - firstime > 3000) { // 如果大于3秒 弹出toast提示
+				firstime = System.currentTimeMillis();
+				Toast.makeText(getApplicationContext(), "再次点击返回键退出",
+						Toast.LENGTH_SHORT).show();
+				return true;
+			} else { // 如果小于3秒退出程序
+				MainActivity.this.finish();
+			}
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }
