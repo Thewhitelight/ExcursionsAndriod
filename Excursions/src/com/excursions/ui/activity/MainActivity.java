@@ -185,12 +185,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			long secondtime = System.currentTimeMillis();
-			if (secondtime - firstime > 3000) { // 如果大于3秒 弹出toast提示
+			if (secondtime - firstime > 3000) {
 				firstime = System.currentTimeMillis();
 				Toast.makeText(getApplicationContext(), "再次点击返回键退出",
 						Toast.LENGTH_SHORT).show();
 				return true;
-			} else { // 如果小于3秒退出程序
+			} else {
 				MainActivity.this.finish();
 			}
 		}

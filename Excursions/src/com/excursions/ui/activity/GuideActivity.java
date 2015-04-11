@@ -2,14 +2,14 @@ package com.excursions.ui.activity;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
+import android.view.View;
 import com.example.excursions.R;
 import com.excursions.ui.fragment.GuideFragment01;
 import com.excursions.ui.fragment.GuideFragment02;
@@ -37,6 +37,21 @@ public class GuideActivity extends FragmentActivity {
 		fragmentList.add(guide03);
 		viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 		viewPager.setOffscreenPageLimit(2);
+		viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
+
+			@SuppressLint("NewApi")
+			@Override
+			public void transformPage(View page, float position) {
+				// TODO Auto-generated method stub
+				final float normalizedposition = Math.abs(Math.abs(position) - 1);
+				page.setAlpha(normalizedposition);// ·­Ò³¶¯»­1
+				// final float normalizedposition = Math.abs(Math.abs(position)
+				// - 1);//·­Ò³¶¯»­2
+				// page.setScaleX(normalizedposition / 2 + 0.5f);
+				// page.setScaleY(normalizedposition / 2 + 0.5f);
+				// page.setRotationY(position * -30);·­Ò³¶¯»­3
+			}
+		});
 	}
 
 	public class MyPagerAdapter extends FragmentPagerAdapter {
