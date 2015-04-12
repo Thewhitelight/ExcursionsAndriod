@@ -11,5 +11,13 @@
     <string name="friend">好友</string>
     <string name="market">交易</string>
     <string name="notice">通知</string>
+    <string name="ok">确定</string>
+
+    <string-array name="spinner">
+        <item>购</item>
+        <item>食</item>
+        <item>住</item>
+        <item>行</item>
+    </string-array>
 
 </resources>

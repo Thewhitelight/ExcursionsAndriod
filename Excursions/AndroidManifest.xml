@@ -39,6 +39,10 @@
             android:name="com.excursions.ui.activity.BillActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.excursions.ui.activity.BillDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
