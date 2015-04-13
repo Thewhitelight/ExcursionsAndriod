@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="spinner">
+        <item>购</item>
+        <item>食</item>
+        <item>住</item>
+        <item>行</item>
+    </string-array>
+
     <string name="app_name">Excursions</string>
     <string name="hello_world">Hello world!</string>
     <string name="add_user">添加好友</string>
@@ -12,12 +19,7 @@
     <string name="market">交易</string>
     <string name="notice">通知</string>
     <string name="ok">确定</string>
-
-    <string-array name="spinner">
-        <item>购</item>
-        <item>食</item>
-        <item>住</item>
-        <item>行</item>
-    </string-array>
+    <string name="delete">删除</string>
+    <string name="add_bill">添加纪录</string>
 
 </resources>
