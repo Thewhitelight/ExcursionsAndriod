@@ -2,6 +2,7 @@ package com.excursions.ui.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+
 import com.example.excursions.R;
 import com.excursions.ui.fragment.GuideFragment01;
 import com.excursions.ui.fragment.GuideFragment02;

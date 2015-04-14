@@ -1,7 +1,5 @@
 package com.excursions.ui.activity;
 
-import com.example.excursions.R;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -11,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+
+import com.example.excursions.R;
 
 public abstract class BaseActivity extends ActionBarActivity {
 	@SuppressWarnings("deprecation")

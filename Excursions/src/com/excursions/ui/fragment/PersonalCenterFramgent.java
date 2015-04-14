@@ -1,11 +1,11 @@
 package com.excursions.ui.fragment;
 
-import com.example.excursions.R;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.excursions.R;
 
 public class PersonalCenterFramgent extends BaseFragment {
 	private View view;

@@ -3,15 +3,15 @@ package com.excursions.adapter;
 import java.util.List;
 import java.util.Map;
 
-import com.example.excursions.R;
-import com.excursions.ViewHolder.BillListViewHolder;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.excursions.R;
+import com.excursions.ViewHolder.BillListViewHolder;
 
 public class BillLvAdapter extends BaseAdapter {
 	private List<Map<String, Object>> listItem;
