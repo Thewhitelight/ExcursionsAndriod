@@ -20,7 +20,7 @@ import com.example.excursions.R;
 import com.excursions.adapter.BillLvAdapter;
 import com.excursions.utils.DBAdapter;
 
-public class BillActivity extends BaseActivity {
+public class BillActivity extends ActiviytBase {
 	private Button btn;
 	private ListView lv;
 	private List<Map<String, Object>> list;

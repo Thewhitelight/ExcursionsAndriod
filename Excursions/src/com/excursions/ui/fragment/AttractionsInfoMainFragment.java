@@ -18,12 +18,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.adapter.GridViewAdapter;
 import com.excursions.data.GridViewData;
+import com.excursions.ui.activity.AttractionInfoItemActivity;
 import com.excursions.ui.activity.BillActivity;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
@@ -62,7 +65,17 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 		mPullRefreshGridView = (PullToRefreshGridView) view
 				.findViewById(R.id.pull_refresh_grid);
 		mGridView = mPullRefreshGridView.getRefreshableView();
+		mGridView.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(getActivity(),
+						AttractionInfoItemActivity.class));
+
+			}
+		});
 		// Set a listener to be invoked when the list should be refreshed.
 		mPullRefreshGridView
 				.setOnRefreshListener(new OnRefreshListener2<GridView>() {

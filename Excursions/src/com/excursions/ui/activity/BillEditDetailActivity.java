@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.excursions.R;
 import com.excursions.utils.DBAdapter;
 
-public class BillEditDetailActivity extends BaseActivity {
+public class BillEditDetailActivity extends ActiviytBase {
 	private EditText edt_bill_title;
 	private EditText edt_bill_budget;
 	private EditText edt_bill_time;
