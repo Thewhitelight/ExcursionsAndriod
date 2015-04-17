@@ -1,5 +1,5 @@
 package com.excursions.ui.activity;
 
-public class NewFriendActivity {
+public class NewFriendActivity extends ActiviytBase {
 
 }

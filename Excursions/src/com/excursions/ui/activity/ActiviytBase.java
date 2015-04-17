@@ -39,6 +39,7 @@ public class ActiviytBase extends ActionBarActivity {
 	BmobUserManager userManager;
 	BmobChatManager manager;
 	MyApplication myApplication;
+	ActionBar actionBar;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -47,7 +48,7 @@ public class ActiviytBase extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(android.R.anim.fade_in,
 				android.R.anim.fade_out);
-		ActionBar actionBar = getSupportActionBar();
+		actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.tab_bg));

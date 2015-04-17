@@ -33,6 +33,7 @@
                 android:drawablePadding="25dip"
                 android:drawableStart="@drawable/login_icon_account"
                 android:hint="@string/login_username_hint"
+                android:inputType="textEmailAddress"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:shadowDx="0.0"

@@ -1,6 +1,7 @@
 package com.excursions.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.excursions.R;
+import com.excursions.ui.activity.AddFriendActivity;
+import com.excursions.ui.activity.NearPeopleActivity;
 import com.excursions.ui.customview.PagerSlidingTabStrip;
 
 public class ImMainFragment extends BaseFragment {
@@ -113,11 +116,14 @@ public class ImMainFragment extends BaseFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == R.id.add_user) {
-
+			Intent intent = new Intent(getActivity(), AddFriendActivity.class);
+			intent.putExtra("from", "contact");
+			startAnimActivity(intent);
 			return true;
 		}
 		if (id == R.id.location) {
-
+			Intent intent = new Intent(getActivity(), NearPeopleActivity.class);
+			startAnimActivity(intent);
 			return true;
 		}
 
@@ -126,9 +132,7 @@ public class ImMainFragment extends BaseFragment {
 
 	@Override
 	public void onPrepareOptionsMenu(Menu menu) {
-
 		menu.clear();
-
 		MenuInflater inflater = getActivity().getMenuInflater();
 		inflater.inflate(R.menu.im_menu, menu);
 		super.onPrepareOptionsMenu(menu);
