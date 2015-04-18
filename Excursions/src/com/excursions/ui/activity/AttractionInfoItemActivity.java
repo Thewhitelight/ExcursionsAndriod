@@ -27,7 +27,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 import com.example.excursions.R;
 
-public class AttractionInfoItemActivity extends ActiviytBase implements
+public class AttractionInfoItemActivity extends ActivityBase implements
 		OnPageChangeListener {
 	private MapView mapView;
 	private BaiduMap baiduMap;

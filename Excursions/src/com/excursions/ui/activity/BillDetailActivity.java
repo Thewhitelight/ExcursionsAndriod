@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.excursions.R;
 import com.excursions.utils.DBAdapter;
 
-public class BillDetailActivity extends ActiviytBase {
+public class BillDetailActivity extends ActivityBase {
 	private TextView tv_bill_title;
 	private TextView tv_bill_budget;
 	private TextView tv_bill_time;

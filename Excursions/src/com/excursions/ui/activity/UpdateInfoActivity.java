@@ -10,7 +10,7 @@ import cn.bmob.v3.listener.UpdateListener;
 import com.example.excursions.R;
 import com.excursions.bean.User;
 
-public class UpdateInfoActivity extends ActiviytBase {
+public class UpdateInfoActivity extends ActivityBase {
 
 	EditText edit_nick;
 

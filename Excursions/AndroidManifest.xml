@@ -175,6 +175,22 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.excursions.ui.activity.ImageBrowserActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" >
+        </activity>
+        <activity
+            android:name="com.excursions.ui.activity.LocationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.excursions.ui.activity.ChatActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <service
             android:name="com.baidu.location.f"
@@ -207,7 +223,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.excursions.application.MyBroadcastReceiver" >
+        <receiver android:name="com.excursions.application.MyMessageReceiver" >
             <intent-filter>
                 <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>

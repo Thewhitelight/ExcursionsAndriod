@@ -53,7 +53,7 @@ import com.excursions.utils.ImageLoadOptions;
 import com.excursions.utils.PhotoUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class SetMyInfoActivity extends ActiviytBase implements OnClickListener {
+public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
 	TextView tv_set_name, tv_set_nick, tv_set_gender;
 	ImageView iv_arraw, iv_nickarraw;
@@ -220,10 +220,10 @@ public class SetMyInfoActivity extends ActiviytBase implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.btn_chat:// ·¢ÆðÁÄÌì
-			// Intent intent = new Intent(this, ChatActivity.class);
-			// intent.putExtra("user", user);
-			// startAnimActivity(intent);
-			// finish();
+			Intent intent = new Intent(this, ChatActivity.class);
+			intent.putExtra("user", user);
+			startAnimActivity(intent);
+			finish();
 			break;
 		case R.id.layout_head:
 			showAvatarPop();
