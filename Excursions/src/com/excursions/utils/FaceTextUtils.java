@@ -53,6 +53,7 @@ public class FaceTextUtils {
 		faceTexts.add(new FaceText("\\ue41f"));
 		faceTexts.add(new FaceText("\\ue00e"));
 		faceTexts.add(new FaceText("\\ue421"));
+		faceTexts.add(new FaceText("\\ue500"));
 	}
 
 	public static String parse(String s) {
