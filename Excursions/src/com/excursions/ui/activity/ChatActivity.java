@@ -333,6 +333,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	 * @return void
 	 * @throws
 	 */
+	@SuppressWarnings("deprecation")
 	private void initVoiceAnimRes() {
 		drawable_Anims = new Drawable[] {
 				getResources().getDrawable(R.drawable.chat_icon_voice2),

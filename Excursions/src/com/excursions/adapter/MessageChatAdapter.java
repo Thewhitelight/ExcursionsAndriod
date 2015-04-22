@@ -26,6 +26,7 @@ import com.excursions.ViewHolder.ViewHolder;
 import com.excursions.ui.activity.ImageBrowserActivity;
 import com.excursions.ui.activity.LocationActivity;
 import com.excursions.ui.activity.SetMyInfoActivity;
+import com.excursions.ui.customview.RoundImageView;
 import com.excursions.utils.FaceTextUtils;
 import com.excursions.utils.ImageLoadOptions;
 import com.excursions.utils.TimeUtil;
@@ -134,7 +135,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 			convertView = createViewByType(item, position);
 		}
 		// 文本类型
-		ImageView iv_avatar = ViewHolder.get(convertView, R.id.iv_avatar);
+		RoundImageView iv_avatar = ViewHolder.get(convertView, R.id.iv_avatar);
 		final ImageView iv_fail_resend = ViewHolder.get(convertView,
 				R.id.iv_fail_resend);// 失败重发
 		final TextView tv_send_status = ViewHolder.get(convertView,

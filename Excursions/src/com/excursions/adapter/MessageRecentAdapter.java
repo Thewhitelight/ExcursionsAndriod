@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 import cn.bmob.im.bean.BmobRecent;
 import cn.bmob.im.config.BmobConfig;
@@ -17,6 +16,7 @@ import cn.bmob.im.db.BmobDB;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.ViewHolder;
+import com.excursions.ui.customview.RoundImageView;
 import com.excursions.utils.FaceTextUtils;
 import com.excursions.utils.ImageLoadOptions;
 import com.excursions.utils.TimeUtil;
@@ -53,7 +53,7 @@ public class MessageRecentAdapter extends ArrayAdapter<BmobRecent> implements
 			convertView = inflater.inflate(R.layout.item_conversation, parent,
 					false);
 		}
-		ImageView iv_recent_avatar = ViewHolder.get(convertView,
+		RoundImageView iv_recent_avatar = ViewHolder.get(convertView,
 				R.id.iv_recent_avatar);
 		TextView tv_recent_name = ViewHolder.get(convertView,
 				R.id.tv_recent_name);

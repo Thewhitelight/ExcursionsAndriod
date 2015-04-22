@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/message_top_height"
     android:orientation="vertical" >
@@ -11,13 +13,22 @@
         android:paddingBottom="5.0dip"
         android:paddingTop="5.0dip" >
 
-        <ImageView
+        <com.excursions.ui.customview.RoundImageView
             android:id="@+id/iv_recent_avatar"
             style="@style/Smile.ImageView.Photo_Middle"
             android:layout_alignParentLeft="true"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:src="@drawable/default_head" />
+        <!--
+             <ImageView
+            android:id="@+id/iv_recent_avatar"
+            style="@style/Smile.ImageView.Photo_Middle"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/default_head" />
+        -->
 
         <TextView
             android:id="@+id/tv_recent_name"
