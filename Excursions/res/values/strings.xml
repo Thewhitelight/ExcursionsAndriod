@@ -21,7 +21,7 @@
     <string name="ok">确定</string>
     <string name="delete">删除</string>
     <string name="add_bill">添加纪录</string>
-
+    <string name="add_card">发帖</string>
     <!-- bmob -->
     <string name="login_username_hint">请输入用户名&#8230;</string>
     <string name="login_password_hint">请输入密码&#8230;</string>

@@ -1,6 +1,7 @@
 package com.excursions.ui.fragment;
 
 import java.io.InputStream;
+import java.nio.channels.GatheringByteChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 import org.json.JSONArray;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -25,6 +27,7 @@ import android.widget.ListView;
 import com.example.excursions.R;
 import com.excursions.adapter.TourLvAdapter;
 import com.excursions.data.TouListViewData;
+import com.excursions.ui.activity.TouristDetailActivity;
 import com.excursions.utils.ReadTextFile;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -46,7 +49,6 @@ public class TouristInfoMainFragment extends BaseFragment {
 		list = TouListViewData.getData(getActivity());
 		adapter = new TourLvAdapter(getActivity(), list);
 		setHasOptionsMenu(true);
-
 	}
 
 	@Override
@@ -104,8 +106,8 @@ public class TouristInfoMainFragment extends BaseFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				Toast.makeText(getActivity(), position + " ",
-						Toast.LENGTH_SHORT).show();
+				startActivity(new Intent(getActivity(),
+						TouristDetailActivity.class));
 			}
 		});
 	}
@@ -254,6 +256,10 @@ public class TouristInfoMainFragment extends BaseFragment {
 		}
 		if (id == R.id.market) {
 
+			return true;
+		}
+		if (id == R.id.add_card) {
+			startActivity(new Intent(getActivity(), TouristDetailActivity.class));
 			return true;
 		}
 

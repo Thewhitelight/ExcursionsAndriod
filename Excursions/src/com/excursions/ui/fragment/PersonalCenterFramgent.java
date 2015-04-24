@@ -14,6 +14,7 @@ import cn.bmob.im.BmobUserManager;
 
 import com.example.excursions.R;
 import com.excursions.application.MyApplication;
+import com.excursions.ui.activity.BlackListActivity;
 import com.excursions.ui.activity.SetMyInfoActivity;
 import com.excursions.ui.activity.SignInActivity;
 import com.excursions.utils.SharePreferenceUtil;
@@ -132,8 +133,7 @@ public class PersonalCenterFramgent extends BaseFragment implements
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.layout_blacklist:// 启动到黑名单页面
-			// startAnimActivity(new Intent(getActivity(),
-			// BlackListActivity.class));
+			startAnimActivity(new Intent(getActivity(), BlackListActivity.class));
 			break;
 		case R.id.layout_info:// 启动到个人资料页面
 			Intent intent = new Intent(getActivity(), SetMyInfoActivity.class);

@@ -33,5 +33,10 @@
                 app:showAsAction="ifRoom"/>
         </menu>
     </item>
+    <item
+        android:id="@+id/add_card"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/add_card"
+        app:showAsAction="always"/>
 
 </menu>

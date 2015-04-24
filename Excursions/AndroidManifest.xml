@@ -191,6 +191,16 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.excursions.ui.activity.BlackListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.excursions.ui.activity.TouristDetailActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <service
             android:name="com.baidu.location.f"
