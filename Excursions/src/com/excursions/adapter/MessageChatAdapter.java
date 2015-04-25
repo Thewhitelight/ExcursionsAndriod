@@ -62,6 +62,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 	private final int TYPE_SEND_VOICE = 6;
 	private final int TYPE_RECEIVER_VOICE = 7;
 
+	private RoundImageView iv_avatar;
 	String currentObjectId = "";
 
 	DisplayImageOptions options;
@@ -75,8 +76,8 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 				.getCurrentUserObjectId();
 
 		options = new DisplayImageOptions.Builder()
-				.showImageForEmptyUri(R.drawable.ic_launcher)
-				.showImageOnFail(R.drawable.ic_launcher)
+				.showImageForEmptyUri(R.drawable.default_head)
+				.showImageOnFail(R.drawable.default_head)
 				.resetViewBeforeLoading(true).cacheOnDisc(true)
 				.cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY)
 				.bitmapConfig(Bitmap.Config.RGB_565).considerExifParams(true)
@@ -135,7 +136,7 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 			convertView = createViewByType(item, position);
 		}
 		// 文本类型
-		RoundImageView iv_avatar = ViewHolder.get(convertView, R.id.iv_avatar);
+		iv_avatar = ViewHolder.get(convertView, R.id.iv_avatar);
 		final ImageView iv_fail_resend = ViewHolder.get(convertView,
 				R.id.iv_fail_resend);// 失败重发
 		final TextView tv_send_status = ViewHolder.get(convertView,

@@ -248,7 +248,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
 	private void showSexChooseDialog() {
 		new AlertDialog.Builder(this)
-				.setTitle("单选框")
+				.setTitle("性别")
 				.setIcon(android.R.drawable.ic_dialog_info)
 				.setSingleChoiceItems(sexs, 0,
 						new DialogInterface.OnClickListener() {

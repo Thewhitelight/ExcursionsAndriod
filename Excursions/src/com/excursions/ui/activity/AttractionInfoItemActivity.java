@@ -14,9 +14,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.baidu.mapapi.map.BaiduMap;
@@ -107,7 +107,10 @@ public class AttractionInfoItemActivity extends ActivityBase implements
 		tips = new ImageView[imgIdArray.length];
 		for (int i = 0; i < tips.length; i++) {
 			ImageView imageView = new ImageView(this);
-			imageView.setLayoutParams(new LayoutParams(15, 15));
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+					15, 15);
+			params.setMargins(3, 0, 3, 0);// ×ó£¬ÉÏ£¬ÓÒ£¬ÏÂ
+			imageView.setLayoutParams(params);
 			imageView.setScaleType(ScaleType.FIT_XY);
 
 			tips[i] = imageView;

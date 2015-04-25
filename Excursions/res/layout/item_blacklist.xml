@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <ImageView
+    <com.excursions.ui.customview.RoundImageView
         android:id="@+id/img_friend_avatar"
         style="@style/Smile.ImageView.Photo_Middle"
         android:layout_alignParentLeft="true"
