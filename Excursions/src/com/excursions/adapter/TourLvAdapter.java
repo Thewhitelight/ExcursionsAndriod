@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.TouListViewHolder;
+import com.excursions.ui.customview.EmoticonsTextView;
 
 public class TourLvAdapter extends BaseAdapter {
 	private List<Map<String, Object>> list;
@@ -52,7 +53,7 @@ public class TourLvAdapter extends BaseAdapter {
 					false);
 			holder.tv_title = (TextView) convertView
 					.findViewById(R.id.tv_tou_title);
-			holder.tv_content = (TextView) convertView
+			holder.tv_content = (EmoticonsTextView) convertView
 					.findViewById(R.id.tv_tou_content);
 			holder.tv_var_man = (TextView) convertView
 					.findViewById(R.id.tv_var_man);

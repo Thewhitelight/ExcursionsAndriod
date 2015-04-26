@@ -1,5 +1,8 @@
 package com.excursions.ui.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ScrollView;
 
 import com.baidu.mapapi.map.BaiduMap;
@@ -26,13 +31,18 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 import com.example.excursions.R;
+import com.excursions.adapter.AttractionDetailAdapter;
+import com.excursions.data.TouListViewData;
 
 public class AttractionInfoItemActivity extends ActivityBase implements
 		OnPageChangeListener {
 	private MapView mapView;
 	private BaiduMap baiduMap;
-	private View v;
+	private View view;
 	private ScrollView scrollView;
+	private ListView listView;
+	private AttractionDetailAdapter adapter;
+	private List<Map<String, Object>> list;
 	/**
 	 * ViewPager
 	 */
@@ -62,18 +72,22 @@ public class AttractionInfoItemActivity extends ActivityBase implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_attractioninfo_item);
 		ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
 		viewPager = (ViewPager) findViewById(R.id.viewPager);
+		viewPager.findFocus();
 		mapView = (MapView) findViewById(R.id.bmapView);
 		scrollView = (ScrollView) findViewById(R.id.sv);
+		listView = (ListView) findViewById(R.id.listView1);
+		list = new ArrayList<Map<String, Object>>();
+		list = TouListViewData.getData(this);
+		adapter = new AttractionDetailAdapter(this, list);
 		baiduMap = mapView.getMap();
 		/**
 		 * 解决嵌套在scrollview中的mapview无法滑动问题
 		 */
-		v = mapView.getChildAt(0);
-		v.setOnTouchListener(new OnTouchListener() {
+		view = mapView.getChildAt(0);
+		view.setOnTouchListener(new OnTouchListener() {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -97,6 +111,8 @@ public class AttractionInfoItemActivity extends ActivityBase implements
 				.newMapStatus(mMapStatus);
 		// 改变地图状态
 		baiduMap.setMapStatus(mMapStatusUpdate);
+		listView.setAdapter(adapter);
+		setListViewHeightBasedOnChildren(listView);
 		// 载入图片资源ID
 		imgIdArray = new int[] { R.drawable.item0, R.drawable.item1,
 				R.drawable.item2, R.drawable.item3, R.drawable.item4,
@@ -137,6 +153,34 @@ public class AttractionInfoItemActivity extends ActivityBase implements
 		viewPager.setOnPageChangeListener(this);
 		// 设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
 		viewPager.setCurrentItem((mImageViews.length) * 100);
+	}
+
+	/**
+	 * 解决scrollview中嵌套listview只显示一行item问题
+	 * 
+	 * @param listView
+	 */
+	private void setListViewHeightBasedOnChildren(ListView listView) { // 获取ListView对应的Adapter
+		ListAdapter listAdapter = listView.getAdapter();
+		if (listAdapter == null) {
+			return;
+		}
+
+		int totalHeight = 0;
+		for (int i = 0, len = listAdapter.getCount(); i < len; i++) { // listAdapter.getCount()返回数据项的数目
+			View listItem = listAdapter.getView(i, null, listView);
+			// 计算子项View 的宽高
+			listItem.measure(0, 0);
+			// 统计所有子项的总高度
+			totalHeight += listItem.getMeasuredHeight();
+		}
+
+		ViewGroup.LayoutParams params = listView.getLayoutParams();
+		params.height = totalHeight
+				+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+		// listView.getDividerHeight()获取子项间分隔符占用的高度
+		// params.height最后得到整个ListView完整显示需要的高度
+		listView.setLayoutParams(params);
 	}
 
 	/**

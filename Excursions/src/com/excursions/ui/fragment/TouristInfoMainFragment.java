@@ -1,7 +1,6 @@
 package com.excursions.ui.fragment;
 
 import java.io.InputStream;
-import java.nio.channels.GatheringByteChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,13 +19,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.example.excursions.R;
 import com.excursions.adapter.TourLvAdapter;
 import com.excursions.data.TouListViewData;
+import com.excursions.ui.activity.TourIssueActivity;
 import com.excursions.ui.activity.TouristDetailActivity;
 import com.excursions.utils.ReadTextFile;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -259,7 +258,7 @@ public class TouristInfoMainFragment extends BaseFragment {
 			return true;
 		}
 		if (id == R.id.add_card) {
-			startActivity(new Intent(getActivity(), TouristDetailActivity.class));
+			startActivity(new Intent(getActivity(), TourIssueActivity.class));
 			return true;
 		}
 

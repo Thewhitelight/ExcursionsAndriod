@@ -69,7 +69,7 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <TextView
+            <com.excursions.ui.customview.EmoticonsTextView
                 android:id="@+id/comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,6 +80,15 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/font_black_content"
                 android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/imageSingle"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerInside"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/commentLikeArea"
@@ -105,30 +114,6 @@
                     android:layout_marginBottom="5dp"
                     android:background="@color/bg_maopao_comment"
                     android:orientation="vertical" >
-
-                    <LinearLayout
-                        android:id="@+id/likesAllLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone" >
-
-                        <LinearLayout
-                            android:id="@+id/likeUsersLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="8dp" >
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_gravity="bottom"
-                            android:background="@drawable/maopao_comment_divide" />
-                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/commentArea"
@@ -176,7 +161,7 @@
                             android:layout_marginStart="12dp"
                             android:paddingBottom="5dp" >
 
-                            <TextView
+                            <com.excursions.ui.customview.EmoticonsTextView
                                 android:id="@+id/comment0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -228,7 +213,7 @@
                                 android:layout_height="1dp"
                                 android:background="@drawable/maopao_comment_divide" />
 
-                            <TextView
+                            <com.excursions.ui.customview.EmoticonsTextView
                                 android:id="@+id/comment1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -280,7 +265,7 @@
                                 android:layout_height="1dp"
                                 android:background="@drawable/maopao_comment_divide" />
 
-                            <TextView
+                            <com.excursions.ui.customview.EmoticonsTextView
                                 android:id="@+id/comment2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -325,15 +310,14 @@
                             android:layout_marginLeft="12dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginStart="12dp"
-                            android:paddingBottom="5dp"
-                            android:visibility="gone" >
+                            android:paddingBottom="5dp" >
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:background="@drawable/maopao_comment_divide" />
 
-                            <TextView
+                            <com.excursions.ui.customview.EmoticonsTextView
                                 android:id="@+id/comment3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -378,15 +362,14 @@
                             android:layout_marginLeft="12dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginStart="12dp"
-                            android:paddingBottom="5dp"
-                            android:visibility="gone" >
+                            android:paddingBottom="5dp" >
 
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:background="@drawable/maopao_comment_divide" />
 
-                            <TextView
+                            <com.excursions.ui.customview.EmoticonsTextView
                                 android:id="@+id/comment4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
