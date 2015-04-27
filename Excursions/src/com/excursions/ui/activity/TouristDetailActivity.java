@@ -323,7 +323,7 @@ public class TouristDetailActivity extends ActivityBase implements
 	private void upListItem(int position) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = (HashMap<String, Object>) adapter
-				.getItem(position - 1);//position-1 否则数组越界
+				.getItem(position - 1);// position-1 否则数组越界
 		map.put("comment", edit_user_comment.getText().toString());
 		adapter.notifyDataSetChanged();
 	}

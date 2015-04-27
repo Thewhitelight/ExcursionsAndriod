@@ -26,7 +26,7 @@ import android.widget.Toast;
 import com.example.excursions.R;
 import com.excursions.adapter.GridViewAdapter;
 import com.excursions.data.GridViewData;
-import com.excursions.ui.activity.AttractionInfoItemActivity;
+import com.excursions.ui.activity.AttractionDetailActivity;
 import com.excursions.ui.activity.BillActivity;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
@@ -72,7 +72,7 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				startActivity(new Intent(getActivity(),
-						AttractionInfoItemActivity.class));
+						AttractionDetailActivity.class));
 
 			}
 		});

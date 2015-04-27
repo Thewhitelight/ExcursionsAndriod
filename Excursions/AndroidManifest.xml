@@ -137,7 +137,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.excursions.ui.activity.AttractionInfoItemActivity"
+            android:name="com.excursions.ui.activity.AttractionDetailActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>

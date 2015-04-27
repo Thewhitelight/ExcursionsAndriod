@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res/com.example.excursions"
     android:id="@+id/sv"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical" >
 
         <FrameLayout
@@ -40,7 +43,7 @@
         <TextView
             android:id="@+id/tv_atts_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:text="景点介绍"
             android:textSize="@dimen/font_setting_size" />
 
@@ -50,11 +53,32 @@
             android:layout_height="200dp"
             android:clickable="true" />
 
-        <ListView
-            android:id="@+id/listView1"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </ListView>
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.excursions.ui.customview.PagerSlidingTabStrip
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#e2e4fe"
+                app:pstsDividerColor="@android:color/transparent"
+                app:pstsIndicatorColor="#CCCCCC"
+                app:pstsIndicatorHeight="5dp"
+                app:pstsShouldExpand="true"
+                app:pstsTabBackground="@drawable/background_tab"
+                app:pstsTextAllCaps="true"
+                app:pstsUnderlineColor="#CCCCCC"
+                app:pstsUnderlineHeight="2dp"
+                app:selectedTabTextColor="#CCCCCC" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/tab_pager"
+                android:layout_width="match_parent"
+                android:layout_height="1000dp"
+                android:layout_below="@id/tabs" />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
