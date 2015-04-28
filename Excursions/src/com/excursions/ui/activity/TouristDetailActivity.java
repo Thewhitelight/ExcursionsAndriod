@@ -50,6 +50,7 @@ public class TouristDetailActivity extends ActivityBase implements
 	private PullToRefreshListView mPullRefreshListView;
 	private TourDetailAdapter adapter;
 	private Mode currentMode;
+
 	private static int position;
 
 	@Override
@@ -126,6 +127,7 @@ public class TouristDetailActivity extends ActivityBase implements
 				ShowToast("点击" + position);
 			}
 		});
+
 	}
 
 	private class GetDataTask extends
@@ -158,22 +160,6 @@ public class TouristDetailActivity extends ActivityBase implements
 					map.put("time0", array.getJSONObject(i).getString("time0"));
 					map.put("comment0",
 							array.getJSONObject(i).getString("comment0"));
-					map.put("name1", array.getJSONObject(i).getString("name1"));
-					map.put("time1", array.getJSONObject(i).getString("time1"));
-					map.put("comment1",
-							array.getJSONObject(i).getString("comment1"));
-					map.put("name2", array.getJSONObject(i).getString("name2"));
-					map.put("time2", array.getJSONObject(i).getString("time2"));
-					map.put("comment2",
-							array.getJSONObject(i).getString("comment2"));
-					map.put("name3", array.getJSONObject(i).getString("name3"));
-					map.put("time3", array.getJSONObject(i).getString("time3"));
-					map.put("comment3",
-							array.getJSONObject(i).getString("comment3"));
-					map.put("name4", array.getJSONObject(i).getString("name4"));
-					map.put("time4", array.getJSONObject(i).getString("time4"));
-					map.put("comment4",
-							array.getJSONObject(i).getString("comment4"));
 					list.add(map);
 				}
 				return list;
@@ -322,9 +308,10 @@ public class TouristDetailActivity extends ActivityBase implements
 
 	private void upListItem(int position) {
 		// TODO Auto-generated method stub
-		Map<String, Object> map = (HashMap<String, Object>) adapter
-				.getItem(position - 1);// position-1 否则数组越界
-		map.put("comment", edit_user_comment.getText().toString());
+		@SuppressWarnings("unchecked")
+		Map<String, Object> list = (Map<String, Object>) adapter
+				.getItem(position - 1);// position-1否则数组越界
+		list.put("comment", edit_user_comment.getText().toString());
 		adapter.notifyDataSetChanged();
 	}
 

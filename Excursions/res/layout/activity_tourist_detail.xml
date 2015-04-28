@@ -27,7 +27,8 @@
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="none"
         android:smoothScrollbar="true"
-        ptr:ptrMode="both" />
+        ptr:ptrMode="both" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
     <LinearLayout
         android:id="@+id/buttom_bar"

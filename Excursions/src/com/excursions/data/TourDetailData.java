@@ -34,22 +34,6 @@ public class TourDetailData {
 				map.put("time0", array.getJSONObject(i).getString("time0"));
 				map.put("comment0", array.getJSONObject(i)
 						.getString("comment0"));
-				map.put("name1", array.getJSONObject(i).getString("name1"));
-				map.put("time1", array.getJSONObject(i).getString("time1"));
-				map.put("comment1", array.getJSONObject(i)
-						.getString("comment1"));
-				map.put("name2", array.getJSONObject(i).getString("name2"));
-				map.put("time2", array.getJSONObject(i).getString("time2"));
-				map.put("comment2", array.getJSONObject(i)
-						.getString("comment2"));
-				map.put("name3", array.getJSONObject(i).getString("name3"));
-				map.put("time3", array.getJSONObject(i).getString("time3"));
-				map.put("comment3", array.getJSONObject(i)
-						.getString("comment3"));
-				map.put("name4", array.getJSONObject(i).getString("name4"));
-				map.put("time4", array.getJSONObject(i).getString("time4"));
-				map.put("comment4", array.getJSONObject(i)
-						.getString("comment4"));
 				list.add(map);
 			}
 			return list;

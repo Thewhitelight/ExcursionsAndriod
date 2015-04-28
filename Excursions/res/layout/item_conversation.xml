@@ -20,15 +20,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:src="@drawable/default_head" />
-        <!--
-             <ImageView
-            android:id="@+id/iv_recent_avatar"
-            style="@style/Smile.ImageView.Photo_Middle"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/default_head" />
-        -->
 
         <TextView
             android:id="@+id/tv_recent_name"

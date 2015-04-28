@@ -6,63 +6,24 @@
         "comment": "Be JSON (Just Make JSON Easy!)",
         "name0": "Max",
         "time0": "9:10",
-        "comment0": "Be JSON (Just Make JSON Easy!)",
-         "name1": "Max",
-        "time1": "9:20",
-        "comment1": "Be JSON (Just Make JSON Easy!)",
-         "name2": "Max",
-        "time2": "9:30",
-        "comment2": "Be JSON (Just Make JSON Easy!)",
-         "name3": "Max",
-        "time3": "9:40",
-        "comment3": "Be JSON (Just Make JSON Easy!)", 
-        "name4": "Max",
-        "time4": "9:50",
-        "comment4": "Be JSON (Just Make JSON Easy!)"
-        
+        "comment0": "Be JSON (Just Make JSON Easy!)"
     },
         {
         "name": "Tom",
         "layer": "2¥",
-        "time": "9:00",
+        "time": "10:00",
         "comment": "Be JSON (Just Make JSON Easy!)",
         "name0": "Max",
         "time0": "9:10",
-        "comment0": "Be JSON (Just Make JSON Easy!)",
-         "name1": "Max",
-        "time1": "9:20",
-        "comment1": "Be JSON (Just Make JSON Easy!)",
-         "name2": "Max",
-        "time2": "9:30",
-        "comment2": "Be JSON (Just Make JSON Easy!)",
-         "name3": "Max",
-        "time3": "9:40",
-        "comment3": "Be JSON (Just Make JSON Easy!)", 
-        "name4": "Max",
-        "time4": "9:50",
-        "comment4": "Be JSON (Just Make JSON Easy!)"
-        
+        "comment0": "Be JSON (Just Make JSON Easy!)"
     },
         {
-        "name": "Jone",
+        "name": "John",
         "layer": "3¥",
-        "time": "9:00",
+        "time": "11:00",
         "comment": "Be JSON (Just Make JSON Easy!)",
         "name0": "Max",
         "time0": "9:10",
-        "comment0": "Be JSON (Just Make JSON Easy!)",
-         "name1": "Max",
-        "time1": "9:20",
-        "comment1": "Be JSON (Just Make JSON Easy!)",
-         "name2": "Max",
-        "time2": "9:30",
-        "comment2": "Be JSON (Just Make JSON Easy!)",
-         "name3": "Max",
-        "time3": "9:40",
-        "comment3": "Be JSON (Just Make JSON Easy!)", 
-        "name4": "Max",
-        "time4": "9:50",
-        "comment4": "Be JSON (Just Make JSON Easy!)"
-        
-    }
+        "comment0": "Be JSON (Just Make JSON Easy!)"
+        }
 ]

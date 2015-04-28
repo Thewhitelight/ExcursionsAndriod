@@ -98,7 +98,7 @@ public class SessionFragment extends BaseFragment implements
 	}
 
 	public void showDeleteDialog(final BmobRecent recent) {
-		DialogTips dialog = new DialogTips(getActivity(), recent.getUserName(),
+		DialogTips dialog = new DialogTips(getActivity(), recent.getNick(),
 				"删除会话", "确定", true, true);
 		// 设置成功事件
 		dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {

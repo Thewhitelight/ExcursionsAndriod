@@ -108,8 +108,6 @@ public class AttractionDetailActivity extends ActivityBase implements
 				.newMapStatus(mMapStatus);
 		// 改变地图状态
 		baiduMap.setMapStatus(mMapStatusUpdate);
-		// listView.setAdapter(adapter);
-		// setListViewHeightBasedOnChildren(listView);
 		// 载入图片资源ID
 		imgIdArray = new int[] { R.drawable.item0, R.drawable.item1,
 				R.drawable.item2, R.drawable.item3, R.drawable.item4,
@@ -179,10 +177,20 @@ public class AttractionDetailActivity extends ActivityBase implements
 		viewPager.setFocusableInTouchMode(true);
 		viewPager.requestFocus();
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-				LayoutParams.MATCH_PARENT, 160 * 2);// 通过item高度设置viewpager高度
-													// 2为item个数
-		params.setMargins(0, 100, 0, 0);
+				LayoutParams.MATCH_PARENT, Dp2Px(80) * 3);// 通过item高度设置viewpager高度
+		// 3为item个数
+		params.setMargins(0, 80, 0, 0);
 		tab_pager.setLayoutParams(params);
+	}
+
+	public int Px2Dp(float px) {
+		final float scale = this.getResources().getDisplayMetrics().density;
+		return (int) (px / scale + 0.5f);
+	}
+
+	public int Dp2Px(float dp) {
+		final float scale = this.getResources().getDisplayMetrics().density;
+		return (int) (dp * scale + 0.5f);
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public class TourLvAdapter extends BaseAdapter {
 		TouListViewHolder holder;
 		if (convertView == null) {
 			holder = new TouListViewHolder();
-			convertView = inflater.inflate(R.layout.layout_tou_item, parent,
+			convertView = inflater.inflate(R.layout.layout_tour_item, parent,
 					false);
 			holder.tv_title = (TextView) convertView
 					.findViewById(R.id.tv_tou_title);

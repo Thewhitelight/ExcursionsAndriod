@@ -49,7 +49,7 @@ public class AttractionDetailAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		if (convertView == null) {
-			convertView = inflater.inflate(R.layout.layout_tou_item, parent,
+			convertView = inflater.inflate(R.layout.layout_tour_item, parent,
 					false);
 		}
 		tv_title = ViewHolder.get(convertView, R.id.tv_tou_title);

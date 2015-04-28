@@ -1,5 +1,6 @@
 package com.excursions.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,26 +10,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.ViewHolder;
+import com.excursions.data.TourDetailData;
 import com.excursions.ui.customview.EmoticonsTextView;
 import com.excursions.ui.customview.RoundImageView;
 
 public class TourDetailAdapter extends BaseAdapter {
-	private List<Map<String, Object>> list;
+	private List<Map<String, Object>> list, dislist;
 	private LayoutInflater inflater;
 	private RoundImageView roundimg;
-	private EmoticonsTextView comment, comment0, comment1, comment2, comment3,
-			comment4;
-	private TextView layer, name, name0, name1, name2, name3, name4, time,
-			time0, time1, time2, time3, time4;
 	private ImageView imageSingle;
+	private ListView lv_dis4dis;
+	private Context context;
+	private Dis4DisAdapter adapter;
+	private TextView name, time, layer, commentMoreCount;
+	private EmoticonsTextView emo;
 
 	public TourDetailAdapter(Context context, List<Map<String, Object>> list) {
 		// TODO Auto-generated constructor stub
 		this.list = list;
+		this.context = context;
 		inflater = LayoutInflater.from(context);
 	}
 
@@ -57,49 +63,49 @@ public class TourDetailAdapter extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.layout_tour_detail_item,
 					parent, false);
 		}
-		comment = ViewHolder.get(convertView, R.id.comment);
-		comment0 = ViewHolder.get(convertView, R.id.comment0);
-		comment1 = ViewHolder.get(convertView, R.id.comment1);
-		comment2 = ViewHolder.get(convertView, R.id.comment2);
-		comment3 = ViewHolder.get(convertView, R.id.comment3);
-		comment4 = ViewHolder.get(convertView, R.id.comment4);
-		layer = ViewHolder.get(convertView, R.id.layer);
-		name = ViewHolder.get(convertView, R.id.name);
-		name0 = ViewHolder.get(convertView, R.id.name0);
-		name1 = ViewHolder.get(convertView, R.id.name1);
-		name2 = ViewHolder.get(convertView, R.id.name2);
-		name3 = ViewHolder.get(convertView, R.id.name3);
-		name4 = ViewHolder.get(convertView, R.id.name4);
+		name = ViewHolder.get(convertView, R.id.tour_name);
 		time = ViewHolder.get(convertView, R.id.time);
-		time0 = ViewHolder.get(convertView, R.id.time0);
-		time1 = ViewHolder.get(convertView, R.id.time1);
-		time2 = ViewHolder.get(convertView, R.id.time2);
-		time3 = ViewHolder.get(convertView, R.id.time3);
-		time4 = ViewHolder.get(convertView, R.id.time4);
+		emo = ViewHolder.get(convertView, R.id.comment);
+		layer = ViewHolder.get(convertView, R.id.layer);
 		imageSingle = ViewHolder.get(convertView, R.id.imageSingle);
+		commentMoreCount = ViewHolder.get(convertView, R.id.commentMoreCount);
 		roundimg = ViewHolder.get(convertView, R.id.roundimg);
 		roundimg.setBackgroundResource(R.drawable.default_head);
-		name.setText((String) list.get(position).get("name"));
 		layer.setText((String) list.get(position).get("layer"));
+		name.setText((String) list.get(position).get("name"));
 		time.setText((String) list.get(position).get("time"));
-		name0.setText((String) list.get(position).get("name0"));
-		name1.setText((String) list.get(position).get("name1"));
-		name2.setText((String) list.get(position).get("name2"));
-		name3.setText((String) list.get(position).get("name3"));
-		name4.setText((String) list.get(position).get("name4"));
-		time0.setText((String) list.get(position).get("time0"));
-		time1.setText((String) list.get(position).get("time1"));
-		time2.setText((String) list.get(position).get("time2"));
-		time3.setText((String) list.get(position).get("time3"));
-		time4.setText((String) list.get(position).get("time4"));
-		imageSingle.setImageResource(R.drawable.item0);
-		comment.setText((String) list.get(position).get("comment"));
-		comment0.setText((String) list.get(position).get("comment0"));
-		comment1.setText((String) list.get(position).get("comment1"));
-		comment2.setText((String) list.get(position).get("comment2"));
-		comment3.setText((String) list.get(position).get("comment3"));
-		comment4.setText((String) list.get(position).get("comment4"));
+		emo.setText((String) list.get(position).get("comment"));
+		imageSingle.setBackgroundResource(R.drawable.item0);
+		String str = context.getResources().getString(R.string.morediscuss);
+		String discussnum = String.format(str, 20);
+		commentMoreCount.setText(discussnum);
+		lv_dis4dis = ViewHolder.get(convertView, R.id.lv_dis4dis);
+		dislist = new ArrayList<Map<String, Object>>();
+		dislist = TourDetailData.getData(context);
+		adapter = new Dis4DisAdapter(context, dislist);
+		lv_dis4dis.setAdapter(adapter);
+		setListViewHeightBasedOnChildren(lv_dis4dis);
 		return convertView;
+	}
+
+	public void setListViewHeightBasedOnChildren(ListView listView) {
+		ListAdapter listAdapter = listView.getAdapter();
+		if (listAdapter == null) {
+			// pre-condition
+			return;
+		}
+
+		int totalHeight = 0;
+		for (int i = 0; i < listAdapter.getCount(); i++) {
+			View listItem = listAdapter.getView(i, null, listView);
+			listItem.measure(0, 0);
+			totalHeight += listItem.getMeasuredHeight();
+		}
+
+		ViewGroup.LayoutParams params = listView.getLayoutParams();
+		params.height = totalHeight
+				+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+		listView.setLayoutParams(params);
 	}
 
 }
