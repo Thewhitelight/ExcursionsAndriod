@@ -4,19 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.ViewHolder;
 import com.excursions.data.TourDetailData;
+import com.excursions.ui.customview.EmoticonsEditText;
 import com.excursions.ui.customview.EmoticonsTextView;
 import com.excursions.ui.customview.RoundImageView;
 
@@ -30,6 +38,10 @@ public class TourDetailAdapter extends BaseAdapter {
 	private Dis4DisAdapter adapter;
 	private TextView name, time, layer, commentMoreCount;
 	private EmoticonsTextView emo;
+	private LinearLayout buttom_bar;
+	private Button btn_chat_send;
+	private EmoticonsEditText edit_user_comment;
+	private Dis4DisAdapter disadapter;
 
 	public TourDetailAdapter(Context context, List<Map<String, Object>> list) {
 		// TODO Auto-generated constructor stub
@@ -71,6 +83,12 @@ public class TourDetailAdapter extends BaseAdapter {
 		commentMoreCount = ViewHolder.get(convertView, R.id.commentMoreCount);
 		roundimg = ViewHolder.get(convertView, R.id.roundimg);
 		roundimg.setBackgroundResource(R.drawable.default_head);
+		buttom_bar = (LinearLayout) ((Activity) context)
+				.findViewById(R.id.buttom_bar);
+		btn_chat_send = (Button) ((Activity) context)
+				.findViewById(R.id.btn_chat_send);
+		edit_user_comment = (EmoticonsEditText) ((Activity) context)
+				.findViewById(R.id.edit_user_comment);
 		layer.setText((String) list.get(position).get("layer"));
 		name.setText((String) list.get(position).get("name"));
 		time.setText((String) list.get(position).get("time"));
@@ -85,7 +103,40 @@ public class TourDetailAdapter extends BaseAdapter {
 		adapter = new Dis4DisAdapter(context, dislist);
 		lv_dis4dis.setAdapter(adapter);
 		setListViewHeightBasedOnChildren(lv_dis4dis);
+		lv_dis4dis.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					final int position, long id) {
+				// TODO Auto-generated method stub
+				buttom_bar.setVisibility(View.VISIBLE);
+				Toast.makeText(context, position + " ", Toast.LENGTH_SHORT)
+						.show();
+				btn_chat_send.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						upListItem(position);
+						setListViewHeightBasedOnChildren(lv_dis4dis);
+						Toast.makeText(context, "OnClick", Toast.LENGTH_SHORT)
+								.show();
+					}
+				});
+			}
+		});
 		return convertView;
+	}
+
+	private void upListItem(int position) {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("unchecked")
+		Map<String, Object> map = (Map<String, Object>) disadapter
+				.getItem(position);// mPullRefreshListView的position起始为1,position-1否则数组越界
+		map.put("comment", edit_user_comment.getText().toString());
+		dislist.add(map);
+		disadapter.notifyDataSetChanged();
+
 	}
 
 	public void setListViewHeightBasedOnChildren(ListView listView) {

@@ -66,7 +66,7 @@ public class TourIssueActivity extends ActivityBase implements OnClickListener {
 		// TODO Auto-generated method stub
 		int id = item.getItemId();
 		if (id == R.id.ok) {
-			this.finish();
+			TourIssueActivity.this.finish();
 		}
 		return super.onOptionsItemSelected(item);
 	}

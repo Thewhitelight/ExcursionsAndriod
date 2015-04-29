@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.json.JSONArray;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,8 @@ import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -25,8 +28,10 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.excursions.R;
+import com.excursions.adapter.Dis4DisAdapter;
 import com.excursions.adapter.EmoViewPagerAdapter;
 import com.excursions.adapter.EmoteAdapter;
 import com.excursions.adapter.TourDetailAdapter;
@@ -49,9 +54,8 @@ public class TouristDetailActivity extends ActivityBase implements
 	private List<Map<String, Object>> list;
 	private PullToRefreshListView mPullRefreshListView;
 	private TourDetailAdapter adapter;
+	private Dis4DisAdapter disadapter;
 	private Mode currentMode;
-
-	private static int position;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class TouristDetailActivity extends ActivityBase implements
 		list = new ArrayList<Map<String, Object>>();
 		list = TourDetailData.getData(this);
 		adapter = new TourDetailAdapter(this, list);
+		disadapter = new Dis4DisAdapter(this, list);
 		init();
 	}
 
@@ -120,14 +125,33 @@ public class TouristDetailActivity extends ActivityBase implements
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+					final int position, long id) {
 				// TODO Auto-generated method stub
 				buttom_bar.setVisibility(View.VISIBLE);
-				TouristDetailActivity.position = position;
+				// @SuppressWarnings("unchecked")
+				// Map<String, Object> map = (Map<String, Object>) disadapter
+				// .getItem(position - 1);// position-1否则数组越界
+				// map.put("comment0", edit_user_comment.getText().toString());
+				// list.add(map);
+				// disadapter.notifyDataSetChanged();
+				btn_chat_send.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+
+						upListItem(position);
+
+						Toast.makeText(getApplicationContext(),
+								edit_user_comment.getText().toString(),
+								Toast.LENGTH_SHORT).show();
+						edit_user_comment.setText("");
+					}
+				});
+
 				ShowToast("点击" + position);
 			}
 		});
-
 	}
 
 	private class GetDataTask extends
@@ -231,8 +255,8 @@ public class TouristDetailActivity extends ActivityBase implements
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 				FaceText name = (FaceText) gridAdapter.getItem(position);
 				String key = name.text.toString();
 				try {
@@ -299,20 +323,22 @@ public class TouristDetailActivity extends ActivityBase implements
 			}
 
 			break;
-		case R.id.btn_chat_send:
-			upListItem(position);
-			edit_user_comment.setText("");
-			break;
+		// case R.id.btn_chat_send:
+		//
+		// break;
 		}
 	}
 
 	private void upListItem(int position) {
 		// TODO Auto-generated method stub
 		@SuppressWarnings("unchecked")
-		Map<String, Object> list = (Map<String, Object>) adapter
-				.getItem(position - 1);// position-1否则数组越界
-		list.put("comment", edit_user_comment.getText().toString());
-		adapter.notifyDataSetChanged();
+		Map<String, Object> map = (Map<String, Object>) disadapter
+				.getItem(position - 1);// mPullRefreshListView的position起始为1,position-1否则数组越界
+		map.put("comment", edit_user_comment.getText().toString());
+		map.put("comment0", edit_user_comment.getText().toString());
+		list.add(map);
+		disadapter.notifyDataSetChanged();
+
 	}
 
 	/**
@@ -346,5 +372,21 @@ public class TouristDetailActivity extends ActivityBase implements
 				((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
 						.showSoftInput(edit_user_comment, 0);
 		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.discuss_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		if (item.getItemId() == R.id.discuss) {
+			startActivity(new Intent(this, TourIssueActivity.class));
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
