@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.ViewHolder;
-import com.excursions.data.TourDetailData;
 import com.excursions.ui.customview.EmoticonsEditText;
 import com.excursions.ui.customview.EmoticonsTextView;
 import com.excursions.ui.customview.RoundImageView;
@@ -35,7 +34,6 @@ public class TourDetailAdapter extends BaseAdapter {
 	private ImageView imageSingle;
 	private ListView lv_dis4dis;
 	private Context context;
-	private Dis4DisAdapter adapter;
 	private TextView name, time, layer, commentMoreCount;
 	private EmoticonsTextView emo;
 	private LinearLayout buttom_bar;
@@ -99,9 +97,9 @@ public class TourDetailAdapter extends BaseAdapter {
 		commentMoreCount.setText(discussnum);
 		lv_dis4dis = ViewHolder.get(convertView, R.id.lv_dis4dis);
 		dislist = new ArrayList<Map<String, Object>>();
-		dislist = TourDetailData.getData(context);
-		adapter = new Dis4DisAdapter(context, dislist);
-		lv_dis4dis.setAdapter(adapter);
+		dislist = list;// TourDetailData.getData(context);
+		disadapter = new Dis4DisAdapter(context, dislist);
+		lv_dis4dis.setAdapter(disadapter);
 		setListViewHeightBasedOnChildren(lv_dis4dis);
 		lv_dis4dis.setOnItemClickListener(new OnItemClickListener() {
 
@@ -119,8 +117,10 @@ public class TourDetailAdapter extends BaseAdapter {
 						// TODO Auto-generated method stub
 						upListItem(position);
 						setListViewHeightBasedOnChildren(lv_dis4dis);
-						Toast.makeText(context, "OnClick", Toast.LENGTH_SHORT)
-								.show();
+						Toast.makeText(context,
+								edit_user_comment.getText().toString(),
+								Toast.LENGTH_SHORT).show();
+						edit_user_comment.setText("");
 					}
 				});
 			}
@@ -133,7 +133,7 @@ public class TourDetailAdapter extends BaseAdapter {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> map = (Map<String, Object>) disadapter
 				.getItem(position);// mPullRefreshListView的position起始为1,position-1否则数组越界
-		map.put("comment", edit_user_comment.getText().toString());
+		map.put("comment0", edit_user_comment.getText().toString());
 		dislist.add(map);
 		disadapter.notifyDataSetChanged();
 

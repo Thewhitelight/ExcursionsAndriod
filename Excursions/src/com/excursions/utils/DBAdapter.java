@@ -19,13 +19,12 @@ public class DBAdapter {
 	private static final String DATABASE_TABLE = "Excursions";
 	private static final int DATABASE_VERSION = 1;
 	public static final String DATABASE_CREATE = "create table Excursions(id integer primary key autoincrement,att text,budget text,time text,type text,tcost text,fund text)";
-	private final Context context;
+	//private final Context context;
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
 
 	public DBAdapter(Context context) {
 		// TODO Auto-generated constructor stub
-		this.context = context;
 		DBHelper = new DatabaseHelper(context);
 	}
 

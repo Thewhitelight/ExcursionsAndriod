@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
-import android.widget.Toast;
 import cn.bmob.im.BmobChat;
 
 import com.baidu.location.LocationClient;
@@ -23,7 +22,6 @@ import com.baidu.mapapi.SDKInitializer;
 import com.example.excursions.R;
 import com.excursions.application.BmobConfig;
 import com.excursions.application.MyApplication;
-import com.excursions.utils.CommonUtils;
 
 public class SplashActivity extends BaseActivity {
 	private ImageView img_splash;
@@ -191,63 +189,6 @@ public class SplashActivity extends BaseActivity {
 	public void readShare() {
 		preferences = getSharedPreferences("versionCode", MODE_PRIVATE);
 		count = preferences.getInt("versionCode", 2);
-	}
-
-	private void startMainActivity() {
-		if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
-			new Thread() {
-				public void run() {
-					try {
-						Thread.sleep(3000);// –›√ﬂ3√Î÷”
-						if (count == currentversioncode) {
-							Intent intent = new Intent(
-									com.excursions.ui.activity.SplashActivity.this,
-									com.excursions.ui.activity.SignInActivity.class);
-							startActivity(intent);
-						} else {
-
-							Intent intent = new Intent(
-									com.excursions.ui.activity.SplashActivity.this,
-									com.excursions.ui.activity.GuideActivity.class);
-							startActivity(intent);
-						}
-					} catch (InterruptedException e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
-
-					SplashActivity.this.finish();
-				};
-			}.start();
-		} else {
-			Toast.makeText(getApplicationContext(), "∑˛ŒÒ∆˜¡¨Ω” ß∞‹£¨«ÎºÏ≤ÈÕ¯¬ÁªÚ…‘∫Û÷ÿ ‘",
-					Toast.LENGTH_SHORT).show();
-
-			new Thread() {
-				public void run() {
-					try {
-						Thread.sleep(3000);// –›√ﬂ3√Î÷”
-						if (count == currentversioncode) {
-							Intent intent = new Intent(
-									com.excursions.ui.activity.SplashActivity.this,
-									com.excursions.ui.activity.MainActivity.class);
-							startActivity(intent);
-
-						} else {
-							Intent intent = new Intent(
-									com.excursions.ui.activity.SplashActivity.this,
-									com.excursions.ui.activity.GuideActivity.class);
-							startActivity(intent);
-						}
-
-					} catch (InterruptedException e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
-					SplashActivity.this.finish();
-				};
-			}.start();
-		}
 	}
 
 	/**

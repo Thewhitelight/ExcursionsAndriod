@@ -40,7 +40,7 @@ public class BillDetailActivity extends ActivityBase {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String str = sp_type.getSelectedItem().toString();
+				//String str = sp_type.getSelectedItem().toString();
 			}
 		});
 	}
