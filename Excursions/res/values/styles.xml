@@ -8,7 +8,7 @@
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here
         -->
     </style>
 
@@ -177,6 +177,15 @@
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:textAppearance">@style/TextAppearance.DialogWindowTitle</item>
+    </style>
+
+    <!-- 主题样式 -->
+    <style name="theme1" parent="AppBaseTheme">
+        <item name="bg_buttom_bar">@drawable/tab_bg</item>
+    </style>
+
+    <style name="theme2" parent="AppBaseTheme">
+        <item name="bg_buttom_bar">@drawable/ic_notify_txt</item>
     </style>
 
 </resources>

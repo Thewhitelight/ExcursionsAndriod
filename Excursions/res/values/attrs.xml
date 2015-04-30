@@ -21,4 +21,6 @@
         <attr name="selectedTabTextColor" format="color" />
     </declare-styleable>
 
+    <attr name="bg_buttom_bar" format="reference" />
+
 </resources>

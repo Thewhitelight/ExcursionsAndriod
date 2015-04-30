@@ -43,6 +43,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setTheme(R.style.theme2);
 		overridePendingTransition(android.R.anim.fade_in,
 				android.R.anim.fade_out);
 		ActionBar actionBar = getSupportActionBar();

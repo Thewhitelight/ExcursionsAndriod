@@ -177,7 +177,7 @@ public class AttractionDetailActivity extends ActivityBase implements
 		viewPager.setFocusableInTouchMode(true);
 		viewPager.requestFocus();
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-				LayoutParams.MATCH_PARENT, Dp2Px(80) * 3);// 通过item高度设置viewpager高度
+				LayoutParams.MATCH_PARENT, Dp2Px(80 * 3));// 通过item高度设置viewpager高度
 		// 3为item个数
 		params.setMargins(0, 80, 0, 0);
 		tab_pager.setLayoutParams(params);
