@@ -25,6 +25,7 @@ import android.widget.ListView;
 import com.example.excursions.R;
 import com.excursions.adapter.TourLvAdapter;
 import com.excursions.data.TouListViewData;
+import com.excursions.ui.activity.RosterActivity;
 import com.excursions.ui.activity.TourIssueActivity;
 import com.excursions.ui.activity.TouristDetailActivity;
 import com.excursions.utils.ReadTextFile;
@@ -242,7 +243,7 @@ public class TouristInfoMainFragment extends BaseFragment {
 			return true;
 		}
 		if (id == R.id.all) {
-
+			startActivity(new Intent(getActivity(), RosterActivity.class));
 			return true;
 		}
 		if (id == R.id.friends) {

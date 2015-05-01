@@ -377,6 +377,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
 	public String filePath = "";
 
+	@SuppressWarnings("deprecation")
 	private void showAvatarPop() {
 		View view = LayoutInflater.from(this).inflate(R.layout.pop_showavator,
 				null);
@@ -411,6 +412,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		});
 		layout_choose.setOnClickListener(new OnClickListener() {
 
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub

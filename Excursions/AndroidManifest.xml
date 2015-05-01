@@ -205,6 +205,18 @@
             android:name="com.excursions.ui.activity.TourIssueActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.excursions.ui.activity.RosterActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.excursions.ui.activity.FeedBackActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.excursions.ui.activity.AboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <service
             android:name="com.baidu.location.f"

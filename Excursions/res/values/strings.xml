@@ -79,5 +79,7 @@
     <!-- <string name="voice_seconds_tips">还可以说%1$s秒</string> -->
     <string name="voice_short_tips">录音时间太短</string>
     <string name="morediscuss">查看全部%1$d条评论</string>
+    <string name="feedback">意见反馈</string>
+    <string name="about">关于我们</string>
 
 </resources>

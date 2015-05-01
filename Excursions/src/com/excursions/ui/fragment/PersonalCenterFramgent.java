@@ -14,7 +14,9 @@ import cn.bmob.im.BmobUserManager;
 
 import com.example.excursions.R;
 import com.excursions.application.MyApplication;
+import com.excursions.ui.activity.AboutActivity;
 import com.excursions.ui.activity.BlackListActivity;
+import com.excursions.ui.activity.FeedBackActivity;
 import com.excursions.ui.activity.SetMyInfoActivity;
 import com.excursions.ui.activity.SignInActivity;
 import com.excursions.utils.SharePreferenceUtil;
@@ -25,7 +27,7 @@ public class PersonalCenterFramgent extends BaseFragment implements
 	Button btn_logout;
 	TextView tv_set_name;
 	RelativeLayout layout_info, rl_switch_notification, rl_switch_voice,
-			rl_switch_vibrate, layout_blacklist;
+			rl_switch_vibrate, layout_blacklist, layout_feedback, layout_about;
 
 	ImageView iv_open_notification, iv_close_notification, iv_open_voice,
 			iv_close_voice, iv_open_vibrate, iv_close_vibrate;
@@ -64,8 +66,9 @@ public class PersonalCenterFramgent extends BaseFragment implements
 		// initTopBarForOnlyTitle("设置");
 		// 黑名单列表
 		layout_blacklist = (RelativeLayout) findViewById(R.id.layout_blacklist);
-
 		layout_info = (RelativeLayout) findViewById(R.id.layout_info);
+		layout_feedback = (RelativeLayout) findViewById(R.id.layout_feedback);
+		layout_about = (RelativeLayout) findViewById(R.id.layout_about);
 		rl_switch_notification = (RelativeLayout) findViewById(R.id.rl_switch_notification);
 		rl_switch_voice = (RelativeLayout) findViewById(R.id.rl_switch_voice);
 		rl_switch_vibrate = (RelativeLayout) findViewById(R.id.rl_switch_vibrate);
@@ -114,7 +117,8 @@ public class PersonalCenterFramgent extends BaseFragment implements
 		btn_logout.setOnClickListener(this);
 		layout_info.setOnClickListener(this);
 		layout_blacklist.setOnClickListener(this);
-
+		layout_feedback.setOnClickListener(this);
+		layout_about.setOnClickListener(this);
 	}
 
 	private void initData() {
@@ -187,7 +191,12 @@ public class PersonalCenterFramgent extends BaseFragment implements
 				mSharedUtil.setAllowVibrateEnable(true);
 			}
 			break;
-
+		case R.id.layout_feedback:
+			startActivity(new Intent(getActivity(), FeedBackActivity.class));
+			break;
+		case R.id.layout_about:
+			startActivity(new Intent(getActivity(), AboutActivity.class));
+			break;
 		}
 	}
 
