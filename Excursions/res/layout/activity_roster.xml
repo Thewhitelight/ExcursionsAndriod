@@ -167,20 +167,38 @@
                 android:contentDescription="@string/add_avator"
                 android:scaleType="fitXY" />
 
-            <TextView
-                style="@style/chat_content_date_style"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/margin_chat_top"
                 android:layout_marginTop="10dp"
                 android:layout_toLeftOf="@id/iv_avatar5"
                 android:background="@drawable/chat_right_qp"
-                android:maxWidth="225.0dip"
+                android:maxWidth="225dp"
                 android:minHeight="50dp"
                 android:minWidth="50dp"
                 android:paddingLeft="5dp"
-                android:paddingRight="15dp"
-                android:text="你是不是和爱丽丝一样，在你们那个世界，是一个小姑娘？A：是 B：否" />
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/tv_01"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_right_qp"
+                    android:text="你是不是和爱丽丝一样，在你们那个世界，是一个小姑娘？" />
+
+                <Spinner
+                    android:id="@+id/sp_q1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_01"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_right_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_right_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -199,23 +217,38 @@
                 android:contentDescription="@string/add_avator"
                 android:scaleType="fitXY" />
 
-            <TextView
-                style="@style/chat_content_date_style"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/margin_chat_top"
                 android:layout_marginTop="10dp"
                 android:layout_toLeftOf="@id/iv_avatar23"
                 android:background="@drawable/chat_right_qp"
-                android:maxWidth="225.0dip"
+                android:maxWidth="225dp"
                 android:minHeight="50dp"
                 android:minWidth="50dp"
                 android:paddingLeft="5dp"
-                android:paddingRight="15dp"
-                android:text="我可不随便和别人交朋友，快告诉我，你是怎么样一个人？
-A：开放直接、主观冲动 B：谨慎严谨、严肃挑剔 
-C：自觉严谨、冷漠果断 D：开放犹豫、亲近友好
-" />
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/tv_02"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_right_qp"
+                    android:text="我可不随便和别人交朋友，快告诉我，你是怎么样一个人？" />
+
+                <Spinner
+                    android:id="@+id/sp_q2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_02"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_right_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_right_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -601,7 +634,7 @@ C：自觉严谨、冷漠果断 D：开放犹豫、亲近友好
                 android:contentDescription="@string/add_avator"
                 android:scaleType="fitXY" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_chat_top"
@@ -614,10 +647,27 @@ C：自觉严谨、冷漠果断 D：开放犹豫、亲近友好
                 android:minHeight="50dp"
                 android:minWidth="50dp"
                 android:paddingLeft="15dp"
-                android:paddingRight="5dp"
-                android:text="哇！这么丰富！对了，party上一定要设一个图书角，供客人在那休息阅读！你说我们放什么类别的书呢？A：历史人物 B：武侠小说 C：网络流行小说 D：卡通动漫"
-                android:textColor="#ff000000"
-                android:textSize="15sp" />
+                android:paddingRight="5dp" >
+
+                <TextView
+                    android:id="@+id/tv_03"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_left_qp"
+                    android:text="哇！这么丰富！对了，party上一定要设一个图书角，供客人在那休息阅读！你说我们放什么类别的书呢？" />
+
+                <Spinner
+                    android:id="@+id/sp_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_03"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_left_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_left_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -807,7 +857,7 @@ C：自觉严谨、冷漠果断 D：开放犹豫、亲近友好
                 android:contentDescription="@string/add_avator"
                 android:scaleType="fitXY" />
 
-            <TextView
+            <RelativeLayout
                 style="@style/chat_content_date_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -819,8 +869,27 @@ C：自觉严谨、冷漠果断 D：开放犹豫、亲近友好
                 android:minHeight="50dp"
                 android:minWidth="50dp"
                 android:paddingLeft="5dp"
-                android:paddingRight="15dp"
-                android:text="感谢我们温柔、善良、高贵的王后殿下，从今天开始百姓们可以购买她的红桃，它具有使人开心的魔法爱丽丝：我们去买红桃吧！这样就可以用魔法带我们去我们梦想去的地方了！你想去哪？A：东海日出古到今 B：南方地暖夏或春 C：西域苍茫大漠在 D：北国风光四时分" />
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/tv_04"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_right_qp"
+                    android:text="感谢我们温柔、善良、高贵的王后殿下，从今天开始百姓们可以购买她的红桃，它具有使人开心的魔法爱丽丝：我们去买红桃吧！这样就可以用魔法带我们去我们梦想去的地方了！你想去哪？" />
+
+                <Spinner
+                    android:id="@+id/sp_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_04"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_right_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_right_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
         </RelativeLayout>
 
         <Button

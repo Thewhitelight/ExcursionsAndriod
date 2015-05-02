@@ -81,5 +81,7 @@
     <string name="morediscuss">查看全部%1$d条评论</string>
     <string name="feedback">意见反馈</string>
     <string name="about">关于我们</string>
+    <string name="title">标题</string>
+    <string name="content">内容</string>
 
 </resources>
