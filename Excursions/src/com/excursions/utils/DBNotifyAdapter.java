@@ -57,7 +57,7 @@ public class DBNotifyAdapter {
 	public Cursor selectAllNotify() {
 		// TODO Auto-generated method stub
 		return db.query(DATABASE_TABLE, new String[] {}, null, null, null,
-				null, "time desc");
+				null, "id desc");
 
 	}
 
