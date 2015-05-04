@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -376,6 +379,29 @@ public class AttractionDetailActivity extends ActivityBase implements
 			return mImageViews[position % mImageViews.length];
 		}
 
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		getMenuInflater().inflate(R.menu.att_detail, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case R.id.add_trip:
+			startActivity(new Intent(this, TourIssueActivity.class));
+			break;
+		case R.id.add_disscuss:
+			startActivity(new Intent(this, TourIssueActivity.class));
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }

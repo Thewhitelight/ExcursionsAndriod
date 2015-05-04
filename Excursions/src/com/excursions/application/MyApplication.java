@@ -66,6 +66,7 @@ public class MyApplication extends Application {
 
 		initImageLoader(getApplicationContext());
 		initBaidu();
+
 	}
 
 	public static void initImageLoader(Context context) {

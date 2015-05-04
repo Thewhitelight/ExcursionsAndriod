@@ -31,7 +31,20 @@ public class User extends BmobChatUser {
 	/**
 	 * 地理坐标
 	 */
-	private BmobGeoPoint location;//
+	private BmobGeoPoint location;
+
+	/**
+	 * 用户花名
+	 */
+	private String roster;
+
+	public String getRoster() {
+		return roster;
+	}
+
+	public void setRoster(String roster) {
+		this.roster = roster;
+	}
 
 	private Integer hight;
 

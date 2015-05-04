@@ -141,11 +141,11 @@ public class TouristDetailActivity extends ActivityBase implements
 						// TODO Auto-generated method stub
 
 						upListItem(position);
-
 						Toast.makeText(getApplicationContext(),
 								edit_user_comment.getText().toString(),
 								Toast.LENGTH_SHORT).show();
 						edit_user_comment.setText("");
+						layout_more.setVisibility(View.GONE);
 					}
 				});
 

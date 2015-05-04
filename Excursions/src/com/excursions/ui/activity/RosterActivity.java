@@ -1,6 +1,5 @@
 package com.excursions.ui.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,12 +7,18 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import cn.bmob.im.BmobUserManager;
+import cn.bmob.im.util.BmobLog;
+import cn.bmob.v3.listener.UpdateListener;
 
 import com.example.excursions.R;
+import com.excursions.bean.User;
 
-public class RosterActivity extends Activity {
+public class RosterActivity extends ActivityBase {
 	private Spinner sp_q1, sp_q2, sp_q3, sp_q4;
 	private Button btn_start;
+	User user = new User();
+	BmobUserManager userManager = BmobUserManager.getInstance(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +53,34 @@ public class RosterActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				// saveRoster();
+				user.setRoster("master");
+				updateUserData(user, new UpdateListener() {
+
+					@Override
+					public void onSuccess() {
+						// TODO Auto-generated method stub
+						BmobLog.i("修改成功");
+
+					}
+
+					@Override
+					public void onFailure(int arg0, String arg1) {
+						// TODO Auto-generated method stub
+						BmobLog.i("修改失败");
+					}
+				});
 				startActivity(new Intent(getApplicationContext(),
 						MainActivity.class));
 
 			}
 		});
 	}
+
+	private void updateUserData(User user, UpdateListener listener) {
+		User current = (User) userManager.getCurrentUser(User.class);
+		user.setObjectId(current.getObjectId());
+		user.update(this, listener);
+	}
+
 }

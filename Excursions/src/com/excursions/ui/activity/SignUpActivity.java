@@ -46,6 +46,7 @@ public class SignUpActivity extends BaseActivity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+
 				register();
 			}
 		});
@@ -171,7 +172,6 @@ public class SignUpActivity extends BaseActivity {
 				ShowToast("×¢²áÊ§°Ü:" + arg1);
 				progress.dismiss();
 			}
-		});
+		});		
 	}
-
 }

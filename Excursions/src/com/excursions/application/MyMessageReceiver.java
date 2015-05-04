@@ -3,12 +3,14 @@ package com.excursions.application;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import cn.bmob.im.BmobChatManager;
 import cn.bmob.im.BmobNotifyManager;
 import cn.bmob.im.BmobUserManager;
@@ -27,8 +29,10 @@ import cn.bmob.v3.listener.FindListener;
 import com.example.excursions.R;
 import com.excursions.ui.activity.MainActivity;
 import com.excursions.ui.activity.NewFriendActivity;
+import com.excursions.ui.activity.NotifyActivity;
 import com.excursions.utils.CollectionUtils;
 import com.excursions.utils.CommonUtils;
+import com.excursions.utils.DBNotifyAdapter;
 
 /**
  * 推送消息接收器
@@ -47,24 +51,32 @@ public class MyMessageReceiver extends BroadcastReceiver {
 	public static int mNewNum = 0;//
 	BmobUserManager userManager;
 	BmobChatUser currentUser;
-
+	String json;
+	private Context context;
+	private DBNotifyAdapter db;
 	// 如果你想发送自定义格式的消息，请使用sendJsonMessage方法来发送Json格式的字符串，然后你按照格式自己解析并处理
+	private String title, content, time;
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
-		String json = intent.getStringExtra("msg");
-		BmobLog.i("收到的message = " + json);
+		this.context = context;
+		json = intent.getStringExtra("msg");
 
+		// BmobLog.i("收到的message = " + json);
 		userManager = BmobUserManager.getInstance(context);
 		currentUser = userManager.getCurrentUser();
+		db = new DBNotifyAdapter(context);
 		boolean isNetConnected = CommonUtils.isNetworkAvailable(context);
 		if (isNetConnected) {
+			parseTextPush();
 			parseMessage(context, json);
+			Log.i("收到的message:", json);
 		} else {
 			for (int i = 0; i < ehList.size(); i++)
 				((EventListener) ehList.get(i)).onNetChange(isNetConnected);
 		}
+
 	}
 
 	/**
@@ -282,6 +294,58 @@ public class MyMessageReceiver extends BroadcastReceiver {
 					isAllowVibrate, R.drawable.ic_launcher, ticker, username,
 					ticker.toString(), NewFriendActivity.class);
 		}
+	}
+
+	private void parseTextPush() {
+		// TODO Auto-generated method stub
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			title = jsonObject.getString("title");
+			content = jsonObject.getString("content");
+			time = jsonObject.getString("time");
+			insertData();
+			showPushNotify(context,
+					context.getResources().getString(R.string.app_name), title);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void insertData() {
+		// TODO Auto-generated method stub
+		try {
+			db.open();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		db.insertNotify(title, content, time);
+		db.close();
+	}
+
+	/**
+	 * 显示推送通知
+	 * 
+	 * @param context
+	 * @param title
+	 * @param content
+	 */
+	private void showPushNotify(Context context, String title, String content) {
+		// TODO Auto-generated method stub
+		boolean isAllow = MyApplication.getInstance().getSpUtil()
+				.isAllowPushNotify();
+		boolean isAllowVoice = MyApplication.getInstance().getSpUtil()
+				.isAllowVoice();
+		boolean isAllowVibrate = MyApplication.getInstance().getSpUtil()
+				.isAllowVibrate();
+		if (isAllow) {
+			// 同时提醒通知
+			BmobNotifyManager.getInstance(context).showNotify(isAllowVoice,
+					isAllowVibrate, R.drawable.ic_launcher, null, title,
+					content, NotifyActivity.class);
+		}
+
 	}
 
 }

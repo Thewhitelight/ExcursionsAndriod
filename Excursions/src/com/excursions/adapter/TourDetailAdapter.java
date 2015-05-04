@@ -36,7 +36,7 @@ public class TourDetailAdapter extends BaseAdapter {
 	private Context context;
 	private TextView name, time, layer, commentMoreCount;
 	private EmoticonsTextView emo;
-	private LinearLayout buttom_bar;
+	private LinearLayout buttom_bar, layout_more;
 	private Button btn_chat_send;
 	private EmoticonsEditText edit_user_comment;
 	private Dis4DisAdapter disadapter;
@@ -83,6 +83,8 @@ public class TourDetailAdapter extends BaseAdapter {
 		roundimg.setBackgroundResource(R.drawable.default_head);
 		buttom_bar = (LinearLayout) ((Activity) context)
 				.findViewById(R.id.buttom_bar);
+		layout_more = (LinearLayout) ((Activity) context)
+				.findViewById(R.id.layout_more);
 		btn_chat_send = (Button) ((Activity) context)
 				.findViewById(R.id.btn_chat_send);
 		edit_user_comment = (EmoticonsEditText) ((Activity) context)
@@ -121,6 +123,7 @@ public class TourDetailAdapter extends BaseAdapter {
 								edit_user_comment.getText().toString(),
 								Toast.LENGTH_SHORT).show();
 						edit_user_comment.setText("");
+						layout_more.setVisibility(View.GONE);
 					}
 				});
 			}

@@ -83,5 +83,8 @@
     <string name="about">关于我们</string>
     <string name="title">标题</string>
     <string name="content">内容</string>
+    <string name="add_trip">添加攻略</string>
+    <string name="add_discuss">添加评论</string>
+    <string name="roster">花名</string>
 
 </resources>

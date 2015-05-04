@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="8"
         android:targetSdkVersion="22" />
 
     <supports-screens
@@ -215,6 +215,14 @@
         </activity>
         <activity
             android:name="com.excursions.ui.activity.AboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.excursions.ui.activity.NotifyActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.excursions.ui.activity.NotifyDetailActivity"
             android:screenOrientation="portrait" >
         </activity>
 

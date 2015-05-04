@@ -34,7 +34,7 @@ public class BillActivity extends ActivityBase {
 	private String fund;
 	private DBAdapter db;
 	private final static String KEY = "key";
-	private Intent i = new Intent();;
+	private Intent i = new Intent();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

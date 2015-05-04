@@ -112,13 +112,4 @@ public class BillEditDetailActivity extends ActivityBase {
 		startActivity(new Intent(getApplicationContext(), BillActivity.class));
 		this.finish();
 	}
-
-	// private void clear() {
-	// // TODO Auto-generated method stub
-	// edt_bill_title.setText("");
-	// edt_bill_budget.setText("");
-	// edt_bill_time.setText("");
-	// edt_typefund.setText("");
-	// edt_fund.setText("");
-	// }
 }

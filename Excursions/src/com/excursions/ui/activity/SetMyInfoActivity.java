@@ -55,12 +55,13 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
-	TextView tv_set_name, tv_set_nick, tv_set_gender;
-	ImageView iv_arraw, iv_nickarraw;
+	TextView tv_set_name, tv_set_nick, tv_set_gender, tv_set_roster;
+	ImageView iv_arraw, iv_nickarraw, iv_rosterarraw;
 	LinearLayout layout_all;
 	RoundImageView iv_set_avator;
 	Button btn_chat, btn_back, btn_add_friend;
-	RelativeLayout layout_head, layout_nick, layout_gender, layout_black_tips;
+	RelativeLayout layout_head, layout_nick, layout_gender, layout_black_tips,
+			layout_roster;
 
 	String from = "";
 	String username = "";
@@ -71,12 +72,6 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		// 因为魅族手机下面有三个虚拟的导航按钮，需要将其隐藏掉，不然会遮掉拍照和相册两个按钮，且在setContentView之前调用才能生效
-		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-		if (currentapiVersion >= 14) {
-			getWindow().getDecorView().setSystemUiVisibility(
-					View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-		}
 		actionBar.setTitle("个人资料");
 		setContentView(R.layout.activity_set_info);
 		from = getIntent().getStringExtra("from");// me add other
@@ -89,11 +84,14 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		iv_set_avator = (RoundImageView) findViewById(R.id.iv_set_avator);
 		iv_arraw = (ImageView) findViewById(R.id.iv_arraw);
 		iv_nickarraw = (ImageView) findViewById(R.id.iv_nickarraw);
+		iv_rosterarraw = (ImageView) findViewById(R.id.iv_rosterarraw);
 		tv_set_name = (TextView) findViewById(R.id.tv_set_name);
 		tv_set_nick = (TextView) findViewById(R.id.tv_set_nick);
+		tv_set_roster = (TextView) findViewById(R.id.tv_set_roster);
 		layout_head = (RelativeLayout) findViewById(R.id.layout_head);
 		layout_nick = (RelativeLayout) findViewById(R.id.layout_nick);
 		layout_gender = (RelativeLayout) findViewById(R.id.layout_gender);
+		layout_roster = (RelativeLayout) findViewById(R.id.layout_roster);
 		// 黑名单提示语
 		layout_black_tips = (RelativeLayout) findViewById(R.id.layout_black_tips);
 		tv_set_gender = (TextView) findViewById(R.id.tv_set_gender);
@@ -104,19 +102,22 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		btn_chat.setEnabled(false);
 		btn_back.setEnabled(false);
 		if (from.equals("me")) {
-			// initTopBarForLeft("个人资料");
+
 			layout_head.setOnClickListener(this);
 			layout_nick.setOnClickListener(this);
 			layout_gender.setOnClickListener(this);
+			layout_roster.setOnClickListener(this);
 			iv_nickarraw.setVisibility(View.VISIBLE);
 			iv_arraw.setVisibility(View.VISIBLE);
+			iv_rosterarraw.setVisibility(View.VISIBLE);
 			btn_back.setVisibility(View.GONE);
 			btn_chat.setVisibility(View.GONE);
 			btn_add_friend.setVisibility(View.GONE);
 		} else {
-			// initTopBarForLeft("详细资料");
+
 			iv_nickarraw.setVisibility(View.INVISIBLE);
 			iv_arraw.setVisibility(View.INVISIBLE);
+			iv_rosterarraw.setVisibility(View.INVISIBLE);
 			// 不管对方是不是你的好友，均可以发送消息--BmobIM_V1.1.2修改
 			btn_chat.setVisibility(View.VISIBLE);
 			btn_chat.setOnClickListener(this);
@@ -178,6 +179,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		refreshAvatar(user.getAvatar());
 		tv_set_name.setText(user.getUsername());
 		tv_set_nick.setText(user.getNick());
+		tv_set_roster.setText(user.getRoster());
 		tv_set_gender.setText(user.getSex() == true ? "男" : "女");
 		// 检测是否为黑名单用户
 		if (from.equals("other")) {
@@ -240,6 +242,9 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			break;
 		case R.id.btn_add_friend:// 添加好友
 			addFriend();
+			break;
+		case R.id.layout_roster:
+			startActivity(new Intent(this, RosterActivity.class));
 			break;
 		}
 	}

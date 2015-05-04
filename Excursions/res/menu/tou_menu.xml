@@ -22,12 +22,12 @@
                 android:title="@string/friend"
                 app:showAsAction="ifRoom"/>
             <item
-                android:id="@+id/org"
+                android:id="@+id/market"
                 android:icon="@drawable/ic_launcher"
                 android:title="@string/market"
                 app:showAsAction="ifRoom"/>
             <item
-                android:id="@+id/market"
+                android:id="@+id/notice"
                 android:icon="@drawable/ic_launcher"
                 android:title="@string/notice"
                 app:showAsAction="ifRoom"/>
