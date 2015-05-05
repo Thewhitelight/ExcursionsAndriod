@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.excursions.ui.customview.EmoticonsEditText
+            android:id="@+id/edit_user_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:imeOptions="flagNoExtractUi"
+            android:minHeight="40dp"
+            android:padding="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_issue_emo"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_enter_emoji_normal" />
+
+            <Button
+                android:id="@+id/btn_issue_add"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/message_button_add" />
+        </LinearLayout>
+
+        <include layout="@layout/emojiview" />
+    </LinearLayout>
+
+</ScrollView>

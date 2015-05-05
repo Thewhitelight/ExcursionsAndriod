@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="13dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center_horizontal"
+            android:text="……造访不可思议王国，一年后的某一天。爱丽丝在追逐戴娜途中，又陷入兔子洞" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="戴娜，戴娜！我的猫猫到哪里去了呢？"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar1"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar1"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="找我吗？" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar2"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar2"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="咦！你不是那个会消失的猫吗？"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar3"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar3"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="你怎么又回来了？还带来了一个新朋友！" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar5"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar5"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225dp"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/tv_01"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_right_qp"
+                    android:text="你是不是和爱丽丝一样，在你们那个世界，是一个小姑娘？" />
+
+                <Spinner
+                    android:id="@+id/sp_q1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_01"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_right_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_right_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar23"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar23"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225dp"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/tv_02"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_right_qp"
+                    android:text="我可不随便和别人交朋友，快告诉我，你是怎么样一个人？" />
+
+                <Spinner
+                    android:id="@+id/sp_q2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_02"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_right_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_right_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar22"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar22"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="我喜欢你！你们来这里干什么？" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar4"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar4"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="我们在找我的小猫戴娜，而且，好像我们也迷路了"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar6"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar6"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="那可真是悲剧了，但是你们掉进来也不是什么坏事 \n我听说红桃王后给公爵夫人看了她的新宠" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar7"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar7"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="新宠？是我的戴娜吗？"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar8"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar8"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="不知道是不是你的戴娜，但它的名字叫叮当" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar9"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar9"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="叮当？真土的名字……啊啊啊……我的戴娜……呜呜呜"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar10"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar10"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="好了好了，别哭了，要不，你在这里举办一个party吧" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar11"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar11"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="在这种时候？！你……疯了"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar12"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar12"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="是很疯狂，不过，你听我细细说\n在这个国度里，大家都很热衷于欢乐的party，包括那个红桃皇后\n当王后完全沉浸于你的party之中时，便可趁机夺回戴娜" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar13"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar13"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="方法虽好，但是我该怎么准备party呢？"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar14"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar14"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="这是一个好问题，跟我来，看看这些树，有蛋糕树、意大利面树、披萨树、巧克力树……只需要你摘下来就行！" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar15"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar15"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp" >
+
+                <TextView
+                    android:id="@+id/tv_03"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_left_qp"
+                    android:text="哇！这么丰富！对了，party上一定要设一个图书角，供客人在那休息阅读！你说我们放什么类别的书呢？" />
+
+                <Spinner
+                    android:id="@+id/sp_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_03"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_left_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_left_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar16"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar16"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="不好，王后来了！" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#000" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar17"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar17"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="王后殿下驾到，全部跪下行礼！" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar18"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar18"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="哎呀！是那个兔子！感觉很厉害的样子"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar19"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar19"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp"
+                android:text="哼" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar20"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_avatar20"
+                android:background="@drawable/chat_left_qp"
+                android:gravity="left|center"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:text="肃静，否则处决。现在我要宣布圣旨。"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_chat_top" >
+
+            <com.excursions.ui.customview.RoundImageView
+                android:id="@+id/iv_avatar21"
+                android:layout_width="@dimen/base_scrollview_top_height"
+                android:layout_height="@dimen/base_scrollview_top_height"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:background="@drawable/default_head"
+                android:contentDescription="@string/add_avator"
+                android:scaleType="fitXY" />
+
+            <RelativeLayout
+                style="@style/chat_content_date_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_chat_top"
+                android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@id/iv_avatar21"
+                android:background="@drawable/chat_right_qp"
+                android:maxWidth="225.0dip"
+                android:minHeight="50dp"
+                android:minWidth="50dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="15dp" >
+
+                <TextView
+                    android:id="@+id/tv_04"
+                    style="@style/chat_content_date_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_right_qp"
+                    android:text="感谢我们温柔、善良、高贵的王后殿下，从今天开始百姓们可以购买她的红桃，它具有使人开心的魔法爱丽丝：我们去买红桃吧！这样就可以用魔法带我们去我们梦想去的地方了！你想去哪？" />
+
+                <Spinner
+                    android:id="@+id/sp_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_04"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_right_qp"
+                    android:gravity="center"
+                    android:popupBackground="@drawable/chat_right_qp"
+                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/start_exc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_signin_selector"
+            android:text="奇妙的旅途就此开始！" />
+    </LinearLayout>
+
+</ScrollView>

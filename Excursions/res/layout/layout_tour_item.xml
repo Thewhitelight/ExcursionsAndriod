@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_tou_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center|start"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:textColor="@color/font_black_comment"
+        android:textSize="18sp" />
+
+    <com.excursions.ui.customview.EmoticonsTextView
+        android:id="@+id/tv_tou_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|start"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp" >
+
+            <TextView
+                android:id="@+id/tv_var_man"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|start" />
+
+            <TextView
+                android:id="@+id/tv_var_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="end|center"
+            android:orientation="horizontal"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp" >
+
+            <CheckBox
+                android:id="@+id/ck_good"
+                style="@style/checkbox_good"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:gravity="start|center" />
+
+            <CheckBox
+                android:id="@+id/ck_comment"
+                style="@style/checkbox_comment"
+                android:layout_width="53dp"
+                android:layout_height="wrap_content"
+                android:gravity="start|center" />
+
+            <TextView
+                android:id="@+id/tv_comment_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start|center" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
