@@ -13,6 +13,14 @@ import android.widget.TextView;
 import com.example.excursions.R;
 import com.excursions.ViewHolder.BillListViewHolder;
 
+/**
+ * 账单列表
+ * 
+ * @ClassName: BillLvAdapter
+ * @Description: TODO
+ * @author SZQ
+ * @date 2015年5月6日 下午8:44:21
+ */
 public class BillLvAdapter extends BaseAdapter {
 	private List<Map<String, Object>> listItem;
 	private LayoutInflater inflater;

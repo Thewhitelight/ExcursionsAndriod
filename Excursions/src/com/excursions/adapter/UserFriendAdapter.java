@@ -19,12 +19,10 @@ import com.excursions.utils.ImageLoadOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
- * 好友列表
- * 
- * @ClassName: UserFriendAdapter
+ * @ClassName: 好友列表
  * @Description: TODO
- * @author smile
- * @date 2014-6-12 下午3:03:40
+ * @author SZQ
+ * @date 2015年5月6日 下午8:42:50
  */
 @SuppressLint("DefaultLocale")
 public class UserFriendAdapter extends BaseAdapter implements SectionIndexer {

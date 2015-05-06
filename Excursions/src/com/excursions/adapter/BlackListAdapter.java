@@ -19,8 +19,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  * 
  * @ClassName: BlackListAdapter
  * @Description: TODO
- * @author smile
- * @date 2014-6-24 下午5:27:14
+ * @author SZQ
+ * @date 2015年5月6日 下午8:44:41
  */
 public class BlackListAdapter extends BaseListAdapter<BmobChatUser> {
 
@@ -33,7 +33,8 @@ public class BlackListAdapter extends BaseListAdapter<BmobChatUser> {
 	public View bindView(int arg0, View convertView, ViewGroup arg2) {
 		// TODO Auto-generated method stub
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.item_blacklist, null);
+			convertView = mInflater.inflate(R.layout.item_blacklist, arg2,
+					false);
 		}
 		final BmobChatUser contract = getList().get(arg0);
 		TextView tv_friend_name = ViewHolder.get(convertView,

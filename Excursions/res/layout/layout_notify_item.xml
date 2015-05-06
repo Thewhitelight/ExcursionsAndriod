@@ -9,7 +9,7 @@
         android:id="@+id/tv_notify_title"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center"
         android:padding="2dp"
         android:singleLine="true"
@@ -19,7 +19,7 @@
         android:id="@+id/tv_notify_content"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="6"
         android:gravity="center"
         android:padding="2dp"
         android:singleLine="true"
@@ -29,9 +29,9 @@
         android:id="@+id/tv_notify_time"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:gravity="center"
         android:padding="2dp"
+           android:layout_weight="2"
         android:singleLine="true"
         android:textSize="15sp" />
 

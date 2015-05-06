@@ -15,6 +15,14 @@ import com.example.excursions.R;
 import com.excursions.ViewHolder.TouListViewHolder;
 import com.excursions.ui.customview.EmoticonsTextView;
 
+/**
+ * 社区主页列表
+ * 
+ * @ClassName: TourLvAdapter
+ * @Description: TODO
+ * @author SZQ
+ * @date 2015年5月6日 下午8:50:36
+ */
 public class TourLvAdapter extends BaseAdapter {
 	private List<Map<String, Object>> list;
 	private LayoutInflater inflater;

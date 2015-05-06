@@ -68,11 +68,11 @@ public class DBNotifyAdapter {
 	 * @return
 	 * @throws Exception
 	 */
-	public Cursor selectNotify(String title) throws Exception {
+	public Cursor selectNotify(String time) throws Exception {
 		// TODO Auto-generated method stub
 		Cursor cursor = db.query(true, DATABASE_TABLE, new String[] {
-				KEY_TITLE, KEY_CONTENT, KEY_TIME }, KEY_TITLE + "=" + "'"
-				+ title + "'", null, null, null, null, null);
+				KEY_TITLE, KEY_CONTENT, KEY_TIME }, KEY_TIME + "=" + "'" + time
+				+ "'", null, null, null, null, null);
 		if (cursor != null) {
 			cursor.moveToFirst();
 		}

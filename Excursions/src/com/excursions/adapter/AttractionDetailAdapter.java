@@ -14,6 +14,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**
+ * 景点中攻略与评论列表
+ * 
+ * @ClassName: AttractionDetailAdapter
+ * @Description: TODO
+ * @author SZQ
+ * @date 2015年5月6日 下午8:49:48
+ */
 public class AttractionDetailAdapter extends BaseAdapter {
 	private List<Map<String, Object>> list;
 	private LayoutInflater inflater;

@@ -178,11 +178,11 @@
         <item name="bg_buttom_bar">@drawable/ic_notify_txt</item>
     </style>
 
-    <style name="themen" parent="AppBaseTheme">
+    <style name="theme3" parent="AppBaseTheme">
         <item name="bg_buttom_bar">@drawable/btn_login_n</item>
     </style>
 
-    <style name="themep" parent="AppBaseTheme">
+    <style name="theme4" parent="AppBaseTheme">
         <item name="bg_buttom_bar">@drawable/btn_login_p</item>
     </style>
 

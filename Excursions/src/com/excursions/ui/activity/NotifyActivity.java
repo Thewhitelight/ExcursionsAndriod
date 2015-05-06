@@ -50,7 +50,7 @@ public class NotifyActivity extends ActivityBase {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				i.setClass(getApplicationContext(), NotifyDetailActivity.class);
-				i.putExtra(KEY, (String) list.get(position).get("title"));
+				i.putExtra(KEY, (String) list.get(position).get("time"));
 				startActivity(i);
 			}
 		});

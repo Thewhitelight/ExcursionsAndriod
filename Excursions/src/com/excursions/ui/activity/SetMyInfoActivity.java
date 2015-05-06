@@ -243,8 +243,10 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 		case R.id.btn_add_friend:// 添加好友
 			addFriend();
 			break;
-		case R.id.layout_roster:
+		case R.id.layout_roster:// 花名
 			startActivity(new Intent(this, RosterActivity.class));
+			MainActivity.instance.finish();
+			finish();
 			break;
 		}
 	}

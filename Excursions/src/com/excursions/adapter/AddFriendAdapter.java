@@ -25,8 +25,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  * 
  * @ClassName: AddFriendAdapter
  * @Description: TODO
- * @author smile
- * @date 2014-6-25 上午10:56:33
+ * @author SZQ
+ * @date 2015年5月6日 下午8:43:28
  */
 public class AddFriendAdapter extends BaseListAdapter<BmobChatUser> {
 

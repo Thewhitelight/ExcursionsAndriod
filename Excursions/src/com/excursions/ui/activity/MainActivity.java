@@ -25,52 +25,48 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	private ImMainFragment imFragment;
 	private TouristInfoMainFragment touFragment;
 	private PersonalCenterFramgent perFragment;
-	private View attlayout;
-	private View imlayout;
-	private View toulayout;
-	private View perlayout;
-	private TextView tv_att;
-	private TextView tv_im;
-	private TextView tv_tou;
-	private TextView tv_per;
-	private ImageView img_att;
-	private ImageView img_im;
-	private ImageView img_tou;
-	private ImageView img_per;
+	private View attlayout, imlayout, toulayout, perlayout;
+	private TextView tv_att, tv_im, tv_tou, tv_per;
+	private ImageView img_att, img_im, img_tou, img_per;
 	private FragmentManager fragmentMangager;
 	private long firstime = 0;
 	private SharedPreferences preferences;
 	private int theme;
+	private ActionBar actionBar;
+	public static MainActivity instance = null;
 
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		overridePendingTransition(android.R.anim.fade_in,
+				android.R.anim.fade_out);
+		actionBar = getSupportActionBar();
 		readSharePreferences();
 		switch (theme) {
 		case R.style.theme1:
 			setTheme(R.style.theme1);
+			actionBar.setBackgroundDrawable(getResources().getDrawable(
+					R.drawable.tab_bg));
 			break;
 		case R.style.theme2:
 			setTheme(R.style.theme2);
+			actionBar.setBackgroundDrawable(getResources().getDrawable(
+					R.drawable.btn_login_p));
 			break;
-		case R.style.themen:
-			setTheme(R.style.themen);
+		case R.style.theme3:
+			setTheme(R.style.theme3);
 			break;
-		case R.style.themep:
-			setTheme(R.style.themep);
+		case R.style.theme4:
+			setTheme(R.style.theme4);
 			break;
 		}
 		// setTheme(R.style.theme1);
-		overridePendingTransition(android.R.anim.fade_in,
-				android.R.anim.fade_out);
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setBackgroundDrawable(getResources().getDrawable(
-				R.drawable.tab_bg));
 		setContentView(R.layout.activity_main);
 		init();
 		fragmentMangager = getSupportFragmentManager();
 		setTabSelection(0);
+		instance = this;
 	}
 
 	public void init() {

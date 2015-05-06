@@ -27,6 +27,14 @@ import com.excursions.ui.customview.EmoticonsEditText;
 import com.excursions.ui.customview.EmoticonsTextView;
 import com.excursions.ui.customview.RoundImageView;
 
+/**
+ * 社区详情页列表
+ * 
+ * @ClassName: TourDetailAdapter
+ * @Description: TODO
+ * @author SZQ
+ * @date 2015年5月6日 下午8:51:03
+ */
 public class TourDetailAdapter extends BaseAdapter {
 	private List<Map<String, Object>> list, dislist;
 	private LayoutInflater inflater;

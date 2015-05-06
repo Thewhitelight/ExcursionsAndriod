@@ -77,14 +77,10 @@ public class LocationActivity extends ActivityBase implements
 		Intent intent = getIntent();
 		String type = intent.getStringExtra("type");
 		if (type.equals("select")) {// 选择发送位置
-
 			actionBar.setTitle("位置");
-
-			
-
 			initLocClient();
 		} else {// 查看当前位置
-
+			actionBar.setTitle("位置");
 			Bundle b = intent.getExtras();
 			LatLng latlng = new LatLng(b.getDouble("latitude"),
 					b.getDouble("longtitude"));// 维度在前，经度在后
@@ -264,16 +260,18 @@ public class LocationActivity extends ActivityBase implements
 		// 回收 bitmap 资源
 		bdgeo.recycle();
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
 		getMenuInflater().inflate(R.menu.bill_ok_menu, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
-		if (R.id.ok==item.getItemId()) {
+		if (R.id.ok == item.getItemId()) {
 			gotoChatPage();
 		}
 		return super.onOptionsItemSelected(item);

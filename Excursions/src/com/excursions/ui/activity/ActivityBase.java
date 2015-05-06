@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -42,6 +43,8 @@ public class ActivityBase extends ActionBarActivity {
 	BmobChatManager manager;
 	MyApplication myApplication;
 	public ActionBar actionBar;
+	private SharedPreferences preferences;
+	private int theme;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -51,9 +54,26 @@ public class ActivityBase extends ActionBarActivity {
 		overridePendingTransition(android.R.anim.fade_in,
 				android.R.anim.fade_out);
 		actionBar = getSupportActionBar();
+		readSharePreferences();
+		switch (theme) {
+		case R.style.theme1:
+			setTheme(R.style.theme1);
+			actionBar.setBackgroundDrawable(getResources().getDrawable(
+					R.drawable.tab_bg));
+			break;
+		case R.style.theme2:
+			setTheme(R.style.theme2);
+			actionBar.setBackgroundDrawable(getResources().getDrawable(
+					R.drawable.btn_login_p));
+			break;
+		case R.style.theme3:
+			setTheme(R.style.theme3);
+			break;
+		case R.style.theme4:
+			setTheme(R.style.theme4);
+			break;
+		}
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setBackgroundDrawable(getResources().getDrawable(
-				R.drawable.tab_bg));
 		actionBar.setDisplayShowTitleEnabled(true);
 		// 自动登陆状态下检测是否在其他设备登陆
 		checkLogin();
@@ -312,4 +332,9 @@ public class ActivityBase extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void readSharePreferences() {
+		// TODO Auto-generated method stub
+		preferences = getSharedPreferences("theme", MODE_PRIVATE);
+		theme = preferences.getInt("theme", R.style.theme1);
+	}
 }

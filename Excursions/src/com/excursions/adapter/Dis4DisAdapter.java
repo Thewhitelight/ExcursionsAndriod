@@ -14,6 +14,14 @@ import com.example.excursions.R;
 import com.excursions.ViewHolder.ViewHolder;
 import com.excursions.ui.customview.EmoticonsTextView;
 
+/**
+ * 回复再回复列表
+ * 
+ * @ClassName: Dis4DisAdapter
+ * @Description: TODO
+ * @author SZQ
+ * @date 2015年5月6日 下午8:46:00
+ */
 public class Dis4DisAdapter extends BaseAdapter {
 	private List<Map<String, Object>> list;
 	private LayoutInflater inflater;

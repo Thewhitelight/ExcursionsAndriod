@@ -31,8 +31,8 @@ public class RosterActivity extends ActivityBase {
 		init();
 		theme1 = R.style.theme1;
 		theme2 = R.style.theme2;
-		theme3 = R.style.themen;
-		theme4 = R.style.themep;
+		theme3 = R.style.theme3;
+		theme4 = R.style.theme4;
 	}
 
 	private void init() {
@@ -62,7 +62,7 @@ public class RosterActivity extends ActivityBase {
 				// TODO Auto-generated method stub
 				// saveRoster();
 				user.setRoster("master");
-				writeSharePerfreences(theme3);
+				writeSharePerfreences(theme1);
 				updateUserData(user, new UpdateListener() {
 
 					@Override
@@ -78,9 +78,9 @@ public class RosterActivity extends ActivityBase {
 						BmobLog.i("ÐÞ¸ÄÊ§°Ü");
 					}
 				});
-				startActivity(new Intent(getApplicationContext(),
+				startActivity(new Intent(RosterActivity.this,
 						MainActivity.class));
-
+				RosterActivity.this.finish();
 			}
 		});
 	}
