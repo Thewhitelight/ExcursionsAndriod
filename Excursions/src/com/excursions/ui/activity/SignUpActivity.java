@@ -157,9 +157,11 @@ public class SignUpActivity extends BaseActivity {
 				// 发广播通知登陆页面退出
 				sendBroadcast(new Intent(
 						BmobConstants.ACTION_REGISTER_SUCCESS_FINISH));
-				// 启动主页
-				Intent intent = new Intent(SignUpActivity.this,
-						MainActivity.class);
+				// 启动花名页
+
+				Intent intent = new Intent();
+				intent.setClass(SignUpActivity.this, RosterActivity.class);
+				intent.putExtra("theme", "theme1");
 				startActivity(intent);
 				finish();
 
@@ -172,6 +174,6 @@ public class SignUpActivity extends BaseActivity {
 				ShowToast("注册失败:" + arg1);
 				progress.dismiss();
 			}
-		});		
+		});
 	}
 }

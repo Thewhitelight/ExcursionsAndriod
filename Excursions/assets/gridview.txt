@@ -1,7 +1,7 @@
 ﻿[
 {
 	"gd_img":"1",
-	"gd_tv":"android 自定义gridview 样式"
+	"gd_tv":"杭州西湖"
 },
 {
 	"gd_img":"2",

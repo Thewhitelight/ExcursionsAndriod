@@ -244,7 +244,10 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			addFriend();
 			break;
 		case R.id.layout_roster:// »¨Ãû
-			startActivity(new Intent(this, RosterActivity.class));
+			Intent i = new Intent();
+			i.setClass(this, RosterActivity.class);
+			i.putExtra("theme", "theme2");
+			startActivity(i);
 			MainActivity.instance.finish();
 			finish();
 			break;

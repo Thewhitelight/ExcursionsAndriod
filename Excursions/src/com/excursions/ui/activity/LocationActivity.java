@@ -47,7 +47,8 @@ public class LocationActivity extends ActivityBase implements
 	private BaiduReceiver mReceiver;// 注册广播接收器，用于监听网络以及验证key
 
 	GeoCoder mSearch = null; // 搜索模块，因为百度定位sdk能够得到经纬度，但是却无法得到具体的详细地址，因此需要采取反编码方式去搜索此经纬度代表的地址
-
+	private String type;
+	private Intent intent;
 	static BDLocation lastLocation = null;
 
 	BitmapDescriptor bdgeo = BitmapDescriptorFactory
@@ -73,9 +74,8 @@ public class LocationActivity extends ActivityBase implements
 		iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
 		mReceiver = new BaiduReceiver();
 		registerReceiver(mReceiver, iFilter);
-
-		Intent intent = getIntent();
-		String type = intent.getStringExtra("type");
+		intent = getIntent();
+		type = intent.getStringExtra("type");
 		if (type.equals("select")) {// 选择发送位置
 			actionBar.setTitle("位置");
 			initLocClient();
@@ -264,7 +264,12 @@ public class LocationActivity extends ActivityBase implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
+
 		getMenuInflater().inflate(R.menu.bill_ok_menu, menu);
+		MenuItem item = menu.findItem(R.id.ok);
+		if (!type.equals("select")) {
+			item.setVisible(false);
+		}
 		return super.onCreateOptionsMenu(menu);
 	}
 

@@ -22,6 +22,8 @@ public class RosterActivity extends ActivityBase {
 	private BmobUserManager userManager = BmobUserManager.getInstance(this);
 	private SharedPreferences preferences;
 	private int theme1, theme2, theme3, theme4;
+	private Intent intent;
+	private String theme;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class RosterActivity extends ActivityBase {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_roster);
 		init();
+		intent = getIntent();
+		theme = intent.getStringExtra("theme");
 		theme1 = R.style.theme1;
 		theme2 = R.style.theme2;
 		theme3 = R.style.theme3;
@@ -62,7 +66,12 @@ public class RosterActivity extends ActivityBase {
 				// TODO Auto-generated method stub
 				// saveRoster();
 				user.setRoster("master");
-				writeSharePerfreences(theme1);
+				if (theme.equals("theme1")) {
+					writeSharePerfreences(theme1);
+				} else {
+					writeSharePerfreences(theme1);
+				}
+
 				updateUserData(user, new UpdateListener() {
 
 					@Override
