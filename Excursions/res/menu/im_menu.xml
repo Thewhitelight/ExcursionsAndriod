@@ -5,12 +5,12 @@
 
     <item
         android:id="@+id/add_user"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_add"
         android:title="@string/add_user"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/location"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_location"
         android:title="@string/loaction"
         app:showAsAction="always"/>
 

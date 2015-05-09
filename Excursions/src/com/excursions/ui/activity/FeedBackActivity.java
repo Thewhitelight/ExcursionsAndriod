@@ -15,6 +15,7 @@ public class FeedBackActivity extends ActivityBase {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		actionBar.setTitle("Òâ¼û·´À¡");
 		setContentView(R.layout.activity_feedback);
 		init();
 	}

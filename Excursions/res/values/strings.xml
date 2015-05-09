@@ -8,7 +8,7 @@
         <item>行</item>
     </string-array>
 
-    <string name="app_name">Excursions</string>
+    <string name="app_name">短途游</string>
     <string name="hello_world">Hello world!</string>
     <string name="add_user">添加好友</string>
     <string name="loaction">附近的人</string>

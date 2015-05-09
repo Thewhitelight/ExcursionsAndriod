@@ -81,6 +81,7 @@ public class AttractionDetailActivity extends ActivityBase implements
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_attractioninfo_item);
+		actionBar.setTitle("æ∞µ„–≈œ¢");
 		init();
 		baiduMap = mapView.getMap();
 		/**

@@ -16,6 +16,7 @@ public class NotifyDetailActivity extends ActivityBase {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		actionBar.setTitle("Í¨ÖªÏêÇé");
 		setContentView(R.layout.activity_notify_detail);
 		db = new DBNotifyAdapter(this);
 		key = getIntent().getExtras().getString("key");

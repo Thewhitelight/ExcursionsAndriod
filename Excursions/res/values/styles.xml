@@ -175,7 +175,7 @@
     </style>
 
     <style name="theme2" parent="AppBaseTheme">
-        <item name="bg_buttom_bar">@drawable/ic_notify_txt</item>
+        <item name="bg_buttom_bar">@drawable/themetwo</item>
     </style>
 
     <style name="theme3" parent="AppBaseTheme">

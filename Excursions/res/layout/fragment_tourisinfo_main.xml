@@ -25,7 +25,7 @@
         android:listSelector="@android:color/transparent"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="none"
-        android:smoothScrollbar="true"
+        android:smoothScrollbar="false"
         ptr:ptrMode="both" />
 
 </RelativeLayout>

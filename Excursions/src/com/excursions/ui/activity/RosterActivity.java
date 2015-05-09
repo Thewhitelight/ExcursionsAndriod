@@ -69,7 +69,7 @@ public class RosterActivity extends ActivityBase {
 				if (theme.equals("theme1")) {
 					writeSharePerfreences(theme1);
 				} else {
-					writeSharePerfreences(theme1);
+					writeSharePerfreences(theme2);
 				}
 
 				updateUserData(user, new UpdateListener() {

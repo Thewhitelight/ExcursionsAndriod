@@ -5,12 +5,12 @@
 
     <item
         android:id="@+id/add_trip"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/trip"
         android:title="@string/add_trip"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/add_disscuss"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/discuss"
         android:title="@string/add_discuss"
         app:showAsAction="always"/>
 

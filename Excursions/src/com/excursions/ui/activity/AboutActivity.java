@@ -9,7 +9,7 @@ public class AboutActivity extends ActivityBase {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		actionBar.setTitle("关于我们");
 		setContentView(R.layout.activity_about);
 	}
 }
-                                                    

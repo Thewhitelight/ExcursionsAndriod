@@ -4,8 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
     <item
+        android:id="@+id/add_card"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/add_card"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/menu"
-        android:icon="@drawable/ic_menu_moreoverflow_normal_holo_light"
+        android:icon="@drawable/ic_more"
         android:title="@string/menu"
         app:showAsAction="always">
         <menu
@@ -13,30 +18,25 @@
             xmlns:tools="http://schemas.android.com/tools" >
             <item
                 android:id="@+id/all"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/disscuss_all"
                 android:title="@string/all"
                 app:showAsAction="ifRoom"/>
             <item
                 android:id="@+id/friends"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/discuss_frient"
                 android:title="@string/friend"
                 app:showAsAction="ifRoom"/>
             <item
                 android:id="@+id/market"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/bussniess"
                 android:title="@string/market"
                 app:showAsAction="ifRoom"/>
             <item
                 android:id="@+id/notice"
-                android:icon="@drawable/ic_launcher"
+                android:icon="@drawable/notify"
                 android:title="@string/notice"
                 app:showAsAction="ifRoom"/>
         </menu>
     </item>
-    <item
-        android:id="@+id/add_card"
-        android:icon="@drawable/ic_launcher"
-        android:title="@string/add_card"
-        app:showAsAction="always"/>
 
 </menu>

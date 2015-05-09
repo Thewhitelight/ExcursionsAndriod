@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		case R.style.theme2:
 			setTheme(R.style.theme2);
 			actionBar.setBackgroundDrawable(getResources().getDrawable(
-					R.drawable.btn_login_p));
+					R.drawable.themetwo));
 			break;
 		case R.style.theme3:
 			setTheme(R.style.theme3);

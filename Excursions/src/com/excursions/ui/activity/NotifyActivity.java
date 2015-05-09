@@ -32,6 +32,7 @@ public class NotifyActivity extends ActivityBase {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		actionBar.setTitle("֪ͨ");
 		list = new ArrayList<Map<String, Object>>();
 		try {
 			list = getData(this);
