@@ -28,7 +28,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.adapter.Dis4DisAdapter;
@@ -141,15 +140,12 @@ public class TouristDetailActivity extends ActivityBase implements
 						// TODO Auto-generated method stub
 
 						upListItem(position);
-						Toast.makeText(getApplicationContext(),
-								edit_user_comment.getText().toString(),
-								Toast.LENGTH_SHORT).show();
+
 						edit_user_comment.setText("");
 						layout_more.setVisibility(View.GONE);
 					}
 				});
 
-				ShowToast("µã»÷" + position);
 			}
 		});
 	}

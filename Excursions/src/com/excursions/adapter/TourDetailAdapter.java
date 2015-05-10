@@ -19,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.ViewHolder;
@@ -110,7 +109,7 @@ public class TourDetailAdapter extends BaseAdapter {
 		dislist = list;// TourDetailData.getData(context);
 		disadapter = new Dis4DisAdapter(context, dislist);
 		lv_dis4dis.setAdapter(disadapter);
-		setListViewHeightBasedOnChildren(lv_dis4dis);
+		// setListViewHeightBasedOnChildren(lv_dis4dis);
 		lv_dis4dis.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -118,8 +117,7 @@ public class TourDetailAdapter extends BaseAdapter {
 					final int position, long id) {
 				// TODO Auto-generated method stub
 				buttom_bar.setVisibility(View.VISIBLE);
-				Toast.makeText(context, position + " ", Toast.LENGTH_SHORT)
-						.show();
+
 				btn_chat_send.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -127,9 +125,6 @@ public class TourDetailAdapter extends BaseAdapter {
 						// TODO Auto-generated method stub
 						upListItem(position);
 						setListViewHeightBasedOnChildren(lv_dis4dis);
-						Toast.makeText(context,
-								edit_user_comment.getText().toString(),
-								Toast.LENGTH_SHORT).show();
 						edit_user_comment.setText("");
 						layout_more.setVisibility(View.GONE);
 					}

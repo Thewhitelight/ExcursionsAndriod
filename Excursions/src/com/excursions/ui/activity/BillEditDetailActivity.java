@@ -87,13 +87,6 @@ public class BillEditDetailActivity extends ActivityBase {
 			} else {
 				// createDB();
 				insertData();
-				if (id > 0) {
-					Toast.makeText(getApplicationContext(), "插入成功",
-							Toast.LENGTH_SHORT).show();
-				} else {
-					Toast.makeText(getApplicationContext(), "插入失败",
-							Toast.LENGTH_SHORT).show();
-				}
 
 				return true;
 			}

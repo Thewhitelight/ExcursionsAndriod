@@ -103,7 +103,7 @@ public class AttractionDetailActivity extends ActivityBase implements
 		});
 		baiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
 		// 设定中心点坐标
-		LatLng point = new LatLng(28.883358, 121.174273);
+		LatLng point = new LatLng(30.256423, 120.149125);
 		// 定义地图状态
 		MapStatus mMapStatus = new MapStatus.Builder().target(point).zoom(19)
 				.build();

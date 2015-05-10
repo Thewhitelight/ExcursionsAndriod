@@ -24,7 +24,7 @@ public class GuideFragment01 extends BaseFragment {
 		// TODO Auto-generated method stub
 		view = inflater.inflate(R.layout.fragment_guide, container, false);
 		img_guide = (ImageView) view.findViewById(R.id.img_guide);
-		img_guide.setBackgroundResource(android.R.color.darker_gray);
+		img_guide.setBackgroundResource(R.drawable.guide1);
 		return view;
 	}
 

@@ -21,6 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
         android:text="下一页" />
 
 </RelativeLayout>

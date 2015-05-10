@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.adapter.GridViewAdapter;
@@ -54,8 +53,8 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		view = inflater.inflate(R.layout.fragment_attractions_main,
-				container, false);
+		view = inflater.inflate(R.layout.fragment_attractions_main, container,
+				false);
 		init();
 		return view;
 	}
@@ -88,8 +87,7 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 					@Override
 					public void onPullDownToRefresh(
 							PullToRefreshBase<GridView> refreshView) {
-						Toast.makeText(getActivity(), "Pull Down!",
-								Toast.LENGTH_SHORT).show();
+
 						refreshView.getLoadingLayoutProxy()
 								.setLastUpdatedLabel(label);
 						new GetDataTask().execute();
@@ -100,8 +98,7 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 							PullToRefreshBase<GridView> refreshView) {
 						refreshView.getLoadingLayoutProxy()
 								.setLastUpdatedLabel(label);
-						Toast.makeText(getActivity(), "Pull Up!",
-								Toast.LENGTH_SHORT).show();
+
 						new GetDataTask().execute();
 					}
 

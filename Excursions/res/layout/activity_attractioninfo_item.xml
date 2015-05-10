@@ -43,8 +43,8 @@
         <TextView
             android:id="@+id/tv_atts_content"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:text="景点介绍"
+            android:layout_height="wrap_content"
+            android:text="@string/attdis"
             android:textSize="@dimen/font_setting_size" />
 
         <com.baidu.mapapi.map.MapView
@@ -71,7 +71,7 @@
                 app:pstsTextAllCaps="true"
                 app:pstsUnderlineColor="#CCCCCC"
                 app:pstsUnderlineHeight="2dp"
-                app:selectedTabTextColor="#CCCCCC" />
+                app:selectedTabTextColor="#000" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/tab_pager"

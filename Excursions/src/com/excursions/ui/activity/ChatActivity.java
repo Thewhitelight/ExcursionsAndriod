@@ -72,20 +72,6 @@ import com.excursions.ui.customview.XListView.IXListViewListener;
 import com.excursions.utils.CommonUtils;
 import com.excursions.utils.FaceTextUtils;
 
-/**
- * 聊天界面
- * 
- * @ClassName: ChatActivity
- * @Description: TODO
- * @author smile
- * @date 2014-6-3 下午4:33:11
- */
-/**
- * @ClassName: ChatActivity
- * @Description: TODO
- * @author smile
- * @date 2014-6-23 下午3:28:49
- */
 @SuppressLint({ "ClickableViewAccessibility", "InflateParams" })
 public class ChatActivity extends ActivityBase implements OnClickListener,
 		IXListViewListener, EventListener {
@@ -176,8 +162,10 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	}
 
 	private void initView() {
-		actionBar.setTitle("与" + targetUser.getNick() + "对话");
+		// mHeaderLayout = (HeaderLayout) findViewById(R.id.common_actionbar);
 		mListView = (XListView) findViewById(R.id.mListView);
+		// initTopBarForLeft("与" + targetUser.getUsername() + "对话");
+		actionBar.setTitle("与" + targetUser.getNick() + "对话");
 		initBottomView();
 		initXListView();
 		initVoiceView();
@@ -333,7 +321,6 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	 * @return void
 	 * @throws
 	 */
-	@SuppressWarnings("deprecation")
 	private void initVoiceAnimRes() {
 		drawable_Anims = new Drawable[] {
 				getResources().getDrawable(R.drawable.chat_icon_voice2),
