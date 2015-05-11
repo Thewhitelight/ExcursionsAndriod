@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e2e4fe"
     android:orientation="vertical" >
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
@@ -15,7 +16,7 @@
         android:choiceMode="singleChoice"
         android:clickable="true"
         android:divider="@null"
-        android:dividerHeight="12dp"
+        android:dividerHeight="8dp"
         android:fadingEdge="vertical"
         android:fastScrollEnabled="false"
         android:focusable="true"
@@ -26,7 +27,6 @@
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="none"
         android:smoothScrollbar="true"
-        ptr:ptrAnimationStyle="rotate"
         ptr:ptrMode="both" />
 
 </RelativeLayout>

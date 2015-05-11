@@ -28,6 +28,7 @@
                 android:layout_height="@dimen/base_scrollview_top_height"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="@dimen/margin_chat_top"
                 android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
@@ -196,8 +197,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/chat_right_qp"
                     android:gravity="center"
-                    android:popupBackground="@drawable/chat_right_qp"
-                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+                    android:popupBackground="@drawable/chat_right_qp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -246,8 +246,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/chat_right_qp"
                     android:gravity="center"
-                    android:popupBackground="@drawable/chat_right_qp"
-                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+                    android:popupBackground="@drawable/chat_right_qp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -665,8 +664,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/chat_left_qp"
                     android:gravity="center"
-                    android:popupBackground="@drawable/chat_left_qp"
-                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+                    android:popupBackground="@drawable/chat_left_qp" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -887,8 +885,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/chat_right_qp"
                     android:gravity="center"
-                    android:popupBackground="@drawable/chat_right_qp"
-                    android:spinnerStyle="@android:style/Widget.Spinner.DropDown" />
+                    android:popupBackground="@drawable/chat_right_qp" />
             </RelativeLayout>
         </RelativeLayout>
 

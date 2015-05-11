@@ -3,8 +3,10 @@ package com.excursions.ui.activity;
 import com.example.excursions.R;
 import com.excursions.utils.DBNotifyAdapter;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class NotifyDetailActivity extends ActivityBase {
@@ -54,4 +56,12 @@ public class NotifyDetailActivity extends ActivityBase {
 		tv_content.setText(cursor.getString(1));
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		if (item.getItemId() == android.R.id.home) {
+			startActivity(new Intent(this, MainActivity.class));
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }

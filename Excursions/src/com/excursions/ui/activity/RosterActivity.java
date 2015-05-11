@@ -15,7 +15,7 @@ import cn.bmob.v3.listener.UpdateListener;
 import com.example.excursions.R;
 import com.excursions.bean.User;
 
-public class RosterActivity extends ActivityBase {
+public class RosterActivity extends BaseActivity {
 	private Spinner sp_q1, sp_q2, sp_q3, sp_q4;
 	private Button btn_start;
 	private User user = new User();
@@ -106,5 +106,15 @@ public class RosterActivity extends ActivityBase {
 		SharedPreferences.Editor editor = preferences.edit();
 		editor.putInt("theme", theme);
 		editor.commit();
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		Intent i = new Intent();
+		i.setClass(this, MainActivity.class);
+		startActivity(i);
+		this.finish();
 	}
 }

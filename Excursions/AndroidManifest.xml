@@ -90,7 +90,6 @@
     <application
         android:name="com.excursions.application.MyApplication"
         android:allowBackup="true"
-        android:launchMode="singleTask"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
@@ -103,8 +102,8 @@
         <activity
             android:name="com.excursions.ui.activity.SplashActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/FullScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -186,12 +185,10 @@
         </activity>
         <activity
             android:name="com.excursions.ui.activity.LocationActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.excursions.ui.activity.ChatActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
         <activity

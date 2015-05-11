@@ -25,6 +25,7 @@ import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -814,7 +815,9 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 		startActivityForResult(intent, BmobConstants.REQUESTCODE_TAKE_LOCAL);
 	}
 
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
@@ -823,6 +826,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 				sendImageMessage(localCameraPath);
 				break;
 			case BmobConstants.REQUESTCODE_TAKE_LOCAL:
+				Log.i("@@@@@@@@@@@@@@", BmobConstants.REQUESTCODE_TAKE_LOCAL+" ");
 				if (data != null) {
 					Uri selectedImage = data.getData();
 					if (selectedImage != null) {
@@ -837,11 +841,13 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 							ShowToast("找不到您想要的图片");
 							return;
 						}
+						Log.i("@@@@@@@@@@@@@@", localSelectPath+ " ");
 						sendImageMessage(localSelectPath);
 					}
 				}
 				break;
 			case BmobConstants.REQUESTCODE_TAKE_LOCATION:// 地理位置
+				Log.i("@@@@@@@@@@@@@@", BmobConstants.REQUESTCODE_TAKE_LOCATION+" ");
 				double latitude = data.getDoubleExtra("x", 0);// 维度
 				double longtitude = data.getDoubleExtra("y", 0);// 经度
 				String address = data.getStringExtra("address");
