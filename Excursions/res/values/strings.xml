@@ -20,7 +20,7 @@
     <string name="notice">通知</string>
     <string name="ok">确定</string>
     <string name="delete">删除</string>
-    <string name="add_bill">添加纪录</string>
+    <string name="add_bill">添加新账单</string>
     <string name="add_card">发帖</string>
     <!-- bmob -->
     <string name="login_username_hint">请输入邮箱&#8230;</string>

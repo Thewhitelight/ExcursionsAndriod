@@ -67,10 +67,11 @@ public class BillLvAdapter extends BaseAdapter {
 		} else {
 			holder = (BillListViewHolder) convertView.getTag();
 		}
-		holder.tv_budget.setText((String) listItem.get(position).get("budget"));
+		holder.tv_budget.setText((String) listItem.get(position).get("budget")
+				+ "Ԫ");
 		holder.tv_tou_title.setText((String) listItem.get(position).get("att"));
-		holder.tv_cur_funds
-				.setText((String) listItem.get(position).get("fund"));
+		holder.tv_cur_funds.setText((String) listItem.get(position).get("fund")
+				+ "Ԫ");
 		return convertView;
 	}
 

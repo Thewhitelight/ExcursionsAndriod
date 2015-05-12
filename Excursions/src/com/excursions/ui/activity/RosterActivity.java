@@ -1,13 +1,20 @@
 package com.excursions.ui.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import cn.bmob.im.BmobUserManager;
 import cn.bmob.im.util.BmobLog;
 import cn.bmob.v3.listener.UpdateListener;
@@ -24,6 +31,7 @@ public class RosterActivity extends BaseActivity {
 	private int theme1, theme2, theme3, theme4;
 	private Intent intent;
 	private String theme;
+	private List<String> sp1, sp2, sp3, sp4;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,24 +48,33 @@ public class RosterActivity extends BaseActivity {
 	}
 
 	private void init() {
+		sp1 = new ArrayList<String>();
+		sp1.add("A:是");
+		sp1.add("B:否");
+		sp2 = new ArrayList<String>();
+		sp2.add("A：开放直接、主观冲动 ");
+		sp2.add("B：谨慎严谨、严肃挑剔");
+		sp2.add("C：自觉严谨、冷漠果断");
+		sp2.add("D：开放犹豫、亲近友好");
+		sp3 = new ArrayList<String>();
+		sp3.add("A：历史人物 ");
+		sp3.add("B：武侠小说 ");
+		sp3.add("C：网络流行小说 ");
+		sp3.add("D：卡通动漫");
+		sp4 = new ArrayList<String>();
+		sp4.add("A：东海日出古到今 ");
+		sp4.add("B：南方地暖夏或春 ");
+		sp4.add("C：西域苍茫大漠在");
+		sp4.add("D：北国风光四时分");
 		// TODO Auto-generated method stub
 		sp_q1 = (Spinner) findViewById(R.id.sp_q1);
-		sp_q1.setAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, new String[] { "A：是",
-						"B：否" }));
+		sp_q1.setAdapter(new MyAdapter(this, sp1));
 		sp_q2 = (Spinner) findViewById(R.id.sp_q2);
-		sp_q2.setAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, new String[] {
-						"A：开放直接、主观冲动 ", "B：谨慎严谨、严肃挑剔", "C：自觉严谨、冷漠果断",
-						" D：开放犹豫、亲近友好" }));
+		sp_q2.setAdapter(new MyAdapter(this, sp2));
 		sp_q3 = (Spinner) findViewById(R.id.sp_q3);
-		sp_q3.setAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, new String[] { "A：历史人物 ",
-						"B：武侠小说 ", "C：网络流行小说 ", "D：卡通动漫" }));
+		sp_q3.setAdapter(new MyAdapter(this, sp3));
 		sp_q4 = (Spinner) findViewById(R.id.sp_q4);
-		sp_q4.setAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, new String[] {
-						"A：东海日出古到今", " B：南方地暖夏或春 ", "C：西域苍茫大漠在", " D：北国风光四时分" }));
+		sp_q4.setAdapter(new MyAdapter(this, sp4));
 		btn_start = (Button) findViewById(R.id.start_exc);
 		btn_start.setOnClickListener(new OnClickListener() {
 
@@ -116,5 +133,47 @@ public class RosterActivity extends BaseActivity {
 		i.setClass(this, MainActivity.class);
 		startActivity(i);
 		this.finish();
+	}
+
+	public class MyAdapter extends BaseAdapter {
+		private List<String> list;
+		private LayoutInflater inflater;
+
+		public MyAdapter(Context context, List<String> list) {
+			// TODO Auto-generated constructor stub
+			this.list = list;
+			this.inflater = LayoutInflater.from(context);
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return list.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return list.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+			if (convertView == null) {
+				convertView = inflater.inflate(R.layout.roster_spinner_item,
+						parent, false);
+			}
+			TextView tv = (TextView) convertView.findViewById(R.id.tv_spinner);
+			tv.setText(list.get(position).toString());
+			return convertView;
+		}
+
 	}
 }

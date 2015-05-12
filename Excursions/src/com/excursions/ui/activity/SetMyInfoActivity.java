@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import cn.bmob.im.BmobChatManager;
 import cn.bmob.im.config.BmobConfig;
@@ -57,7 +58,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 
 	TextView tv_set_name, tv_set_nick, tv_set_gender, tv_set_roster;
 	ImageView iv_arraw, iv_nickarraw, iv_rosterarraw;
-	LinearLayout layout_all;
+	ScrollView layout_all;
 	RoundImageView iv_set_avator;
 	Button btn_chat, btn_back, btn_add_friend;
 	RelativeLayout layout_head, layout_nick, layout_gender, layout_black_tips,
@@ -80,7 +81,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 	}
 
 	private void initView() {
-		layout_all = (LinearLayout) findViewById(R.id.layout_all);
+		layout_all = (ScrollView) findViewById(R.id.layout_all);
 		iv_set_avator = (RoundImageView) findViewById(R.id.iv_set_avator);
 		iv_arraw = (ImageView) findViewById(R.id.iv_arraw);
 		iv_nickarraw = (ImageView) findViewById(R.id.iv_nickarraw);

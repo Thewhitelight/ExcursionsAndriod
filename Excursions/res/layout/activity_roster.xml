@@ -2,8 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="13dp" >
+    android:background="#35FF7F00"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +30,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,9 +65,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -97,9 +97,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -132,9 +132,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -164,9 +164,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -191,7 +191,7 @@
 
                 <Spinner
                     android:id="@+id/sp_q1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_01"
                     android:layout_gravity="center"
@@ -213,9 +213,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -262,9 +262,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -294,9 +294,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -329,9 +329,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -361,9 +361,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -396,9 +396,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -428,9 +428,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -463,9 +463,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -495,9 +495,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -530,9 +530,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -562,9 +562,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -597,9 +597,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -629,9 +629,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -680,9 +680,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/cat" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -700,11 +700,6 @@
                 android:text="不好，王后来了！" />
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="#000" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -717,9 +712,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/rabbit" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -749,9 +744,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/princess" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -784,9 +779,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/rabbit" />
 
             <TextView
                 style="@style/chat_content_date_style"
@@ -816,9 +811,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/queen" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -851,9 +846,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/margin_chat_top"
-                android:background="@drawable/default_head"
                 android:contentDescription="@string/add_avator"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/rabbit" />
 
             <RelativeLayout
                 style="@style/chat_content_date_style"
