@@ -6,14 +6,14 @@ import com.excursions.bean.User;
 
 public class PinyinComparator implements Comparator<User> {
 
-	public int compare(User o1, User o2) {
-		if (o1.getSortLetters().equals("@") || o2.getSortLetters().equals("#")) {
+	public int compare(User u1, User u2) {
+		if (u1.getSortLetters().equals("@") || u2.getSortLetters().equals("#")) {
 			return -1;
-		} else if (o1.getSortLetters().equals("#")
-				|| o2.getSortLetters().equals("@")) {
+		} else if (u1.getSortLetters().equals("#")
+				|| u2.getSortLetters().equals("@")) {
 			return 1;
 		} else {
-			return o1.getSortLetters().compareTo(o2.getSortLetters());
+			return u1.getSortLetters().compareTo(u2.getSortLetters());
 		}
 	}
 

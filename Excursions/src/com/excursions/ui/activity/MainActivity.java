@@ -1,5 +1,10 @@
 package com.excursions.ui.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,21 +18,32 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.bmob.im.BmobChatManager;
+import cn.bmob.im.BmobNotifyManager;
+import cn.bmob.im.bean.BmobInvitation;
+import cn.bmob.im.bean.BmobMsg;
+import cn.bmob.im.config.BmobConfig;
+import cn.bmob.im.db.BmobDB;
+import cn.bmob.im.inteface.EventListener;
 
 import com.example.excursions.R;
+import com.excursions.application.MyApplication;
+import com.excursions.application.MyMessageReceiver;
+import com.excursions.ui.customview.DialogTips;
 import com.excursions.ui.fragment.AttractionsInfoMainFragment;
 import com.excursions.ui.fragment.ImMainFragment;
 import com.excursions.ui.fragment.PersonalCenterFramgent;
 import com.excursions.ui.fragment.TouristInfoMainFragment;
 
-public class MainActivity extends ActionBarActivity implements OnClickListener {
+public class MainActivity extends ActionBarActivity implements OnClickListener,
+		EventListener {
 	private AttractionsInfoMainFragment attFragment;
 	private ImMainFragment imFragment;
 	private TouristInfoMainFragment touFragment;
 	private PersonalCenterFramgent perFragment;
 	private View attlayout, imlayout, toulayout, perlayout;
 	private TextView tv_att, tv_im, tv_tou, tv_per;
-	private ImageView img_att, img_im, img_tou, img_per;
+	private ImageView img_att, img_im, img_tou, img_per, iv_recent_tips;
 	private FragmentManager fragmentMangager;
 	private long firstime = 0;
 	private SharedPreferences preferences;
@@ -67,6 +83,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		fragmentMangager = getSupportFragmentManager();
 		setTabSelection(0);
 		instance = this;
+		initNewMessageBroadCast();
+		initTagMessageBroadCast();
+	}
+
+	private void initTagMessageBroadCast() {
+		// 注册接收消息广播
+		userReceiver = new TagBroadcastReceiver();
+		IntentFilter intentFilter = new IntentFilter(
+				BmobConfig.BROADCAST_ADD_USER_MESSAGE);
+		// 优先级要低于ChatActivity
+		intentFilter.setPriority(3);
+		registerReceiver(userReceiver, intentFilter);
 	}
 
 	public void init() {
@@ -83,6 +111,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		img_im = (ImageView) this.findViewById(R.id.im_image);
 		img_tou = (ImageView) this.findViewById(R.id.touinfo_image);
 		img_per = (ImageView) this.findViewById(R.id.personal_image);
+		iv_recent_tips = (ImageView) findViewById(R.id.iv_recent_tip);
 		attlayout.setOnClickListener(this);
 		imlayout.setOnClickListener(this);
 		toulayout.setOnClickListener(this);
@@ -216,5 +245,175 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		preferences = getSharedPreferences("theme", MODE_PRIVATE);
 		theme = preferences.getInt("theme", R.style.theme1);
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		// 小圆点提示
+		if (BmobDB.create(this).hasUnReadMsg()) {
+			iv_recent_tips.setVisibility(View.VISIBLE);
+		} else {
+			iv_recent_tips.setVisibility(View.GONE);
+		}
+		if (BmobDB.create(this).hasNewInvite()) {
+			iv_recent_tips.setVisibility(View.VISIBLE);
+		} else {
+			iv_recent_tips.setVisibility(View.GONE);
+		}
+		MyMessageReceiver.ehList.add(this);// 监听推送的消息
+		// 清空
+		MyMessageReceiver.mNewNum = 0;
+
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		MyMessageReceiver.ehList.remove(this);// 取消监听推送的消息
+	}
+
+	@Override
+	public void onMessage(BmobMsg message) {
+		// TODO Auto-generated method stub
+		refreshNewMsg(message);
+	}
+
+	/**
+	 * 刷新界面
+	 * 
+	 * @Title: refreshNewMsg
+	 * @Description: TODO
+	 * @param @param message
+	 * @return void
+	 * @throws
+	 */
+	private void refreshNewMsg(BmobMsg message) {
+		// 声音提示
+		boolean isAllow = MyApplication.getInstance().getSpUtil()
+				.isAllowVoice();
+		if (isAllow) {
+			MyApplication.getInstance().getMediaPlayer().start();
+		}
+		iv_recent_tips.setVisibility(View.VISIBLE);
+		// 也要存储起来
+		if (message != null) {
+			BmobChatManager.getInstance(MainActivity.this).saveReceiveMessage(
+					true, message);
+		}
+
+	}
+
+	NewBroadcastReceiver newReceiver;
+
+	private void initNewMessageBroadCast() {
+		// 注册接收消息广播
+		newReceiver = new NewBroadcastReceiver();
+		IntentFilter intentFilter = new IntentFilter(
+				BmobConfig.BROADCAST_NEW_MESSAGE);
+		// 优先级要低于ChatActivity
+		intentFilter.setPriority(3);
+		registerReceiver(newReceiver, intentFilter);
+	}
+
+	/**
+	 * 新消息广播接收者
+	 * 
+	 */
+	private class NewBroadcastReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// 刷新界面
+			refreshNewMsg(null);
+			// 记得把广播给终结掉
+			abortBroadcast();
+		}
+	}
+
+	TagBroadcastReceiver userReceiver;
+
+	/**
+	 * 标签消息广播接收者
+	 */
+	private class TagBroadcastReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			BmobInvitation message = (BmobInvitation) intent
+					.getSerializableExtra("invite");
+			refreshInvite(message);
+			// 记得把广播给终结掉
+			abortBroadcast();
+		}
+	}
+
+	@Override
+	public void onNetChange(boolean isNetConnected) {
+		// TODO Auto-generated method stub
+		if (isNetConnected) {
+
+			Toast.makeText(getApplicationContext(), R.string.network_tips,
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	@Override
+	public void onAddUser(BmobInvitation message) {
+		// TODO Auto-generated method stub
+		refreshInvite(message);
+	}
+
+	/**
+	 * 刷新好友请求
+	 * 
+	 * @Title: notifyAddUser
+	 * @Description: TODO
+	 * @param @param message
+	 * @return void
+	 * @throws
+	 */
+	private void refreshInvite(BmobInvitation message) {
+		boolean isAllow = MyApplication.getInstance().getSpUtil()
+				.isAllowVoice();
+		if (isAllow) {
+			MyApplication.getInstance().getMediaPlayer().start();
+		}
+		iv_recent_tips.setVisibility(View.VISIBLE);
+
+		// 同时提醒通知
+		String tickerText = message.getFromname() + "请求添加好友";
+		boolean isAllowVibrate = MyApplication.getInstance().getSpUtil()
+				.isAllowVibrate();
+		BmobNotifyManager.getInstance(this).showNotify(isAllow, isAllowVibrate,
+				R.drawable.ic_launcher, tickerText, message.getFromname(),
+				tickerText.toString(), NewFriendActivity.class);
+
+	}
+
+	@Override
+	public void onOffline() {
+		// TODO Auto-generated method stub
+
+		DialogTips dialog = new DialogTips(this, "您的账号已在其他设备上登录!", "重新登录");
+		// 设置成功事件
+		dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialogInterface, int userId) {
+				MyApplication.getInstance().logout();
+				startActivity(new Intent(MainActivity.this,
+						SignInActivity.class));
+				finish();
+				dialogInterface.dismiss();
+			}
+		});
+		// 显示确认对话框
+		dialog.show();
+		dialog = null;
+
+	}
+
+	@Override
+	public void onReaded(String conversionId, String msgTime) {
+		// TODO Auto-generated method stub
 	}
 }
