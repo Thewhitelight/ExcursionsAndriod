@@ -93,7 +93,7 @@ public class ActivityBase extends ActionBarActivity {
 	public void checkLogin() {
 		BmobUserManager userManager = BmobUserManager.getInstance(this);
 		if (userManager.getCurrentUser() == null) {
-			Toast.makeText(getBaseContext(), "您的账号已在其他设备上登录!",
+			Toast.makeText(getBaseContext(), "请登录您的账号！",
 					Toast.LENGTH_SHORT).show();
 			startActivity(new Intent(this, SignInActivity.class));
 			finish();

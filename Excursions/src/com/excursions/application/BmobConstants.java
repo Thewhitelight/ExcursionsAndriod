@@ -3,7 +3,9 @@ package com.excursions.application;
 import android.os.Environment;
 
 public class BmobConstants {
-
+	public static String INDEXURL = "http://10.64.130.129:10240/Attraction/AttractionList?flag=0";
+	public static String MOREURL = "http://10.64.130.129:10240/Attraction/AttractionList?flag=";
+	public static String ATTPOSITION = "ATTPOSITION";
 	/**
 	 * 存放发送图片的目录
 	 */

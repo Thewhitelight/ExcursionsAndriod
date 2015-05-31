@@ -4,15 +4,15 @@ import android.util.SparseArray;
 import android.view.View;
 
 /**
- * Viewholder的简化
+ * viewHolder简化写法
  * 
  * @ClassName: ViewHolder
  * @Description: TODO
- * @author smile
- * @date 2014-5-28 上午9:56:29
+ * @author SZQ
+ * @date 2015年5月20日 下午9:23:19
  */
-@SuppressWarnings("unchecked")
 public class ViewHolder {
+	@SuppressWarnings("unchecked")
 	public static <T extends View> T get(View view, int id) {
 		SparseArray<View> viewHolder = (SparseArray<View>) view.getTag();
 		if (viewHolder == null) {

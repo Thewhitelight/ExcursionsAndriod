@@ -1,7 +1,6 @@
 package com.excursions.adapter;
 
 import java.util.List;
-import java.util.Map;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,16 +12,16 @@ import android.widget.TextView;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.GridViewHolder;
-import com.excursions.utils.GetPicture;
+import com.excursions.bean.Attractions;
+import com.excursions.utils.ImageLoadOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class GridViewAdapter extends BaseAdapter {
-	private Context context;
-	private List<Map<String, Object>> list;
+	private List<Attractions> list;
 	private LayoutInflater inflater;
 
-	public GridViewAdapter(Context context, List<Map<String, Object>> list) {
+	public GridViewAdapter(Context context, List<Attractions> list) {
 		// TODO Auto-generated constructor stub
-		this.context = context;
 		this.list = list;
 		inflater = LayoutInflater.from(context);
 	}
@@ -61,9 +60,9 @@ public class GridViewAdapter extends BaseAdapter {
 		} else {
 			holder = (GridViewHolder) convertView.getTag();
 		}
-		holder.img_gd_item.setImageBitmap(GetPicture.getPic(
-				((String) list.get(position).get("gd_img")), context));
-		holder.tv_gd_item.setText((String) list.get(position).get("gd_tv"));
+		ImageLoader.getInstance().displayImage(list.get(position).getSsImage(),
+				holder.img_gd_item, ImageLoadOptions.getOptions());
+		holder.tv_gd_item.setText(list.get(position).getName());
 		return convertView;
 	}
 

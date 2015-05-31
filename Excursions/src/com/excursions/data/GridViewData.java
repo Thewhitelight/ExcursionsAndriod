@@ -1,45 +1,50 @@
 package com.excursions.data;
 
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
 
 import android.content.Context;
+import android.util.Log;
 
-import com.excursions.utils.ReadTextFile;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.excursions.application.BmobConstants;
+import com.excursions.bean.Attractions;
+import com.excursions.utils.ParseJson;
 
 public class GridViewData {
-	public static List<Map<String, Object>> getData(Context context) {
+	private static List<Attractions> mList = new ArrayList<Attractions>();
+	private static List<Attractions> list = new ArrayList<Attractions>();
+
+	public static List<Attractions> getData(Context context) throws Exception {
 		// TODO Auto-generated method stub
 
-		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		Map<String, Object> map;
-		InputStream inputStream;
-
-		try {
-			inputStream = context.getAssets().open("gridview.txt");
-			String json = ReadTextFile.readTextFile(inputStream);
-			JSONArray array = new JSONArray(json);
-			int n = array.length();
-			for (int i = 0; i < n; i++) {
-				map = new HashMap<String, Object>();
-				map.put("gd_img", array.getJSONObject(i).getString("gd_img"));
-				map.put("gd_tv", array.getJSONObject(i).getString("gd_tv"));
-				list.add(map);
+		RequestQueue rq = Volley.newRequestQueue(context);
+		Listener<String> listener;
+		listener = new Listener<String>() {
+			@Override
+			public void onResponse(String arg0) {
+				// TODO Auto-generated method stub
+				mList = ParseJson.getAttractionsJson(arg0);
+				list = mList;
+				Log.i("onResponse", mList.toString());
 			}
-			return list;
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-
+		};
+		StringRequest sr = new StringRequest(BmobConstants.INDEXURL, listener,
+				new ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						// TODO Auto-generated method stub
+						arg0.printStackTrace();
+					}
+				});
+		rq.add(sr);
+		Log.i("getData", mList.toString());
 		return list;
-
 	}
 
 }

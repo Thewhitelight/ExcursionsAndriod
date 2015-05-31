@@ -1,10 +1,20 @@
 package com.excursions.ui.activity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,6 +37,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatus;
@@ -35,9 +46,12 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 import com.example.excursions.R;
+import com.excursions.application.BmobConstants;
+import com.excursions.bean.Attractions;
 import com.excursions.ui.customview.PagerSlidingTabStrip;
 import com.excursions.ui.fragment.DiscussFragment;
 import com.excursions.ui.fragment.TripFragment;
+import com.excursions.utils.ParseJson;
 
 public class AttractionDetailActivity extends ActivityBase implements
 		OnPageChangeListener, OnClickListener {
@@ -50,7 +64,11 @@ public class AttractionDetailActivity extends ActivityBase implements
 	private ViewPager tab_pager;
 	private TripFragment trip;
 	private DiscussFragment discuss;
+	private int attId;
 	private String[] titles = { "攻略", "评论" };
+	private TextView tv_atts_content;
+	private Attractions attractions;
+	private ImageView images;
 	/**
 	 * ViewPager
 	 */
@@ -81,8 +99,13 @@ public class AttractionDetailActivity extends ActivityBase implements
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_attractioninfo_item);
+		attId = getIntent().getIntExtra(BmobConstants.ATTPOSITION, 0) + 1;
+		attractions = new Attractions();
 		actionBar.setTitle("景点信息");
 		init();
+		new GetData()
+				.execute("http://10.64.130.129:10240/attraction/attractiondetail?id="
+						+ attId);
 		baiduMap = mapView.getMap();
 		/**
 		 * 解决嵌套在scrollview中的mapview无法滑动问题
@@ -121,21 +144,21 @@ public class AttractionDetailActivity extends ActivityBase implements
 		// 将点点加入到ViewGroup中
 		tips = new ImageView[imgIdArray.length];
 		for (int i = 0; i < tips.length; i++) {
-			ImageView imageView = new ImageView(this);
+			images = new ImageView(this);
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 					15, 15);
 			params.setMargins(3, 0, 3, 0);// 左，上，右，下
-			imageView.setLayoutParams(params);
-			imageView.setScaleType(ScaleType.FIT_XY);
+			images.setLayoutParams(params);
+			images.setScaleType(ScaleType.FIT_XY);
 
-			tips[i] = imageView;
+			tips[i] = images;
 			if (i == 0) {
 				tips[i].setBackgroundResource(R.drawable.page_indicator_focused);
 			} else {
 				tips[i].setBackgroundResource(R.drawable.page_indicator_unfocused);
 			}
 
-			group.addView(imageView);
+			group.addView(images);
 		}
 
 		// 将图片装载到数组中
@@ -163,6 +186,8 @@ public class AttractionDetailActivity extends ActivityBase implements
 		cScrollView = (ScrollView) findViewById(R.id.sv);
 		tab_pager = (ViewPager) findViewById(R.id.tab_pager);
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+		tv_atts_content = (TextView) findViewById(R.id.tv_atts_content);
+		tv_atts_content.setText(attractions.getDescribe());
 		tabs.setTextSize(40);
 		tab_pager.setAdapter(new ViewPagerAdapater(this
 				.getSupportFragmentManager(), titles));
@@ -380,6 +405,50 @@ public class AttractionDetailActivity extends ActivityBase implements
 			return mImageViews[position % mImageViews.length];
 		}
 
+	}
+
+	public class GetData extends AsyncTask<String, Void, List<Attractions>> {
+		List<Attractions> list;
+
+		@Override
+		protected List<Attractions> doInBackground(String... params) {
+			// Simulates a background job.
+			try {
+				URL url = new URL(params[0]);
+				URLConnection urlcon = url.openConnection();
+				InputStream is = urlcon.getInputStream();
+				InputStreamReader in = new InputStreamReader(is, "utf-8");
+				BufferedReader buffer = new BufferedReader(in);
+				String str = null;
+
+				list = new ArrayList<Attractions>();
+				while ((str = buffer.readLine()) != null) {
+					list = ParseJson.getAttractionsDetailJson(str);
+				}
+				buffer.close();
+				in.close();
+				is.close();
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return list;
+		}
+
+		@Override
+		protected void onPostExecute(List<Attractions> result) {
+			try {
+				tv_atts_content.setText(result.get(0).getDescribe());
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+
+			super.onPostExecute(result);
+		}
 	}
 
 	@Override

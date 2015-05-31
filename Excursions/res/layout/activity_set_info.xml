@@ -83,9 +83,7 @@
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/register_bottom_arrow" />
             </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
+        </RelativeLayout><RelativeLayout
             android:id="@+id/layout_roster"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,8 +117,7 @@
                     android:src="@drawable/register_bottom_arrow" />
             </LinearLayout>
         </RelativeLayout>
-
-        <RelativeLayout
+<RelativeLayout
             android:id="@+id/layout_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

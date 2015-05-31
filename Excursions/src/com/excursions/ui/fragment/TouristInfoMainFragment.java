@@ -250,10 +250,10 @@ public class TouristInfoMainFragment extends BaseFragment {
 
 			return true;
 		}
-		if (id == R.id.market) {
-
-			return true;
-		}
+		// if (id == R.id.market) {
+		//
+		// return true;
+		// }
 		if (id == R.id.notice) {
 			startActivity(new Intent(getActivity(), NotifyActivity.class));
 			return true;

@@ -162,6 +162,7 @@ public class SignUpActivity extends BaseActivity {
 				Intent intent = new Intent();
 				intent.setClass(SignUpActivity.this, RosterActivity.class);
 				intent.putExtra("theme", "theme1");
+				// intent.setClass(SignUpActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 

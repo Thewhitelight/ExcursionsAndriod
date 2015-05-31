@@ -1,12 +1,14 @@
 package com.excursions.ui.fragment;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -21,30 +23,45 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.excursions.R;
 import com.excursions.adapter.GridViewAdapter;
+import com.excursions.application.BmobConstants;
+import com.excursions.bean.Attractions;
 import com.excursions.data.GridViewData;
 import com.excursions.ui.activity.AttractionDetailActivity;
 import com.excursions.ui.activity.BillActivity;
+import com.excursions.utils.ParseJson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 
 public class AttractionsInfoMainFragment extends BaseFragment {
 	private View view;
-
-	private List<Map<String, Object>> mGridItems;
+	private List<Attractions> mGridItems;
 	private PullToRefreshGridView mPullRefreshGridView;
 	private GridView mGridView;
 	private GridViewAdapter adapter;
+	private int index = 1;
+
+	// private String url =
+	// "http://10.64.130.129:10240/Attraction/AttractionList?flag=0";
+	// private String moreUrl =
+	// "http://10.64.130.129:10240/Attraction/AttractionList?flag=";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		mGridItems = new ArrayList<Map<String, Object>>();
-		mGridItems = GridViewData.getData(getActivity());
+		new GetDataTask().execute(BmobConstants.INDEXURL);
+		mGridItems = new ArrayList<Attractions>();
+		try {
+			mGridItems = GridViewData.getData(getActivity());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		adapter = new GridViewAdapter(getActivity(), mGridItems);
 		setHasOptionsMenu(true);
 	}
@@ -70,8 +87,10 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getActivity(),
-						AttractionDetailActivity.class));
+				Intent i = new Intent();
+				i.setClass(getActivity(), AttractionDetailActivity.class);
+				i.putExtra(BmobConstants.ATTPOSITION, position);
+				startActivity(i);
 
 			}
 		});
@@ -90,7 +109,13 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 
 						refreshView.getLoadingLayoutProxy()
 								.setLastUpdatedLabel(label);
-						new GetDataTask().execute();
+						if (BmobConstants.INDEXURL == "http://10.64.130.129:10240/Attraction/AttractionList?flag=0") {
+							Toast.makeText(getActivity(), "已经是最新内容了",
+									Toast.LENGTH_SHORT).show();
+							refreshView.onRefreshComplete();
+						} else {
+							new GetDataTask().execute(BmobConstants.INDEXURL);
+						}
 					}
 
 					@Override
@@ -98,59 +123,53 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 							PullToRefreshBase<GridView> refreshView) {
 						refreshView.getLoadingLayoutProxy()
 								.setLastUpdatedLabel(label);
-
-						new GetDataTask().execute();
+						new GetDataTask()
+								.execute(BmobConstants.MOREURL + index);
+						index++;
 					}
 
 				});
-
 		mGridView.setAdapter(adapter);
 
 	}
 
-	public class GetDataTask extends
-			AsyncTask<Void, Void, List<Map<String, Object>>> {
+	public class GetDataTask extends AsyncTask<String, Void, List<Attractions>> {
+		List<Attractions> list;
 
 		@Override
-		protected List<Map<String, Object>> doInBackground(Void... params) {
+		protected List<Attractions> doInBackground(String... params) {
 			// Simulates a background job.
 			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-			}
-			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			InputStream inputStream;
-			try {
-				inputStream = getActivity().getAssets().open("gridview.txt");
-				String json = com.excursions.utils.ReadTextFile
-						.readTextFile(inputStream);
-				JSONArray array = new JSONArray(json);
-				int n = array.length();
-				for (int i = 0; i < n; i++) {
-					map = new HashMap<String, Object>();
-					map.put("gd_img", array.getJSONObject(i)
-							.getString("gd_img"));
-					map.put("gd_tv", array.getJSONObject(i).getString("gd_tv"));
-					list.add(map);
+				URL url = new URL(params[0]);
+				URLConnection urlcon = url.openConnection();
+				InputStream is = urlcon.getInputStream();
+				InputStreamReader in = new InputStreamReader(is, "utf-8");
+				BufferedReader buffer = new BufferedReader(in);
+				String str = null;
+
+				list = new ArrayList<Attractions>();
+				while ((str = buffer.readLine()) != null) {
+					list = ParseJson.getAttractionsJson(str);
 				}
-				return list;
-
-			} catch (Exception e) {
-				// TODO: handle exception
+				buffer.close();
+				in.close();
+				is.close();
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
+			return list;
 		}
 
 		@Override
-		protected void onPostExecute(List<Map<String, Object>> result) {
+		protected void onPostExecute(List<Attractions> result) {
 			// 在头部增加新添内容
 
 			try {
-				mGridItems.addAll(0, result);
-
+				mGridItems.addAll(result);
 				// 通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
 				adapter.notifyDataSetChanged();
 				// Call onRefreshComplete when the list has been refreshed.
