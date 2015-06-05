@@ -25,6 +25,7 @@ import android.widget.ListView;
 import com.example.excursions.R;
 import com.excursions.adapter.TourLvAdapter;
 import com.excursions.data.TouListViewData;
+import com.excursions.ui.activity.DealActivity;
 import com.excursions.ui.activity.NotifyActivity;
 import com.excursions.ui.activity.TourIssueActivity;
 import com.excursions.ui.activity.TouristDetailActivity;
@@ -64,7 +65,7 @@ public class TouristInfoMainFragment extends BaseFragment {
 	public void init() {
 		// TODO Auto-generated method stub
 		mPullRefreshListView = (PullToRefreshListView) view
-				.findViewById(R.id.pull_refresh_list);
+				.findViewById(R.id.fragment_pull_refresh_list);
 		// 设定下拉监听函数
 		mPullRefreshListView
 				.setOnRefreshListener(new OnRefreshListener<ListView>() {
@@ -250,10 +251,10 @@ public class TouristInfoMainFragment extends BaseFragment {
 
 			return true;
 		}
-		// if (id == R.id.market) {
-		//
-		// return true;
-		// }
+		if (id == R.id.market) {
+			startActivity(new Intent(getActivity(), DealActivity.class));
+			return true;
+		}
 		if (id == R.id.notice) {
 			startActivity(new Intent(getActivity(), NotifyActivity.class));
 			return true;

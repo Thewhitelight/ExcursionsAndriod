@@ -45,11 +45,6 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 	private GridViewAdapter adapter;
 	private int index = 1;
 
-	// private String url =
-	// "http://10.64.130.129:10240/Attraction/AttractionList?flag=0";
-	// private String moreUrl =
-	// "http://10.64.130.129:10240/Attraction/AttractionList?flag=";
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -87,11 +82,13 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
+				// Toast.makeText(getActivity(), position+" ",
+				// Toast.LENGTH_SHORT)
+				// .show();
 				Intent i = new Intent();
 				i.setClass(getActivity(), AttractionDetailActivity.class);
 				i.putExtra(BmobConstants.ATTPOSITION, position);
 				startActivity(i);
-
 			}
 		});
 		// Set a listener to be invoked when the list should be refreshed.
@@ -109,7 +106,7 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 
 						refreshView.getLoadingLayoutProxy()
 								.setLastUpdatedLabel(label);
-						if (BmobConstants.INDEXURL == "http://10.64.130.129:10240/Attraction/AttractionList?flag=0") {
+						if ("http://10.64.130.129:10240/Attraction/AttractionList?flag=0" == BmobConstants.INDEXURL) {
 							Toast.makeText(getActivity(), "已经是最新内容了",
 									Toast.LENGTH_SHORT).show();
 							refreshView.onRefreshComplete();
@@ -166,8 +163,6 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 
 		@Override
 		protected void onPostExecute(List<Attractions> result) {
-			// 在头部增加新添内容
-
 			try {
 				mGridItems.addAll(result);
 				// 通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合

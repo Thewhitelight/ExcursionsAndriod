@@ -198,7 +198,7 @@ public class SplashActivity extends BaseActivity {
 		public void onReceive(Context context, Intent intent) {
 			String s = intent.getAction();
 			if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR)) {
-				ShowToast("key 验证出错! 请在 AndroidManifest.xml 文件中检查 key 设置");
+				ShowToast("当前网络连接不稳定，请检查您的网络设置!");
 			} else if (s
 					.equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
 				ShowToast("当前网络连接不稳定，请检查您的网络设置!");

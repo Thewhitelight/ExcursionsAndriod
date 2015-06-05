@@ -2,6 +2,10 @@ package com.excursions.bean;
 
 public class Attractions {
 	private String id;
+	private String name;
+	private String describe;
+	private String ssImage;
+	private String address;
 
 	public String getId() {
 		return id;
@@ -43,8 +47,4 @@ public class Attractions {
 		this.address = address;
 	}
 
-	private String name;
-	private String describe;
-	private String ssImage;
-	private String address;
 }
