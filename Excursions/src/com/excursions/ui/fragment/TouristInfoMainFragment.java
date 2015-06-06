@@ -1,12 +1,14 @@
 package com.excursions.ui.fragment;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,12 +26,13 @@ import android.widget.ListView;
 
 import com.example.excursions.R;
 import com.excursions.adapter.TourLvAdapter;
-import com.excursions.data.TouListViewData;
+import com.excursions.application.BmobConstants;
+import com.excursions.bean.TourMain;
 import com.excursions.ui.activity.DealActivity;
 import com.excursions.ui.activity.NotifyActivity;
 import com.excursions.ui.activity.TourIssueActivity;
 import com.excursions.ui.activity.TouristDetailActivity;
-import com.excursions.utils.ReadTextFile;
+import com.excursions.utils.ParseJson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
@@ -37,17 +40,18 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class TouristInfoMainFragment extends BaseFragment {
 	private View view;
-	private List<Map<String, Object>> list;
+	private List<TourMain> list;
 	private PullToRefreshListView mPullRefreshListView;
 	private TourLvAdapter adapter;
 	private Mode currentMode;
+	private int index = 1;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		list = new ArrayList<Map<String, Object>>();
-		list = TouListViewData.getData(getActivity());
+		list = new ArrayList<TourMain>();
+		new GetDataTask().execute(BmobConstants.TOURURL);
 		adapter = new TourLvAdapter(getActivity(), list);
 		setHasOptionsMenu(true);
 	}
@@ -82,9 +86,8 @@ public class TouristInfoMainFragment extends BaseFragment {
 							// Update the LastUpdatedLabel
 							refreshView.getLoadingLayoutProxy()
 									.setLastUpdatedLabel(label);
+							new GetDataTask2().execute();
 
-							// D work to refresh the list here.
-							new GetDataTask().execute();
 						}
 						if (Mode.PULL_FROM_END == currentMode) {
 							// Update the LastUpdatedLabel
@@ -92,7 +95,9 @@ public class TouristInfoMainFragment extends BaseFragment {
 									.setLastUpdatedLabel(label);
 
 							// D work to refresh the list here.
-							new GetDataTask2().execute();
+							new GetDataTask().execute(BmobConstants.TOURMORE
+									+ index);
+							index++;
 						}
 
 					}
@@ -107,8 +112,10 @@ public class TouristInfoMainFragment extends BaseFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(getActivity(),
-						TouristDetailActivity.class));
+				Intent i = new Intent();
+				i.setClass(getActivity(), TouristDetailActivity.class);
+				i.putExtra("flag", 1);
+				startActivity(i);
 			}
 		});
 	}
@@ -119,51 +126,41 @@ public class TouristInfoMainFragment extends BaseFragment {
 		super.onPause();
 	}
 
-	private class GetDataTask extends
-			AsyncTask<Void, Void, List<Map<String, Object>>> {
+	private class GetDataTask extends AsyncTask<String, Void, List<TourMain>> {
+		List<TourMain> lists;
 
 		@Override
-		protected List<Map<String, Object>> doInBackground(Void... params) {
-			// TODO Auto-generated method stub
+		protected List<TourMain> doInBackground(String... params) {
+			// Simulates a background job.
 			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-			}
-			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-			Map<String, Object> map = new HashMap<String, Object>();
-			InputStream inputStream;
-			try {
-				inputStream = getActivity().getAssets().open("tou_main.txt");
-				String json = ReadTextFile.readTextFile(inputStream);
-				JSONArray array = new JSONArray(json);
-				int n = array.length();
-				for (int i = 0; i < n; i++) {
-					map = new HashMap<String, Object>();
-					map.put("title", array.getJSONObject(i).getString("title"));
-					map.put("content",
-							array.getJSONObject(i).getString("content"));
-					map.put("man", array.getJSONObject(i).getString("man"));
-					map.put("time", array.getJSONObject(i).getString("time"));
-					map.put("number", array.getJSONObject(i)
-							.getString("number"));
-					list.add(map);
+				URL url = new URL(params[0]);
+				URLConnection urlcon = url.openConnection();
+				InputStream is = urlcon.getInputStream();
+				InputStreamReader in = new InputStreamReader(is, "utf-8");
+				BufferedReader buffer = new BufferedReader(in);
+				String str = null;
+
+				lists = new ArrayList<TourMain>();
+				while ((str = buffer.readLine()) != null) {
+					lists = ParseJson.getTourJson(str);
 				}
-				return list;
-
-			} catch (Exception e) {
-				// TODO: handle exception
+				buffer.close();
+				in.close();
+				is.close();
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
+			return lists;
 		}
 
 		@Override
-		protected void onPostExecute(List<Map<String, Object>> result) {
-			// TODO Auto-generated method stub
+		protected void onPostExecute(List<TourMain> result) {
 			try {
-				list.addAll(0, result);
-
+				list.addAll(result);
 				// 通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
 				adapter.notifyDataSetChanged();
 				// Call onRefreshComplete when the list has been refreshed.
@@ -175,63 +172,23 @@ public class TouristInfoMainFragment extends BaseFragment {
 
 			super.onPostExecute(result);
 		}
-
 	}
 
-	private class GetDataTask2 extends
-			AsyncTask<Void, Void, List<Map<String, Object>>> {
+	private class GetDataTask2 extends AsyncTask<Void, Void, List<TourMain>> {
 
 		@Override
-		protected List<Map<String, Object>> doInBackground(Void... params) {
-			// TODO Auto-generated method stub
+		protected List<TourMain> doInBackground(Void... params) {
 			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-			}
-			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-			Map<String, Object> map = new HashMap<String, Object>();
-			InputStream inputStream;
-			try {
-				inputStream = getActivity().getAssets().open("tou_main.txt");
-				String json = ReadTextFile.readTextFile(inputStream);
-				JSONArray array = new JSONArray(json);
-				int n = array.length();
-				for (int i = 0; i < n; i++) {
-					map = new HashMap<String, Object>();
-					map.put("title", array.getJSONObject(i).getString("title"));
-					map.put("content",
-							array.getJSONObject(i).getString("content"));
-					map.put("man", array.getJSONObject(i).getString("man"));
-					map.put("time", array.getJSONObject(i).getString("time"));
-					map.put("number", array.getJSONObject(i)
-							.getString("number"));
-					list.add(map);
-				}
-				return list;
-
+				Thread.sleep(500);
 			} catch (Exception e) {
 				// TODO: handle exception
-				e.printStackTrace();
-				return null;
 			}
-
+			return null;
 		}
 
 		@Override
-		protected void onPostExecute(List<Map<String, Object>> result) {
-			// TODO Auto-generated method stub
-			try {
-				list.addAll(result);
-
-				// 通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
-				adapter.notifyDataSetChanged();
-				// Call onRefreshComplete when the list has been refreshed.
-				mPullRefreshListView.onRefreshComplete();
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-
+		protected void onPostExecute(List<TourMain> result) {
+			mPullRefreshListView.onRefreshComplete();
 			super.onPostExecute(result);
 		}
 

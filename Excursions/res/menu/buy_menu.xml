@@ -7,7 +7,11 @@
         android:id="@+id/discuss"
         android:icon="@drawable/ic_edit"
         android:title="@string/ok"
-        app:showAsAction="always">
-    </item>
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/buy"
+        android:icon="@drawable/buy"
+        android:title="@string/buy"
+        app:showAsAction="always"/>
 
 </menu>

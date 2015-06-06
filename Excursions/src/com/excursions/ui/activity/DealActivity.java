@@ -1,12 +1,14 @@
 package com.excursions.ui.activity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -21,15 +23,15 @@ import android.widget.ListView;
 
 import com.example.excursions.R;
 import com.excursions.adapter.TourLvAdapter;
-import com.excursions.data.TouListViewData;
-import com.excursions.utils.ReadTextFile;
+import com.excursions.application.BmobConstants;
+import com.excursions.bean.TourMain;
+import com.excursions.utils.ParseJson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class DealActivity extends ActivityBase {
-	private List<Map<String, Object>> list;
+	private List<TourMain> list;
 	private PullToRefreshListView mPullRefreshListView;
 	private TourLvAdapter adapter;
 
@@ -38,14 +40,15 @@ public class DealActivity extends ActivityBase {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_deal);
+		actionBar.setTitle("交易社区");
 		initView();
 		initData();
 	}
 
 	private void initView() {
 		// TODO Auto-generated method stub
-		list = new ArrayList<Map<String, Object>>();
-		list = TouListViewData.getData(this);
+		list = new ArrayList<TourMain>();
+		new GetDataTask().execute(BmobConstants.DEALURL);
 		adapter = new TourLvAdapter(this, list);
 		mPullRefreshListView = (PullToRefreshListView) this
 				.findViewById(R.id.deal_pull_refresh_list);
@@ -70,7 +73,7 @@ public class DealActivity extends ActivityBase {
 						// Update the LastUpdatedLabel
 						refreshView.getLoadingLayoutProxy()
 								.setLastUpdatedLabel(label);
-						new GetDataTask().execute();
+						new GetDataTask().execute(BmobConstants.DEALURL);
 
 					}
 				});
@@ -84,57 +87,50 @@ public class DealActivity extends ActivityBase {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(DealActivity.this,
-						TouristDetailActivity.class));
+				Intent i = new Intent();
+				i.setClass(getApplicationContext(), TouristDetailActivity.class);
+				i.putExtra("flag", 2);
+				startActivity(i);
 			}
 		});
 	}
 
-	private class GetDataTask extends
-			AsyncTask<Void, Void, List<Map<String, Object>>> {
+	private class GetDataTask extends AsyncTask<String, Void, List<TourMain>> {
+		List<TourMain> lists;
 
 		@Override
-		protected List<Map<String, Object>> doInBackground(Void... params) {
-			// TODO Auto-generated method stub
+		protected List<TourMain> doInBackground(String... params) {
+			// Simulates a background job.
 			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-			}
-			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-			Map<String, Object> map = new HashMap<String, Object>();
-			InputStream inputStream;
-			try {
-				inputStream = getApplicationContext().getAssets().open(
-						"tou_main.txt");
-				String json = ReadTextFile.readTextFile(inputStream);
-				JSONArray array = new JSONArray(json);
-				int n = array.length();
-				for (int i = 0; i < n; i++) {
-					map = new HashMap<String, Object>();
-					map.put("title", array.getJSONObject(i).getString("title"));
-					map.put("content",
-							array.getJSONObject(i).getString("content"));
-					map.put("man", array.getJSONObject(i).getString("man"));
-					map.put("time", array.getJSONObject(i).getString("time"));
-					map.put("number", array.getJSONObject(i)
-							.getString("number"));
-					list.add(map);
+				URL url = new URL(params[0]);
+				URLConnection urlcon = url.openConnection();
+				InputStream is = urlcon.getInputStream();
+				InputStreamReader in = new InputStreamReader(is, "utf-8");
+				BufferedReader buffer = new BufferedReader(in);
+				String str = null;
+
+				lists = new ArrayList<TourMain>();
+				while ((str = buffer.readLine()) != null) {
+					lists = ParseJson.getTourJson(str);
 				}
-				return list;
-
-			} catch (Exception e) {
-				// TODO: handle exception
+				buffer.close();
+				in.close();
+				is.close();
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
-				return null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
+			return lists;
 		}
 
 		@Override
-		protected void onPostExecute(List<Map<String, Object>> result) {
+		protected void onPostExecute(List<TourMain> result) {
 			// TODO Auto-generated method stub
 			try {
-				list.addAll(0, result);
+				list.addAll(result);
 
 				// 通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
 				adapter.notifyDataSetChanged();
@@ -144,8 +140,10 @@ public class DealActivity extends ActivityBase {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
+
 			super.onPostExecute(result);
 		}
+
 	}
 
 	@Override

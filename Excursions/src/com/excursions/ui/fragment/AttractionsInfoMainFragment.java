@@ -29,7 +29,6 @@ import com.example.excursions.R;
 import com.excursions.adapter.GridViewAdapter;
 import com.excursions.application.BmobConstants;
 import com.excursions.bean.Attractions;
-import com.excursions.data.GridViewData;
 import com.excursions.ui.activity.AttractionDetailActivity;
 import com.excursions.ui.activity.BillActivity;
 import com.excursions.utils.ParseJson;
@@ -49,14 +48,8 @@ public class AttractionsInfoMainFragment extends BaseFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		new GetDataTask().execute(BmobConstants.INDEXURL);
 		mGridItems = new ArrayList<Attractions>();
-		try {
-			mGridItems = GridViewData.getData(getActivity());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		new GetDataTask().execute(BmobConstants.INDEXURL);
 		adapter = new GridViewAdapter(getActivity(), mGridItems);
 		setHasOptionsMenu(true);
 	}

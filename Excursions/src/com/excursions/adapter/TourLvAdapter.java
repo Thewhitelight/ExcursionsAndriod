@@ -1,7 +1,6 @@
 package com.excursions.adapter;
 
 import java.util.List;
-import java.util.Map;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.excursions.R;
 import com.excursions.ViewHolder.TouListViewHolder;
+import com.excursions.bean.TourMain;
 import com.excursions.ui.customview.EmoticonsTextView;
 
 /**
@@ -24,10 +24,10 @@ import com.excursions.ui.customview.EmoticonsTextView;
  * @date 2015年5月6日 下午8:50:36
  */
 public class TourLvAdapter extends BaseAdapter {
-	private List<Map<String, Object>> list;
+	private List<TourMain> list;
 	private LayoutInflater inflater;
 
-	public TourLvAdapter(Context context, List<Map<String, Object>> list) {
+	public TourLvAdapter(Context context, List<TourMain> list) {
 		// TODO Auto-generated constructor stub
 		this.list = list;
 		inflater = LayoutInflater.from(context);
@@ -74,12 +74,11 @@ public class TourLvAdapter extends BaseAdapter {
 		} else {
 			holder = (TouListViewHolder) convertView.getTag();
 		}
-		holder.tv_title.setText((String) list.get(position).get("title"));
-		holder.tv_content.setText((String) list.get(position).get("content"));
-		holder.tv_var_man.setText((String) list.get(position).get("man"));
-		holder.tv_var_time.setText((String) list.get(position).get("time"));
-		holder.tv_comment_num
-				.setText((String) list.get(position).get("number"));
+		holder.tv_title.setText(list.get(position).getTitle());
+		holder.tv_content.setText(list.get(position).getContent());
+		holder.tv_var_man.setText(list.get(position).getUserId());
+		holder.tv_var_time.setText(list.get(position).getCreateTime());
+		holder.tv_comment_num.setText(list.get(position).getPraiseNum());
 		return convertView;
 	}
 

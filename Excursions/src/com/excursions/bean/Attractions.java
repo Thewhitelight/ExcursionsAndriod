@@ -6,6 +6,25 @@ public class Attractions {
 	private String describe;
 	private String ssImage;
 	private String address;
+	private double Longitude;
+
+	public double getLongitude() {
+		return Longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		Longitude = longitude;
+	}
+
+	public double getLatitude() {
+		return Latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		Latitude = latitude;
+	}
+
+	private double Latitude;
 
 	public String getId() {
 		return id;

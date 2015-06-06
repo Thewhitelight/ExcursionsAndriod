@@ -373,16 +373,30 @@ public class TouristDetailActivity extends ActivityBase implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		getMenuInflater().inflate(R.menu.discuss_menu, menu);
+		int flag = getIntent().getIntExtra("flag", 1);
+		if (flag == 1) {
+			getMenuInflater().inflate(R.menu.discuss_menu, menu);
+		}
+		if (flag == 2) {
+			getMenuInflater().inflate(R.menu.buy_menu, menu);
+		}
+
 		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
+
 		if (item.getItemId() == R.id.discuss) {
 			startActivity(new Intent(this, TourIssueActivity.class));
+			return true;
 		}
+		if (item.getItemId() == R.id.buy) {
+			startActivity(new Intent(this, PayActivity.class));
+			return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 }

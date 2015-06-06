@@ -19,6 +19,7 @@
     <string name="market">交易</string>
     <string name="notice">通知</string>
     <string name="ok">确定</string>
+    <string name="buy">购买</string>
     <string name="delete">删除</string>
     <string name="add_bill">添加新账单</string>
     <string name="add_card">发帖</string>

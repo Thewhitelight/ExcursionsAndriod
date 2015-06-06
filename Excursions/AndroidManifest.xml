@@ -231,6 +231,10 @@
             android:name="com.excursions.ui.activity.DealActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.excursions.ui.activity.PayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <service
             android:name="com.baidu.location.f"

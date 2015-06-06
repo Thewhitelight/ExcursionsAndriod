@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,6 +22,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -67,7 +66,6 @@ public class AttractionDetailActivity extends ActivityBase implements
 	private int attId;
 	private String[] titles = { "攻略", "评论" };
 	private TextView tv_atts_content;
-	private Attractions attractions;
 	private ImageView images;
 	/**
 	 * ViewPager
@@ -93,6 +91,53 @@ public class AttractionDetailActivity extends ActivityBase implements
 	TimerTask mTask;
 	int pageIndex = 1;
 	boolean isTaskRun;
+	private Attractions attractions;
+	LatLng point;
+	double latitude = 0;
+	double longitude = 0;
+	public Handler hanlder = new Handler() {
+		public void handleMessage(Message msg) {
+			attractions = (Attractions) msg.obj;
+			tv_atts_content.setText(attractions.getDescribe());
+			latitude = attractions.getLatitude();
+			longitude = attractions.getLongitude();
+			Log.i("handleMessage", latitude + " " + longitude);
+			baiduMap = mapView.getMap();
+			/**
+			 * 解决嵌套在scrollview中的mapview无法滑动问题
+			 */
+			view = mapView.getChildAt(0);
+			view.setOnTouchListener(new OnTouchListener() {
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+					if (event.getAction() == MotionEvent.ACTION_UP) {
+						cScrollView.requestDisallowInterceptTouchEvent(false);
+					} else {
+						cScrollView.requestDisallowInterceptTouchEvent(true);
+					}
+					return false;
+				}
+			});
+
+			baiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+
+			point = new LatLng(latitude, longitude);
+			// 设定中心点坐标
+			// point = new LatLng(attractions.getLatitude(),
+			// attractions.getLongitude());
+			// 定义地图状态
+			Log.i("oncreate", point.toString());
+			MapStatus mMapStatus = new MapStatus.Builder().target(point)
+					.zoom(19).build();
+			// 定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
+			MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory
+					.newMapStatus(mMapStatus);
+			// 改变地图状态
+			baiduMap.setMapStatus(mMapStatusUpdate);
+		};
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,41 +145,10 @@ public class AttractionDetailActivity extends ActivityBase implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_attractioninfo_item);
 		attId = getIntent().getIntExtra(BmobConstants.ATTPOSITION, 0) + 1;
-		attractions = new Attractions();
+		new GetDataTask().execute(BmobConstants.ATTDETAILURL + attId);
 		actionBar.setTitle("景点信息");
 		init();
-		new GetData()
-				.execute("http://10.64.130.129:10240/attraction/attractiondetail?id="
-						+ attId);
-		baiduMap = mapView.getMap();
-		/**
-		 * 解决嵌套在scrollview中的mapview无法滑动问题
-		 */
-		view = mapView.getChildAt(0);
-		view.setOnTouchListener(new OnTouchListener() {
 
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					cScrollView.requestDisallowInterceptTouchEvent(false);
-				} else {
-					cScrollView.requestDisallowInterceptTouchEvent(true);
-				}
-				return false;
-			}
-		});
-		baiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
-		// 设定中心点坐标
-		LatLng point = new LatLng(30.256423, 120.149125);
-		// 定义地图状态
-		MapStatus mMapStatus = new MapStatus.Builder().target(point).zoom(19)
-				.build();
-		// 定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
-		MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory
-				.newMapStatus(mMapStatus);
-		// 改变地图状态
-		baiduMap.setMapStatus(mMapStatusUpdate);
 		// 载入图片资源ID
 		imgIdArray = new int[] { R.drawable.item0, R.drawable.item1,
 				R.drawable.item2, R.drawable.item3, R.drawable.item4,
@@ -187,7 +201,7 @@ public class AttractionDetailActivity extends ActivityBase implements
 		tab_pager = (ViewPager) findViewById(R.id.tab_pager);
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
 		tv_atts_content = (TextView) findViewById(R.id.tv_atts_content);
-		tv_atts_content.setText(attractions.getDescribe());
+		// tv_atts_content.setText(attractions.getDescribe());
 		tabs.setTextSize(40);
 		tab_pager.setAdapter(new ViewPagerAdapater(this
 				.getSupportFragmentManager(), titles));
@@ -407,50 +421,6 @@ public class AttractionDetailActivity extends ActivityBase implements
 
 	}
 
-	public class GetData extends AsyncTask<String, Void, List<Attractions>> {
-		List<Attractions> list;
-
-		@Override
-		protected List<Attractions> doInBackground(String... params) {
-			// Simulates a background job.
-			try {
-				URL url = new URL(params[0]);
-				URLConnection urlcon = url.openConnection();
-				InputStream is = urlcon.getInputStream();
-				InputStreamReader in = new InputStreamReader(is, "utf-8");
-				BufferedReader buffer = new BufferedReader(in);
-				String str = null;
-
-				list = new ArrayList<Attractions>();
-				while ((str = buffer.readLine()) != null) {
-					list = ParseJson.getAttractionsDetailJson(str);
-				}
-				buffer.close();
-				in.close();
-				is.close();
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return list;
-		}
-
-		@Override
-		protected void onPostExecute(List<Attractions> result) {
-			try {
-				tv_atts_content.setText(result.get(0).getDescribe());
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-
-			super.onPostExecute(result);
-		}
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
@@ -474,4 +444,49 @@ public class AttractionDetailActivity extends ActivityBase implements
 		return super.onOptionsItemSelected(item);
 	}
 
+	public class GetDataTask extends AsyncTask<String, Void, Attractions> {
+		Attractions attractions;
+
+		@Override
+		protected Attractions doInBackground(String... params) {
+			// Simulates a background job.
+			try {
+				URL url = new URL(params[0]);
+				Log.i("doInBackground", params[0] + " ");
+				URLConnection urlcon = url.openConnection();
+				InputStream is = urlcon.getInputStream();
+				InputStreamReader in = new InputStreamReader(is, "utf-8");
+				BufferedReader buffer = new BufferedReader(in);
+				String str = null;
+				attractions = new Attractions();
+				while ((str = buffer.readLine()) != null) {
+					attractions = ParseJson.getAttractionsDetailJson(str);
+				}
+				buffer.close();
+				in.close();
+				is.close();
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return attractions;
+		}
+
+		@Override
+		protected void onPostExecute(Attractions result) {
+			try {
+				Message msg = new Message();
+				msg.obj = result;
+				hanlder.sendMessage(msg);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+
+			super.onPostExecute(result);
+		}
+	}
 }
