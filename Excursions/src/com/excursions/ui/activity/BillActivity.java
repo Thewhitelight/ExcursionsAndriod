@@ -41,6 +41,7 @@ public class BillActivity extends ActivityBase {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_bill_main);
+		actionBar.setTitle("’Àµ•");
 		list = new ArrayList<Map<String, Object>>();
 		map = new HashMap<String, Object>();
 		list = getData(this);

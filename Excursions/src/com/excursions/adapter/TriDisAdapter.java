@@ -51,7 +51,7 @@ public class TriDisAdapter extends BaseAdapter {
 			holder = new TouListViewHolder();
 			convertView = inflater.inflate(R.layout.layout_tridis_item, parent,
 					false);
-			holder.tv_title = (TextView) convertView
+			holder.tv_title = (EmoticonsTextView) convertView
 					.findViewById(R.id.tv_tou_title);
 			holder.tv_content = (EmoticonsTextView) convertView
 					.findViewById(R.id.tv_tou_content);

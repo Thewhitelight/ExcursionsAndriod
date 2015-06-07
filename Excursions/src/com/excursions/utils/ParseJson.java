@@ -74,8 +74,8 @@ public class ParseJson {
 			for (int i = 0; i < length; i++) {
 				TourMain tourMain = new TourMain();
 				tourMain.setId(jsonArray.getJSONObject(i).getString("Id"));
-				tourMain.setUserId(jsonArray.getJSONObject(i).getString(
-						"UserId"));
+				tourMain.setUserUserName(jsonArray.getJSONObject(i).getString(
+						"UserUsername"));
 				tourMain.setTitle(jsonArray.getJSONObject(i).getString("Title"));
 				tourMain.setContent(jsonArray.getJSONObject(i).getString(
 						"Content"));

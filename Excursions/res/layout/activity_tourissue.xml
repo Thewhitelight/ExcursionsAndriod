@@ -9,11 +9,23 @@
         android:orientation="vertical" >
 
         <com.excursions.ui.customview.EmoticonsEditText
+            android:id="@+id/edit_user_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:hint="标题"
+            android:imeOptions="flagNoExtractUi"
+            android:minHeight="40dp"
+            android:padding="5dp" />
+
+        <com.excursions.ui.customview.EmoticonsEditText
             android:id="@+id/edit_user_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
+            android:hint="内容"
             android:imeOptions="flagNoExtractUi"
             android:minHeight="40dp"
             android:padding="5dp" />

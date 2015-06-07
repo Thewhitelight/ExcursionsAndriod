@@ -44,8 +44,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-public class TouristDetailActivity extends ActivityBase implements
-		OnClickListener {
+public class DealDetailActivity extends ActivityBase implements OnClickListener {
 	private Button btn_chat_add, btn_chat_emo, btn_chat_send;
 	private EmoticonsEditText edit_user_comment;
 	private LinearLayout layout_more, layout_add, layout_emo, buttom_bar;
@@ -166,7 +165,7 @@ public class TouristDetailActivity extends ActivityBase implements
 			InputStream inputStream;
 			try {
 				inputStream = getApplicationContext().getAssets().open(
-						"tou_detail.txt");
+						"deal.txt");
 				String json = ReadTextFile.readTextFile(inputStream);
 				JSONArray array = new JSONArray(json);
 				int n = array.length();
@@ -246,8 +245,7 @@ public class TouristDetailActivity extends ActivityBase implements
 			list.addAll(emos.subList(21, emos.size()));
 		}
 
-		final EmoteAdapter gridAdapter = new EmoteAdapter(
-				TouristDetailActivity.this, list);
+		final EmoteAdapter gridAdapter = new EmoteAdapter(this, list);
 		gridview.setAdapter(gridAdapter);
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 

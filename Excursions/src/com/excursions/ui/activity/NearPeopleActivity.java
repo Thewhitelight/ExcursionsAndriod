@@ -37,6 +37,7 @@ public class NearPeopleActivity extends ActivityBase implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_near);
 		initView();
+		actionBar.setTitle("¸½½üµÄÈË");
 	}
 
 	private void initView() {

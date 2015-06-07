@@ -36,7 +36,7 @@ public class BillEditDetailActivity extends ActivityBase {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activty_bill_edit_detail);
 		init();
-
+		actionBar.setTitle("’Àµ•±‡º≠");
 	}
 
 	private void init() {

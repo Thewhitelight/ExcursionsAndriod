@@ -130,7 +130,7 @@ public class AttractionDetailActivity extends ActivityBase implements
 			// 定义地图状态
 			Log.i("oncreate", point.toString());
 			MapStatus mMapStatus = new MapStatus.Builder().target(point)
-					.zoom(19).build();
+					.zoom(15).build();
 			// 定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
 			MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory
 					.newMapStatus(mMapStatus);

@@ -35,12 +35,13 @@ public class BillDetailActivity extends ActivityBase {
 		att = getIntent().getStringExtra("key");
 		init();
 		selectData();
+		actionBar.setTitle("’Àµ•œÍ«È");
 		btn_select.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//String str = sp_type.getSelectedItem().toString();
+				// String str = sp_type.getSelectedItem().toString();
 			}
 		});
 	}

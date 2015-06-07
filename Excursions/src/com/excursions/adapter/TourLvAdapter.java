@@ -59,7 +59,7 @@ public class TourLvAdapter extends BaseAdapter {
 			holder = new TouListViewHolder();
 			convertView = inflater.inflate(R.layout.layout_tour_item, parent,
 					false);
-			holder.tv_title = (TextView) convertView
+			holder.tv_title = (EmoticonsTextView) convertView
 					.findViewById(R.id.tv_tou_title);
 			holder.tv_content = (EmoticonsTextView) convertView
 					.findViewById(R.id.tv_tou_content);
@@ -76,7 +76,7 @@ public class TourLvAdapter extends BaseAdapter {
 		}
 		holder.tv_title.setText(list.get(position).getTitle());
 		holder.tv_content.setText(list.get(position).getContent());
-		holder.tv_var_man.setText(list.get(position).getUserId());
+		holder.tv_var_man.setText(list.get(position).getUserUserName());
 		holder.tv_var_time.setText(list.get(position).getCreateTime());
 		holder.tv_comment_num.setText(list.get(position).getPraiseNum());
 		return convertView;

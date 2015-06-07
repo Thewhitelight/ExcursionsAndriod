@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,6 +53,7 @@ public class TouristInfoMainFragment extends BaseFragment {
 		super.onCreate(savedInstanceState);
 		list = new ArrayList<TourMain>();
 		new GetDataTask().execute(BmobConstants.TOURURL);
+		// Log.i("oncreate", list.get(16).getUserUserName());
 		adapter = new TourLvAdapter(getActivity(), list);
 		setHasOptionsMenu(true);
 	}

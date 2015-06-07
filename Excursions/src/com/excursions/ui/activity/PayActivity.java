@@ -16,6 +16,7 @@ public class PayActivity extends ActivityBase {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pay);
 		initView();
+		actionBar.setTitle("÷ß∏∂ΩÁ√Ê");
 	}
 
 	private void initView() {

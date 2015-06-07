@@ -12,6 +12,15 @@ public class TourMain {
 	private String IsDeal;
 	private String Money;
 	private String IsAgree;
+	private String UserUserName;
+
+	public String getUserUserName() {
+		return UserUserName;
+	}
+
+	public void setUserUserName(String userUserName) {
+		UserUserName = userUserName;
+	}
 
 	public String getId() {
 		return Id;

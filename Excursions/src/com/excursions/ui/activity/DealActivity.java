@@ -88,7 +88,7 @@ public class DealActivity extends ActivityBase {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent();
-				i.setClass(getApplicationContext(), TouristDetailActivity.class);
+				i.setClass(getApplicationContext(), DealDetailActivity.class);
 				i.putExtra("flag", 2);
 				startActivity(i);
 			}

@@ -5,7 +5,7 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical" >
 
-    <TextView
+    <com.excursions.ui.customview.EmoticonsTextView
         android:id="@+id/tv_tou_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

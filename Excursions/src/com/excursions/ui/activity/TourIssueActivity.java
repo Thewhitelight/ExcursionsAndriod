@@ -28,7 +28,7 @@ import com.excursions.ui.customview.EmoticonsEditText;
 import com.excursions.utils.FaceTextUtils;
 
 public class TourIssueActivity extends ActivityBase implements OnClickListener {
-	private EmoticonsEditText edit_user_comment;
+	private EmoticonsEditText edit_user_content;
 	private Button btn_emo, btn_add;
 	private ViewPager pager_emo;
 	private LinearLayout layout_more, layout_add, layout_emo;
@@ -39,6 +39,7 @@ public class TourIssueActivity extends ActivityBase implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tourissue);
 		init();
+		actionBar.setTitle("发帖");
 	}
 
 	private void init() {
@@ -46,7 +47,7 @@ public class TourIssueActivity extends ActivityBase implements OnClickListener {
 		layout_add = (LinearLayout) findViewById(R.id.layout_add);
 		layout_emo = (LinearLayout) findViewById(R.id.layout_emo);
 		layout_more = (LinearLayout) findViewById(R.id.layout_more);
-		edit_user_comment = (EmoticonsEditText) findViewById(R.id.edit_user_comment);
+		edit_user_content = (EmoticonsEditText) findViewById(R.id.edit_user_comment);
 		btn_add = (Button) findViewById(R.id.btn_issue_add);
 		btn_emo = (Button) findViewById(R.id.btn_issue_emo);
 		btn_add.setOnClickListener(this);
@@ -115,13 +116,13 @@ public class TourIssueActivity extends ActivityBase implements OnClickListener {
 				FaceText name = (FaceText) gridAdapter.getItem(position);
 				String key = name.text.toString();
 				try {
-					if (edit_user_comment != null && !TextUtils.isEmpty(key)) {
-						int start = edit_user_comment.getSelectionStart();
-						CharSequence content = edit_user_comment.getText()
+					if (edit_user_content != null && !TextUtils.isEmpty(key)) {
+						int start = edit_user_content.getSelectionStart();
+						CharSequence content = edit_user_content.getText()
 								.insert(start, key);
-						edit_user_comment.setText(content);
+						edit_user_content.setText(content);
 						// 定位光标位置
-						CharSequence info = edit_user_comment.getText();
+						CharSequence info = edit_user_content.getText();
 						if (info instanceof Spannable) {
 							Spannable spanText = (Spannable) info;
 							Selection.setSelection(spanText,
@@ -174,8 +175,8 @@ public class TourIssueActivity extends ActivityBase implements OnClickListener {
 	}
 
 	private void showEditState(boolean isEmo) {
-		edit_user_comment.setVisibility(View.VISIBLE);
-		edit_user_comment.requestFocus();
+		edit_user_content.setVisibility(View.VISIBLE);
+		edit_user_content.requestFocus();
 		if (isEmo) {
 			layout_more.setVisibility(View.VISIBLE);
 			layout_more.setVisibility(View.VISIBLE);
@@ -193,7 +194,7 @@ public class TourIssueActivity extends ActivityBase implements OnClickListener {
 		if (getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
 			if (getCurrentFocus() != null)
 				((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
-						.showSoftInput(edit_user_comment, 0);
+						.showSoftInput(edit_user_content, 0);
 		}
 	}
 }
