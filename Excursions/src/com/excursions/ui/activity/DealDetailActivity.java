@@ -30,10 +30,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.excursions.R;
-import com.excursions.adapter.Dis4DisAdapter;
+import com.excursions.adapter.DealDetailAdapter;
 import com.excursions.adapter.EmoViewPagerAdapter;
 import com.excursions.adapter.EmoteAdapter;
-import com.excursions.adapter.TourDetailAdapter;
 import com.excursions.bean.FaceText;
 import com.excursions.data.TourDetailData;
 import com.excursions.ui.customview.EmoticonsEditText;
@@ -51,8 +50,7 @@ public class DealDetailActivity extends ActivityBase implements OnClickListener 
 	private ViewPager pager_emo;
 	private List<Map<String, Object>> list;
 	private PullToRefreshListView mPullRefreshListView;
-	private TourDetailAdapter adapter;
-	private Dis4DisAdapter disadapter;
+	private DealDetailAdapter adapter;
 	private Mode currentMode;
 
 	@Override
@@ -61,9 +59,8 @@ public class DealDetailActivity extends ActivityBase implements OnClickListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tourist_detail);
 		list = new ArrayList<Map<String, Object>>();
-		list = TourDetailData.getData(this);
-		adapter = new TourDetailAdapter(this, list);
-		disadapter = new Dis4DisAdapter(this, list);
+		list = TourDetailData.getDealData(this);
+		adapter = new DealDetailAdapter(this, list);
 		init();
 		actionBar.setTitle("信息详情");
 	}
@@ -138,9 +135,6 @@ public class DealDetailActivity extends ActivityBase implements OnClickListener 
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-
-						upListItem(position);
-
 						edit_user_comment.setText("");
 						layout_more.setVisibility(View.GONE);
 					}
@@ -176,10 +170,7 @@ public class DealDetailActivity extends ActivityBase implements OnClickListener 
 					map.put("time", array.getJSONObject(i).getString("time"));
 					map.put("comment",
 							array.getJSONObject(i).getString("comment"));
-					map.put("name0", array.getJSONObject(i).getString("name0"));
-					map.put("time0", array.getJSONObject(i).getString("time0"));
-					map.put("comment0",
-							array.getJSONObject(i).getString("comment0"));
+
 					list.add(map);
 				}
 				return list;
@@ -322,18 +313,6 @@ public class DealDetailActivity extends ActivityBase implements OnClickListener 
 		//
 		// break;
 		}
-	}
-
-	private void upListItem(int position) {
-		// TODO Auto-generated method stub
-		@SuppressWarnings("unchecked")
-		Map<String, Object> map = (Map<String, Object>) disadapter
-				.getItem(position - 1);// mPullRefreshListView的position起始为1,position-1否则数组越界
-		map.put("comment", edit_user_comment.getText().toString());
-		map.put("comment0", edit_user_comment.getText().toString());
-		list.add(map);
-		disadapter.notifyDataSetChanged();
-
 	}
 
 	/**

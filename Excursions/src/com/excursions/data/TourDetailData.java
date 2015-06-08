@@ -45,4 +45,33 @@ public class TourDetailData {
 
 		return list;
 	}
+
+	public static List<Map<String, Object>> getDealData(Context context) {
+		// TODO Auto-generated method stub
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Map<String, Object> map;
+		InputStream inputStream;
+
+		try {
+			inputStream = context.getAssets().open("deal.txt");
+			String json = ReadTextFile.readTextFile(inputStream);
+			JSONArray array = new JSONArray(json);
+			int n = array.length();
+			for (int i = 0; i < n; i++) {
+				map = new HashMap<String, Object>();
+				map.put("name", array.getJSONObject(i).getString("name"));
+				map.put("layer", array.getJSONObject(i).getString("layer"));
+				map.put("time", array.getJSONObject(i).getString("time"));
+				map.put("comment", array.getJSONObject(i).getString("comment"));
+				list.add(map);
+			}
+			return list;
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 }

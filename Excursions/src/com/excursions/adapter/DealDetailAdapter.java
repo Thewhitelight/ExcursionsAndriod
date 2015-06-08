@@ -1,6 +1,5 @@
 package com.excursions.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,10 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,29 +22,20 @@ import com.excursions.ui.customview.EmoticonsEditText;
 import com.excursions.ui.customview.EmoticonsTextView;
 import com.excursions.ui.customview.RoundImageView;
 
-/**
- * 社区详情页列表
- * 
- * @ClassName: TourDetailAdapter
- * @Description: TODO
- * @author SZQ
- * @date 2015年5月6日 下午8:51:03
- */
-public class TourDetailAdapter extends BaseAdapter {
-	private List<Map<String, Object>> list, dislist;
+public class DealDetailAdapter extends BaseAdapter {
+
+	private List<Map<String, Object>> list;
 	private LayoutInflater inflater;
 	private RoundImageView roundimg;
 	public ImageView imageSingle;
-	private ListView lv_dis4dis;
 	private Context context;
 	private TextView name, time, layer, commentMoreCount;
 	private EmoticonsTextView emo;
 	private LinearLayout buttom_bar, layout_more;
 	private Button btn_chat_send;
 	private EmoticonsEditText edit_user_comment;
-	private Dis4DisAdapter disadapter;
 
-	public TourDetailAdapter(Context context, List<Map<String, Object>> list) {
+	public DealDetailAdapter(Context context, List<Map<String, Object>> list) {
 		// TODO Auto-generated constructor stub
 		this.list = list;
 		this.context = context;
@@ -100,49 +87,12 @@ public class TourDetailAdapter extends BaseAdapter {
 		name.setText((String) list.get(position).get("name"));
 		time.setText((String) list.get(position).get("time"));
 		emo.setText((String) list.get(position).get("comment"));
-		imageSingle.setBackgroundResource(R.drawable.item0);
+		imageSingle.setBackgroundResource(R.drawable.test);
 		String str = context.getResources().getString(R.string.morediscuss);
 		String discussnum = String.format(str, 20);
 		commentMoreCount.setText(discussnum);
-		lv_dis4dis = ViewHolder.get(convertView, R.id.lv_dis4dis);
-		dislist = new ArrayList<Map<String, Object>>();
-		dislist = list;// TourDetailData.getData(context);
-		disadapter = new Dis4DisAdapter(context, dislist);
-		lv_dis4dis.setAdapter(disadapter);
-		// setListViewHeightBasedOnChildren(lv_dis4dis);
-		lv_dis4dis.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					final int position, long id) {
-				// TODO Auto-generated method stub
-				buttom_bar.setVisibility(View.VISIBLE);
-
-				btn_chat_send.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						upListItem(position);
-						setListViewHeightBasedOnChildren(lv_dis4dis);
-						edit_user_comment.setText("");
-						layout_more.setVisibility(View.GONE);
-					}
-				});
-			}
-		});
 		return convertView;
-	}
-
-	private void upListItem(int position) {
-		// TODO Auto-generated method stub
-		@SuppressWarnings("unchecked")
-		Map<String, Object> map = (Map<String, Object>) disadapter
-				.getItem(position);// mPullRefreshListView的position起始为1,position-1否则数组越界
-		map.put("comment0", edit_user_comment.getText().toString());
-		dislist.add(map);
-		disadapter.notifyDataSetChanged();
-
 	}
 
 	public void setListViewHeightBasedOnChildren(ListView listView) {
