@@ -1,2 +1,3 @@
 # ExcursionsAndriod
-远足
+
+短途游APP Android端
