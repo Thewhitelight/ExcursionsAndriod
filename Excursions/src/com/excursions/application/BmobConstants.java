@@ -3,13 +3,13 @@ package com.excursions.application;
 import android.os.Environment;
 
 public class BmobConstants {
-	public static String INDEXURL = "http://10.64.130.129:10240/Attraction/AttractionList?flag=0";
-	public static String MOREURL = "http://10.64.130.129:10240/Attraction/AttractionList?flag=";
-	public static String ATTDETAILURL = "http://10.64.130.129:10240/attraction/attractiondetail?id=";
+	public static String INDEXURL = "http://182.92.5.6:80/Attraction/AttractionList?flag=0";
+	public static String MOREURL = "http://182.92.5.6:80/Attraction/AttractionList?flag=";
+	public static String ATTDETAILURL = "http://182.92.5.6:80/attraction/attractiondetail?id=";
 	public static String ATTPOSITION = "ATTPOSITION";
-	public static String TOURURL = "http://10.64.130.129:10240/Community/CommentCommunityList?flag=0";
-	public static String TOURMORE = "http://10.64.130.129:10240/Community/CommentCommunityList?flag=";
-	public static String DEALURL = "http://10.64.130.129:10240/Community/DealCommunityList?flag=0";
+	public static String TOURURL = "http://182.92.5.6:80/Community/CommentCommunityList?flag=0";
+	public static String TOURMORE = "http://182.92.5.6:80/Community/CommentCommunityList?flag=";
+	public static String DEALURL = "http://182.92.5.6:80/Community/DealCommunityList?flag=0";
 	/**
 	 * 存放发送图片的目录
 	 */
